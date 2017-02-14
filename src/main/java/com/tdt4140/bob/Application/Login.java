@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -32,7 +33,10 @@ public class Login extends Application {
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
-
+        
+       // ImageView bob = new ImageView(getClass().getResource("/com/tdt4140/bob/Application/bob.png").toExternalForm());
+       // grid.getChildren().add(bob);
+        
         Text scenetitle = new Text("BoB");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 2, 1);
@@ -50,6 +54,7 @@ public class Login extends Application {
         grid.add(pwBox, 1, 2);
 
         Button btn = new Button("Logg inn");
+        btn.setId("button");
         HBox hbBtn = new HBox(10);
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtn.getChildren().add(btn);
@@ -67,6 +72,7 @@ public class Login extends Application {
         });
 
         Scene scene = new Scene(grid, 300, 275);
+        scene.getStylesheets().add("/com/tdt4140/bob/Application/style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
