@@ -8,8 +8,6 @@ public class Main {
 		DatabaseHandler dbh = new DatabaseHandler();
 		dbh.connect();
 		
-		Login login = new Login();
-		login.main(args);
-		System.out.println("test");
+		Register register = new Register();
 	}
 }
