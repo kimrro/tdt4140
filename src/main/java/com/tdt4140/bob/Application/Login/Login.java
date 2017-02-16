@@ -1,4 +1,4 @@
-package com.tdt4140.bob.Application;
+package com.tdt4140.bob.Application.Login;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -86,7 +86,7 @@ public class Login extends Application {
             public void handle(ActionEvent e) {
             	if ((brukernavnBox.getText() != null) && (passordBox.getText() != null)) {
             		//actiontarget.setText("Riktig brukernavn og passord!");
-            		thestage.setScene(scene2);
+            		//thestage.setScene(scene2);
             		
             	} else {
                 	actiontarget.setFill(Color.FIREBRICK);

@@ -1,6 +1,6 @@
 package com.tdt4140.bob.Application;
 
-import com.tdt4140.bob.Application.Login.Login.Login;
+import com.tdt4140.bob.Application.Login.Login;
 
 public class Main {
 
