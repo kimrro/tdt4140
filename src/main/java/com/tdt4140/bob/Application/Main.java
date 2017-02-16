@@ -16,6 +16,9 @@ public class Main {
 //		System.out.println("test");
 		
 		ExampleInfo ei = new ExampleInfo();
+		//All users
 		System.out.println(ei.getUserInfo(dbh));
+		//Specific user
+		System.out.println(ei.getUsersInfo("admin", dbh));
 	}
 }

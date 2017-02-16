@@ -13,4 +13,12 @@ public class ExampleHandler {
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
 		return prepStatement.executeQuery();
 	}
+	
+	public static ResultSet getSpecificUserInfo(String username, DatabaseHandler dbh) throws SQLException {
+		String query = "SELECT * FROM user " +
+					   "WHERE username = ?";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		prepStatement.setString(1, username);
+		return prepStatement.executeQuery();
+	}
 }
