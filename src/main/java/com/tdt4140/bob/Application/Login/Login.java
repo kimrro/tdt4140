@@ -1,4 +1,4 @@
-package com.tdt4140.bob.Application;
+package com.tdt4140.bob.Application.Login;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
