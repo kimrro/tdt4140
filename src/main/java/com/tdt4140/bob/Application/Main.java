@@ -8,6 +8,5 @@ public class Main {
 		
 		Login login = new Login();
 		login.main(args);
-		System.out.println("test");
 	}
 }
