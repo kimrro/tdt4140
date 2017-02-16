@@ -1,4 +1,4 @@
-package com.tdt4140.bob.Application;
+package com.tdt4140.bob.Application.Login;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -11,11 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -29,10 +28,10 @@ public class Login extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(final Stage primaryStage) {
     	
         GridPane grid = new GridPane();
-        GridPane pane = new GridPane();
+        final BorderPane pane = new BorderPane();
         
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10); //horisontal gap i pixler
@@ -47,15 +46,15 @@ public class Login extends Application {
         
         grid.getColumnConstraints().addAll(column1, column2);
         
-        //Text scenetitle = new Text("BoB");
-        //scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        //grid.add(scenetitle, 0, 0); 
+        Text scenetitle = new Text("BoB");
+        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        grid.add(scenetitle, 0, 0); 
         
-        ImageView bob = new ImageView(getClass().getResource("/com/tdt4140/bob/Application/bob.png").toExternalForm());
+        /* ImageView bob = new ImageView(getClass().getResource("/com/tdt4140/bob/Application/bob.png").toExternalForm());
         bob.setFitWidth(70);
         bob.setPreserveRatio(true);
-        grid.add(bob, 0, 0); //kolonne, rad
-
+        grid.add(bob, 0, 0); //kolonne, rad */
+ 
         Label userName = new Label("Brukernavn:");
         grid.add(userName, 0, 1);
         
@@ -84,20 +83,27 @@ public class Login extends Application {
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-            	if ((brukernavnBox.getText() != null) && (passordBox.getText() != null)) {
-            		//actiontarget.setText("Riktig brukernavn og passord!");
-            		thestage.setScene(scene2);
+            	if ((brukernavnBox.getText() == "Test") && (passordBox.getText() == "Test")) {
+            		actiontarget.setText("Riktig brukernavn og passord!");
+            		Scene scene2 = new Scene(pane, 320, 300);
+					primaryStage.setScene(scene2);
             		
             	} else {
                 	actiontarget.setFill(Color.FIREBRICK);
             		actiontarget.setText("Feil brukernavn eller passord "); }
             }
         });
+        
+        Text tekst = new Text("BoB logget inn!");
+        tekst.setFont(Font.font("Tahoma", FontWeight.BOLD, 20));
+       
+        VBox vbox = new VBox();
+        vbox.getChildren().add(tekst);
+        vbox.setAlignment(Pos.CENTER);
+        pane.setCenter(vbox);
 
         Scene scene1 = new Scene(grid, 320, 300);
-        Scene scene2 = new Scene(pane, 320, 300);
-        
-        scene1.getStylesheets().add("/com/tdt4140/bob/Application/style.css");
+        //scene1.getStylesheets().add("/src/main/resources/style.css");
         primaryStage.setTitle("Login to BoB");
         primaryStage.setScene(scene1);
         primaryStage.show();
