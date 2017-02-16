@@ -14,6 +14,5 @@ public class LoginController {
 	protected final Text actionTarget;
 	
 	protected abstract void buttonClicked(ActionEvent event);
-	
 
 }
