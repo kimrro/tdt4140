@@ -83,10 +83,16 @@ public class Login extends Application {
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
+<<<<<<< HEAD
             	if ((brukernavnBox.getText() == "Test") && (passordBox.getText() == "Test")) {
             		actiontarget.setText("Riktig brukernavn og passord!");
             		Scene scene2 = new Scene(pane, 320, 300);
 					primaryStage.setScene(scene2);
+=======
+            	if ((brukernavnBox.getText() != null) && (passordBox.getText() != null)) {
+            		//actiontarget.setText("Riktig brukernavn og passord!");
+            		//thestage.setScene(scene2);
+>>>>>>> branch 'Login' of https://github.com/kimrro/tdt4140.git
             		
             	} else {
                 	actiontarget.setFill(Color.FIREBRICK);
