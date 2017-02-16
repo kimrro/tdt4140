@@ -9,8 +9,8 @@ public class DatabaseHandler {
 
 	private Connection con = null;
 	
-	private final String url = "jdbc:mysql://west2-mysql-bob.c9ztinmq6h0z.us-west-2.rds.amazonaws.com:3306/dbbob?autoConnect=true&useSSL=false";
-	private final String username = "kimrro";
+	private final String url = "jdbc:mysql://rds-mysql-bob.c9ztinmq6h0z.us-west-2.rds.amazonaws.com:3306/bobdb?autoConnect=true&useSSL=false";
+	private final String username = "robert";
 	private final String password = "dbbob123";
 	
 	public void connect() {
