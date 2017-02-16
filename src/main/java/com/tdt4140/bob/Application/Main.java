@@ -1,6 +1,7 @@
 package com.tdt4140.bob.Application;
 
 import com.tdt4140.bob.Application.Login.Login;
+import com.tdt4140.bob.Application.Login.Register;
 
 public class Main {
 
@@ -8,7 +9,6 @@ public class Main {
 		DatabaseHandler dbh = new DatabaseHandler();
 		dbh.connect();
 		
-		Login login = new Login();
-		login.main(args);
+		Register register = new Register();
 	}
 }
