@@ -1,6 +1,6 @@
 package com.tdt4140.bob.Application;
 
-import com.tdt4140.bob.Application.Login.Login;
+import com.tdt4140.bob.Application.Login.Login.Login;
 
 public class Main {
 
@@ -10,6 +10,5 @@ public class Main {
 		
 		Login login = new Login();
 		login.main(args);
-		System.out.println("test");
 	}
 }
