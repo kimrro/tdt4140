@@ -37,22 +37,22 @@ public class Bob extends Application {
         setScene(loadGeneric("/src/main/resources/LoggedIn.fxml", "LoggedIn"));
     }
 	
+	public User getUser() { 
+    	return this.user; 
+    }
+	
 	public void setUser(User user) {
         this.user = user;
+    }
+	
+	public DatabaseHandler getDatabaseHandler() {
+        return this.dbh;
     }
 
     public void setDatabaseHandler(DatabaseHandler dbh) {
 		this.dbh = dbh;
     }
 
-    public User getUser() { 
-    	return this.user; 
-    }
-
-    public DatabaseHandler getDatabaseHandler() {
-        return this.dbh;
-    }
-	
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
 		parent.getStylesheets().getClass().getResource("/style.css");
