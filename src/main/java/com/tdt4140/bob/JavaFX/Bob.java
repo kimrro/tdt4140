@@ -2,6 +2,8 @@ package com.tdt4140.bob.JavaFX;
 
 import java.io.IOException;
 
+import com.tdt4140.bob.Application.DatabaseHandler;
+import com.tdt4140.bob.Application.Login.User;
 import com.tdt4140.bob.JavaFX.Controllers.Controller;
 
 import javafx.application.Application;
@@ -14,10 +16,11 @@ public class Bob extends Application {
 	
 	private Stage primaryStage;
 	private Controller currentController;
+	private DatabaseHandler dbh;
+	private User user;
 
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 
 	@Override
@@ -27,10 +30,29 @@ public class Bob extends Application {
 	}
 
 	private void makeLogin() {
-		setScene(loadGeneric("/Login.fxml", "Login"));
-		
+		setScene(loadGeneric("/src/main/resources/Login.fxml", "Login"));
 	}
+	
+	public void makeDash() {
+        setScene(loadGeneric("/src/main/resources/LoggedIn.fxml", "LoggedIn"));
+    }
+	
+	public void setUser(User user) {
+        this.user = user;
+    }
 
+    public void setDatabaseHandler(DatabaseHandler dbh) {
+		this.dbh = dbh;
+    }
+
+    public User getUser() { 
+    	return this.user; 
+    }
+
+    public DatabaseHandler getDatabaseHandler() {
+        return this.dbh;
+    }
+	
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
 		parent.getStylesheets().getClass().getResource("/style.css");

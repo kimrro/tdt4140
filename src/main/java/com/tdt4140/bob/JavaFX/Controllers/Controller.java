@@ -8,4 +8,10 @@ public abstract class Controller {
 	public void setApp(Bob app) {
 		this.app = app;
 	}
+	
+	//setter opp dashobord
+	public void goToDash(){
+        app.makeDash();
+    }
+	
 }

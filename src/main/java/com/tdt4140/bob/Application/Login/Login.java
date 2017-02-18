@@ -1,7 +1,5 @@
 package com.tdt4140.bob.Application.Login;
 
-import com.tdt4140.bob.Application.DatabaseHandler;
-
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
