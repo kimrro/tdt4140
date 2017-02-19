@@ -10,12 +10,12 @@ import com.tdt4140.bob.JavaFX.*;
 
 public class LoginHandler {
 	
-	public static User login(String userName, String password, DatabaseHandler dbh) throws SQLException {
+	public static Login login(String userName, String password, DatabaseHandler dbh) throws SQLException {
         ResultSet userData = getUserPassword(userName, dbh);
         //check if the password matches the encrypted one
         if (userData.next()) {
             if (BCrypt.checkpw(password, userData.getString(4))) {
-                return new User(userData);
+                return null;
             }
         }
         return null;

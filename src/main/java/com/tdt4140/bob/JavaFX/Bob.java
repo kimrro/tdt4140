@@ -32,8 +32,12 @@ public class Bob extends Application {
 	}
 
 	private void makeLogin() {
-		setScene(loadGeneric("/Login.fxml", "Login"));
+		setScene(loadGeneric("../src/main/resources/Login.fxmll", "Login"));
 		
+	}
+	
+	public void makeDash() {
+		setScene(loadGeneric("/Loggedin.fxml", "LoggedIn"));
 	}
 
 	private void setScene(Parent parent) {
@@ -62,5 +66,7 @@ public class Bob extends Application {
 	public DatabaseHandler getDatabaseHandler() {
 		return this.dbh;
 	}
+
+	
 
 }

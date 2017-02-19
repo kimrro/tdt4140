@@ -32,7 +32,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn:" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Passord:" GridPane.rowIndex="1" />
             <TextField id="username" prefWidth="146.0" GridPane.columnIndex="1" />
-            <TextField id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button id="button" alignment="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="89.0" text="Logg inn" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#buttonClicked">
                <stylesheets>
                   <URL value="@../../../../../../resources/style.css" />
