@@ -9,14 +9,10 @@ public class DatabaseHandler {
 
 	private Connection con = null;
 	
-	private final String url = "jdbc:mysql://rds-mysql-bob.c9ztinmq6h0z.us-west-2.rds.amazonaws.com:3306/bobdb?autoConnect=true&useSSL=false";
-	private final String username = "robert";
-	private final String password = "dbbob123";
-	
-	public void connect() {
+	public DatabaseHandler(String dbclass, String url, String username, String password) {
 		System.out.println("Connecting to database...");
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(dbclass);
 			con = DriverManager.getConnection(url, username, password);
 			if (this.con != null) {
 				System.out.println("Connected!");

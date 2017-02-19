@@ -2,6 +2,7 @@ package com.tdt4140.bob.JavaFX;
 
 import java.io.IOException;
 
+import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Controller;
 
 import javafx.application.Application;
@@ -14,6 +15,10 @@ public class Bob extends Application {
 	
 	private Stage primaryStage;
 	private Controller currentController;
+	private DatabaseHandler dbh = new DatabaseHandler("com.mysql.jdbc.Driver", 
+			"jdbc:mysql://rds-mysql-bob.c9ztinmq6h0z.us-west-2.rds.amazonaws.com:3306/bobdb?autoConnect=true&useSSL=false",
+			"robert",
+			"dbbob123");
 
 	public static void main(String[] args) {
 		launch(args);
@@ -52,6 +57,10 @@ public class Bob extends Application {
 		
 		primaryStage.setTitle(title);
 		return parent;
+	}
+	
+	public DatabaseHandler getDatabaseHandler() {
+		return this.dbh;
 	}
 
 }
