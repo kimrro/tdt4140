@@ -15,7 +15,8 @@ public class Bob extends Application {
 	
 	private Stage primaryStage;
 	private Controller currentController;
-	private DatabaseHandler dbh = new DatabaseHandler("com.mysql.jdbc.Driver", 
+  
+	private DatabaseHandler dbh = new DatabaseHandler("com.mysql.jdbc.Driver",
 			"jdbc:mysql://rds-mysql-bob.c9ztinmq6h0z.us-west-2.rds.amazonaws.com:3306/bobdb?autoConnect=true&useSSL=false",
 			"robert",
 			"dbbob123");
@@ -28,12 +29,17 @@ public class Bob extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		makeLogin();
+		//makeLogin();
+		makeRegister();
 	}
 
 	private void makeLogin() {
 		setScene(loadGeneric("/Login.fxml", "Login"));
 		
+	}
+	
+	private void makeRegister() {
+		setScene(loadGeneric("/Register.fxml", "Register"));
 	}
 
 	private void setScene(Parent parent) {

@@ -22,7 +22,6 @@ public class DatabaseHandler {
 		} catch (ClassNotFoundException e) {
 			System.out.println("Could not find driver\nERROR: " + e.getMessage());
 		}
-		
 	}
 	
 	public void close() {
