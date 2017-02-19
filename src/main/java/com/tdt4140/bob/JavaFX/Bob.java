@@ -15,6 +15,7 @@ public class Bob extends Application {
 	
 	private Stage primaryStage;
 	private Controller currentController;
+  
 	private DatabaseHandler dbh = new DatabaseHandler("com.mysql.jdbc.Driver",
 			"jdbc:mysql://rds-mysql-bob.c9ztinmq6h0z.us-west-2.rds.amazonaws.com:3306/bobdb?autoConnect=true&useSSL=false",
 			"robert",
