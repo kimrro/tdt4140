@@ -15,7 +15,7 @@ public class LoginHandler {
         //check if the password matches the encrypted one
         if (userData.next()) {
             if (BCrypt.checkpw(password, userData.getString(4))) {
-                return null;
+                return null; //return new User(userData);
             }
         }
         return null;

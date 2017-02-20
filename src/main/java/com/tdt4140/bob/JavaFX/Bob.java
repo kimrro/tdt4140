@@ -33,7 +33,6 @@ public class Bob extends Application {
 
 	private void makeLogin() {
 		setScene(loadGeneric("../src/main/resources/Login.fxmll", "Login"));
-		
 	}
 	
 	public void makeDash() {
