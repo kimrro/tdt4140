@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="../src/main/com/tdt4140/bob/Application/Controllers.LoginController">
    <center>
       <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -31,15 +31,10 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn:" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Passord:" GridPane.rowIndex="1" />
-            <TextField id="username" prefWidth="146.0" GridPane.columnIndex="1" />
-            <PasswordField id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button id="button" alignment="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="37.0" prefWidth="89.0" text="Logg inn" GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#buttonClicked">
-               <stylesheets>
-                  <URL value="@../../../../../../resources/style.css" />
-                  <URL value="@style.css" />
-               </stylesheets>
-            </Button>
-            <Text id="actionTarget" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" text="Text..." GridPane.rowIndex="3" />
+            <TextField id="username" fx:id="username" prefWidth="146.0" GridPane.columnIndex="1" />
+            <PasswordField id="password" fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button id="button" fx:id="button" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#buttonClicked" prefHeight="37.0" prefWidth="89.0" stylesheets="@style.css" text="Logg inn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text id="actionTarget" fx:id="actionTarget" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" text="Text..." GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </center>
@@ -53,4 +48,4 @@
          </BorderPane.margin>
       </ImageView>
    </top>
-</BorderPane>
+</fx:root>

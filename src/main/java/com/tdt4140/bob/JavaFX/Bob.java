@@ -22,7 +22,6 @@ public class Bob extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 
 	@Override
@@ -32,11 +31,11 @@ public class Bob extends Application {
 	}
 
 	private void makeLogin() {
-		setScene(loadGeneric("../src/main/resources/Login.fxmll", "Login"));
+		setScene(loadGeneric("../src/main/resources/Login.fxml", "Login"));
 	}
 	
 	public void makeDash() {
-		setScene(loadGeneric("/Loggedin.fxml", "LoggedIn"));
+		setScene(loadGeneric("../src/main/resources/Dashbord.fxml", "Dashbord"));
 	}
 
 	private void setScene(Parent parent) {
@@ -65,7 +64,5 @@ public class Bob extends Application {
 	public DatabaseHandler getDatabaseHandler() {
 		return this.dbh;
 	}
-
 	
-
 }
