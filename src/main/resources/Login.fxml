@@ -31,10 +31,10 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brukernavn:" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Passord:" GridPane.rowIndex="1" />
-            <TextField id="username" fx:id="username" prefWidth="146.0" GridPane.columnIndex="1" />
-            <PasswordField id="password" fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="username" prefWidth="146.0" GridPane.columnIndex="1" />
+            <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button id="button" fx:id="button" alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#buttonClicked" prefHeight="37.0" prefWidth="89.0" stylesheets="@style.css" text="Logg inn" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text id="actionTarget" fx:id="actionTarget" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" text="Text..." GridPane.rowIndex="3" />
+            <Text fx:id="actionTarget" fill="FIREBRICK" strokeType="OUTSIDE" strokeWidth="0.0" text="Text..." GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </center>
