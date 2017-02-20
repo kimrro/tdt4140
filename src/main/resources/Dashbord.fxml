@@ -10,9 +10,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+<?import javafx.event.ActionEvent?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Chat.ChatController">
    <center>
       <GridPane maxHeight="500.0" maxWidth="500.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -24,19 +25,29 @@
             <RowConstraints maxHeight="271.6894226074219" minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField GridPane.rowIndex="1" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" />
-            <Button id="button1" mnemonicParsing="false" stylesheets="@../java/com/tdt4140/bob/Application/style.css" text="Send" GridPane.rowIndex="2" />
+            <TextField id="text" fx:id="text" GridPane.rowIndex="1" />
+            <TextArea fx:id="chat" id="chat" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" />
+            <Button id="button1" fx:id="button" mnemonicParsing="false" onAction="#ButtonClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
+            <Text fx:id="chat1" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="5.0" top="5.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fx:id="chat2" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="5.0" top="30.0" />
+               </GridPane.margin>
+            </Text>
          </children>
       </GridPane>
    </center>
    <top>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../java/com/tdt4140/bob/Application/bob.png" />
+            <Image url="@bob.png" />
          </image>
          <BorderPane.margin>
-            <Insets left="10.0" top="5.0" />
+            <Insets top="20.0" />
          </BorderPane.margin>
       </ImageView>
    </top>

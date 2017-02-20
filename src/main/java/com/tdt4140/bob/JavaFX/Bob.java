@@ -23,12 +23,16 @@ public class Bob extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		makeLogin();
+		//makeLogin();
+		makeDash();
 	}
 
 	private void makeLogin() {
 		setScene(loadGeneric("/Login.fxml", "Login"));
-		
+	}
+	
+	private void makeDash() {
+		setScene(loadGeneric("/src/main/resources/Dashbord.fxml", "Chatte med BoB"));
 	}
 
 	private void setScene(Parent parent) {
