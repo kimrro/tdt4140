@@ -20,13 +20,14 @@ public class LoginController extends Controller{
 	
 	private DatabaseHandler dbh;
 	private LoginHandler lh;
-	String name, pw;
+	String name; 
+	String pwd;
 	
 	public void buttonClicked() throws SQLException{
 		dbh = app.getDatabaseHandler();
 		
 		name = username.getText();
-		pw = password.getText();
+		pwd = password.getText();
 		
 		try {
 			lh.getUserCredentials(dbh, name).next();
@@ -35,7 +36,7 @@ public class LoginController extends Controller{
             actionTarget.setFill(Paint.valueOf("REDBRICK"));
             actionTarget.setText("404_FeilOppdaget_Ring_Lars: 45245345");
             
-        } if (lh.getUserCredentials(dbh, name).findColumn("password") == pw) {
+        } if (lh.getUserCredentials(dbh, name).findColumn("password") == pwd) {
 			 actionTarget.setFill(Paint.valueOf("GREEN"));
 				actionTarget.setText("Velkommen");
 				try {
