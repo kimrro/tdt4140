@@ -1,4 +1,4 @@
-#button {
+#button, #button1 {
     -fx-background-color: 
         #090a0c,
         linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
