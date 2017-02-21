@@ -10,8 +10,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="../src/main/com/tdt4140/bob/Application/Controllers/ChatController.java">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
    <center>
       <GridPane maxHeight="500.0" maxWidth="500.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -24,19 +25,28 @@
         </rowConstraints>
          <children>
             <TextField id="text" fx:id="text" GridPane.rowIndex="1" />
-            <TextArea id="chat" fx:id="chat" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" />
+            <TextArea id="chat" fx:id="chat" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" />
             <Button id="button1" fx:id="button" mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
+            <Text fx:id="chat1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="5.0" />
+               </GridPane.margin></Text>
+            <Text fx:id="chat2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="5.0" top="30.0" />
+               </GridPane.margin>
+            </Text>
          </children>
       </GridPane>
    </center>
    <top>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@bob.png" />
-         </image>
          <BorderPane.margin>
             <Insets top="20.0" />
          </BorderPane.margin>
+         <image>
+            <Image url="@bob.png" />
+         </image>
       </ImageView>
    </top>
 </BorderPane>

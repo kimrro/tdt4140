@@ -1,16 +1,27 @@
 package com.tdt4140.bob.JavaFX.Controllers;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class ChatController extends Controller{
 	
+	@FXML
 	private TextArea chat;
+	@FXML
 	private TextField text;
+	@FXML
+	private Button button;
+	@FXML
+	private Text chat1;
+	@FXML
+	private Text chat2;
 	
-	protected void buttonClicked() {
+	public void chatClicked() {
 		String uText = text.getText();
-		chat.setText("You: " + uText + "\n");
+		chat1.setText("You: " + uText + "\n");
 		
 		String subjects = ("TDT4140 Databases, TDT4100 Human M I");
 		
@@ -56,7 +67,7 @@ public class ChatController extends Controller{
 	}
 	
 	public void botSay(String s){
-		chat.setText("BOB: " + s + "\n");
+		chat2.setText("BOB: " + s + "\n");
 	}
 
 }
