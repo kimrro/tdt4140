@@ -9,9 +9,4 @@ public abstract class Controller {
 		this.app = app;
 	}
 	
-	//setter opp dashobord
-	public void goToDash(){
-        app.makeDash();
-    }
-	
 }

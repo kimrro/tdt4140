@@ -35,7 +35,7 @@
                   <Label text="Username:" />
                   <PasswordField fx:id="passPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Password:" GridPane.rowIndex="1" />
-                  <Button id="button" fx:id="btnLogin" mnemonicParsing="false" onAction="#onLogin" stylesheets="@style.css" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#onLogin" stylesheets="@style.css" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Text fx:id="actionTarget" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.rowIndex="3" />
                </children>
             </GridPane>
