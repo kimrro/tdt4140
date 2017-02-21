@@ -23,7 +23,7 @@ public class ChatController extends Controller{
 		String uText = text.getText();
 		chat1.setText("You: " + uText + "\n");
 		
-		String subjects = ("TDT4140 Databases, TDT4100 Human M I");
+		String subjects = ("TDT4140 Databases,"+"\n" + " TDT4100 Human M I");
 		
 		if(uText.contains("hello")){
 			botSay("Hello there!");
@@ -34,14 +34,14 @@ public class ChatController extends Controller{
 				botSay("You have the subjects:" + subjects);
 			}
 			else if (reply_decider==2) {
-				botSay("Currently, you are attending these classes:" + subjects);
+				botSay("Currently, you are attending these classes:"+ "\n" + subjects);
 			}
 	//terminates the application	
 		else if (uText.contains("exit")) {
 			Runtime.getRuntime().exit(0);
 			}
-			
 		}
+		
 		else if(uText.contains("how are you?")){
 			int decider = (int) (Math.random()*2+1);
 			if(decider == 1){
@@ -51,6 +51,12 @@ public class ChatController extends Controller{
 				botSay("Not too bad");
 			}
 		}
+		
+		else if(uText.contains("help")){
+				botSay("Possible commands are: \n"+ "\n" + "1: what subjects do i have? " + "\n"+ "2: how are you?" + "\n"+ "3: what is the weather like today? \n");
+			}
+	
+			
 		else{
 			int reply_decider = (int) (Math.random()*3+1);
 			if(reply_decider == 1){
@@ -60,7 +66,7 @@ public class ChatController extends Controller{
 				botSay("Please rephrase that");
 			}
 			else if(reply_decider == 3){
-				botSay("Press the 'help' button to show commands");
+				botSay("Type the 'help' button to show commands");
 			}
 		}
 		text.setText("");
