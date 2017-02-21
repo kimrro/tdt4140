@@ -8,9 +8,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.Login.RegisterController">
    <children>
-      <Pane prefHeight="400.0" prefWidth="600.0">
+      <Pane maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0">
          <children>
-            <Label layoutX="196.0" text="Registration">
+            <Label layoutX="69.0" layoutY="14.0" text="Registration">
                <font>
                   <Font size="40.0" />
                </font>
@@ -40,13 +40,13 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtUsername" layoutX="227.0" layoutY="95.0" />
-            <PasswordField fx:id="passPassword" layoutX="227.0" layoutY="125.0" />
-            <PasswordField fx:id="passCPassword" layoutX="227.0" layoutY="155.0" />
-            <TextField fx:id="txtFname" layoutX="227.0" layoutY="185.0" />
-            <TextField fx:id="txtLname" layoutX="227.0" layoutY="215.0" />
-            <Button fx:id="btnRegister" layoutX="227.0" layoutY="284.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="25.0" prefWidth="149.0" text="Register" />
-            <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutX="9.0" layoutY="337.0" prefHeight="17.0" prefWidth="580.0" textAlignment="CENTER" textFill="RED" />
+            <TextField fx:id="txtUsername" layoutX="187.0" layoutY="93.0" />
+            <PasswordField fx:id="passPassword" layoutX="187.0" layoutY="123.0" />
+            <PasswordField fx:id="passCPassword" layoutX="187.0" layoutY="153.0" />
+            <TextField fx:id="txtFname" layoutX="187.0" layoutY="183.0" />
+            <TextField fx:id="txtLname" layoutX="187.0" layoutY="213.0" />
+            <Button fx:id="btnRegister" layoutX="101.0" layoutY="277.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="25.0" prefWidth="149.0" text="Register" />
+            <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutY="338.0" prefHeight="17.0" prefWidth="350.0" textAlignment="CENTER" textFill="RED" />
          </children>
       </Pane>
    </children>

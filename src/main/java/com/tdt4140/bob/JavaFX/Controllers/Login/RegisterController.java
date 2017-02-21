@@ -108,7 +108,7 @@ public class RegisterController extends Controller {
 	}
 	
 	private boolean isString() {
-		if(fname.matches(".*\\d+.*") && lname.matches(".*\\d+.*")) {
+		if(fname.matches(".*\\d+.*") || lname.matches(".*\\d+.*")) {
 			return false;
 		}
 		return true;
