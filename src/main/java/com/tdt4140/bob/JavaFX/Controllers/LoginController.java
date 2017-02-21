@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.Login.LoginHandler;
 
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.paint.Paint;
@@ -13,9 +14,13 @@ import javafx.scene.text.Text;
 
 public class LoginController extends Controller{
 	
+	@FXML
 	private TextField username;
+	@FXML
 	private PasswordField password;
+	@FXML
 	private Text actionTarget;
+	@FXML
 	private Button button;
 	
 	private DatabaseHandler dbh;
@@ -29,7 +34,9 @@ public class LoginController extends Controller{
 		name = username.getText();
 		pwd = password.getText();
 		
-		try {
+		actionTarget.setText("Test");
+		
+		/*try {
 			lh.getUserCredentials(dbh, name).next();
 		} catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -47,6 +54,6 @@ public class LoginController extends Controller{
 		} else {
             actionTarget.setFill(Paint.valueOf("#ff3636"));
             actionTarget.setText("Feil brukernavn eller passord");
-        }
+        } */
     }
 }

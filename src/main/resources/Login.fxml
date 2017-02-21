@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<fx:root minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="../src/main/com/tdt4140/bob/Application/Controllers.LoginController">
+<fx:root minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com/tdt4140/bob/Application/Controllers.LoginController">
    <center>
       <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="250.0" BorderPane.alignment="CENTER">
         <columnConstraints>
