@@ -32,8 +32,8 @@ public class ChatController extends Controller {
 		else if (uText.contains("exit")) {
 			Runtime.getRuntime().exit(0);
 			}
-			
 		}
+		
 		else if(uText.contains("how are you?")){
 			int decider = (int) (Math.random()*2+1);
 			if(decider == 1){
@@ -43,6 +43,12 @@ public class ChatController extends Controller {
 				botSay("Not too bad");
 			}
 		}
+		
+		else if(uText.contains("help")){
+				botSay("Possible commands are: \n"+ "\n" + "1: what subjects do i have? " + "\n"+ "2: how are you?" + "3: what is the weather like today? \n");
+			}
+	
+			
 		else{
 			int reply_decider = (int) (Math.random()*3+1);
 			if(reply_decider == 1){

@@ -67,6 +67,16 @@ import com.mysql.fabric.xmlrpc.base.Array;
 							botSay("Not too bad");
 						}
 					}
+					
+					else if(uText.contains("help")){
+						int decider = (int) (Math.random()*2+1);
+						if(decider == 1){
+							botSay("Possible commands are: \n" + "1: how are you?" + "\n"+ "2: what subjects do i have?" + "3: what is the weather like today? \n");
+						}
+						else if(decider == 2){
+							botSay("Here is a list of things I can help you with:\n" + "\n" + "1: how are you?" + "\n"+ "2: what subjects do i have?"+ "\n" + "3: what is the weather like today?"+"\n");
+						}
+					}
 					else{
 						int reply_decider = (int) (Math.random()*3+1);
 						if(reply_decider == 1){
@@ -97,9 +107,6 @@ import com.mysql.fabric.xmlrpc.base.Array;
 			txtChat.append("BOB: " + s + "\n");
 		}
 		
-		public void list_of_commands(String s) {
-			txtChat.append("how are you?" + "\n"+ "what subjects do i have?" );
-		}
 		
 		public static void main(String[] args){
 			new bot();
