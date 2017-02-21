@@ -31,11 +31,11 @@ public class Bob extends Application {
 	}
 
 	private void makeLogin() {
-		setScene(loadGeneric("/Login.fxml", "Login"));
+		setScene(loadGeneric("Login.fxml", "Login"));
 	}
 	
 	public void makeDash() {
-		setScene(loadGeneric("/Dashbord.fxml", "Dashbord"));
+		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
 	}
 
 	private void setScene(Parent parent) {
