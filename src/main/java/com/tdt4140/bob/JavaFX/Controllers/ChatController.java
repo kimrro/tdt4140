@@ -15,7 +15,7 @@ public class ChatController extends Controller {
 		String uText = text.getText();
 		chat1.setText("You: " + uText + "\n");
 		
-		String subjects = ("TDT4140 Databases, TDT4100 Human M I");
+		String subjects = ("TDT4140 Databases,"+"\n" + " TDT4100 Human M I");
 		
 		if(uText.contains("hello")){
 			botSay("Hello there!");
@@ -26,7 +26,7 @@ public class ChatController extends Controller {
 				botSay("You have the subjects:" + subjects);
 			}
 			else if (reply_decider==2) {
-				botSay("Currently, you are attending these classes:" + subjects);
+				botSay("Currently, you are attending these classes:"+ "\n" + subjects);
 			}
 	//terminates the application	
 		else if (uText.contains("exit")) {
