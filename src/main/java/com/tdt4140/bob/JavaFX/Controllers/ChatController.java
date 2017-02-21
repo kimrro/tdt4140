@@ -58,7 +58,7 @@ public class ChatController extends Controller {
 				botSay("Please rephrase that");
 			}
 			else if(reply_decider == 3){
-				botSay("Press the 'help' button to show commands");
+				botSay("Type the 'help' button to show commands");
 			}
 		}
 		text.setText("");
