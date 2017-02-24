@@ -31,7 +31,7 @@ public class Bob extends Application {
 		makeRegister();
 	}
 
-	private void makeLogin() {
+	public void makeLogin() {
 		setScene(loadGeneric("/Login.fxml", "Login"));
 		
 	}

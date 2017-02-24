@@ -7,6 +7,7 @@ import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Controller;
 import com.tdt4140.bob.Application.Login.LoginHandler;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,12 +31,6 @@ public class RegisterController extends Controller {
 	private LoginHandler lh;
 	
 	String username, fname, lname, password, cpassword;
-	
-	public void onEnterKey(KeyEvent key) throws SQLException {
-		if(key.getCode().isWhitespaceKey()) {
-			registerUser();
-		}
-	}
 
 	public void registerUser() throws SQLException {
 		dbh = app.getDatabaseHandler();
@@ -67,12 +62,13 @@ public class RegisterController extends Controller {
 				
 				labelError.setTextFill(Color.GREEN);
 				labelError.setText("Successfully registered!");
+				app.makeLogin();
 				
-				txtUsername.setText("");
-				passPassword.setText("");
-				passCPassword.setText("");
-				txtFname.setText("");
-				txtLname.setText("");
+//				txtUsername.setText("");
+//				passPassword.setText("");
+//				passCPassword.setText("");
+//				txtFname.setText("");
+//				txtLname.setText("");
 			} catch (SQLException e) {
 				labelError.setText("Registration failed: SQLState(" + e.getSQLState() + ")");
 			}
