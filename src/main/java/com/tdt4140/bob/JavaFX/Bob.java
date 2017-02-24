@@ -15,7 +15,6 @@ public class Bob extends Application {
 	
 	private Stage primaryStage;
 	private Controller currentController;
-  
 	private DatabaseHandler dbh = new DatabaseHandler("com.mysql.jdbc.Driver",
 			"jdbc:mysql://rds-mysql-bob.c9ztinmq6h0z.us-west-2.rds.amazonaws.com:3306/bobdb?autoConnect=true&useSSL=false",
 			"robert",
@@ -23,7 +22,6 @@ public class Bob extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
-
 	}
 
 	@Override
@@ -41,6 +39,10 @@ public class Bob extends Application {
 	private void makeRegister() {
 		setScene(loadGeneric("/Register.fxml", "Register"));
 	}
+	
+	public void makeDash() {
+		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
+	}
 
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
@@ -50,7 +52,7 @@ public class Bob extends Application {
 	}
 
 	private Parent loadGeneric(String path, String title) {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
+		FXMLLoader fxmlLoader = new FXMLLoader(Bob.class.getClassLoader().getResource("FXML/" + path));
 		Parent parent = null;
 		try {
 			parent = fxmlLoader.load();
@@ -68,5 +70,4 @@ public class Bob extends Application {
 	public DatabaseHandler getDatabaseHandler() {
 		return this.dbh;
 	}
-
 }

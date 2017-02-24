@@ -8,4 +8,5 @@ public abstract class Controller {
 	public void setApp(Bob app) {
 		this.app = app;
 	}
+	
 }
