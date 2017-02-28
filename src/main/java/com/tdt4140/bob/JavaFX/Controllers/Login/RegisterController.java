@@ -25,6 +25,8 @@ public class RegisterController extends Controller {
 	private PasswordField passPassword, passCPassword;
 	@FXML
 	private Label labelError;
+	@FXML
+	private Button btnLogin;
 
 	private DatabaseHandler dbh;
 
@@ -108,5 +110,13 @@ public class RegisterController extends Controller {
 			return false;
 		}
 		return true;
+	}
+	
+	public void goToLogin() {
+		try {
+            app.makeLogin(); } 
+		catch (Exception e) {
+            System.out.println(e.getMessage());
+		}
 	}
 }

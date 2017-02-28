@@ -26,7 +26,7 @@
          <children>
             <TextField id="text" fx:id="text" GridPane.rowIndex="1" />
             <TextArea id="chat" fx:id="chat" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" />
-            <Button id="button1" fx:id="button" mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
+            <Button id="button" fx:id="button" mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
             <Text fx:id="chat1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="5.0" />

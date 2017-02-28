@@ -24,6 +24,8 @@ public class LoginController extends Controller {
 	private Button btnLogin;
 	@FXML
 	private Text actionTarget;
+	@FXML
+	private Button btnRegister;
 	
 	private DatabaseHandler dbh;
 	private LoginHandler lh;
@@ -65,6 +67,18 @@ public class LoginController extends Controller {
 	            actionTarget.setText("Feil brukernavn!"); }
 		
 	}
+	
+	public void goToRegister() {
+		try {
+            app.makeRegister(); } 
+		catch (Exception e) {
+            System.out.println(e.getMessage());
+		}
+	}
+		
 }
+	
+	
+
 	
 

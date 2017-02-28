@@ -27,8 +27,7 @@ public class Bob extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		//makeLogin();
-		makeRegister();
+		makeLogin();
 	}
 
 	public void makeLogin() {
@@ -36,7 +35,7 @@ public class Bob extends Application {
 		
 	}
 	
-	private void makeRegister() {
+	public void makeRegister() {
 		setScene(loadGeneric("/Register.fxml", "Register"));
 	}
 	
