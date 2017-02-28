@@ -1,19 +1,16 @@
 package com.tdt4140.bob.JavaFX.Controllers.Login;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.tdt4140.bob.Application.DatabaseHandler;
-import com.tdt4140.bob.JavaFX.Controllers.Controller;
 import com.tdt4140.bob.Application.Login.LoginHandler;
+import com.tdt4140.bob.JavaFX.Controllers.Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 public class RegisterController extends Controller {
@@ -46,15 +43,15 @@ public class RegisterController extends Controller {
 		
 		if (lh.getUserCredentials(dbh, username).next()) {
 			labelError.setText("Username is already taken!");
-		} else if (!isValidUsername()) {
+		} else if (!isValidUsername(username)) {
 			labelError.setText("Username must be between 3 to 16 characters long.");
-		} else if (!isValidPassword()) {
+		} else if (!isValidPassword(password)) {
 			labelError.setText("Password must be between 6 to 16 characters long.");
-		} else if (!isMatchingPassword()) {
+		} else if (!isMatchingPassword(password, cpassword)) {
 			labelError.setText("Password do not match.");
-		} else if (!isValidName()) {
+		} else if (!isValidName(fname, lname)) {
 			labelError.setText("First and last name must be at least two letters long.");
-		} else if (!isString()) {
+		} else if (!isString(fname) || !isString(lname)) {
 			labelError.setText("Do you really have a non-letter character in your name?");
 		} else {
 			try {
@@ -75,36 +72,36 @@ public class RegisterController extends Controller {
 		}
 	}
 
-	private boolean isValidUsername() {
+	public boolean isValidUsername(String username) {
 		if (username.length() >= 3 && username.length() <= 16) {
 			return true;
 		}
 		return false;
 	}
 	
-	private boolean isValidPassword() {
+	public boolean isValidPassword(String password) {
 		if(password.length() >= 6 && password.length() <= 16) {
 			return true;
 		}
 		return false;
 	}
 
-	private boolean isMatchingPassword() {
+	public boolean isMatchingPassword(String password, String cpassword) {
 		if(password.equals(cpassword)) {
 			return true;
 		}
 		return false;
 	}
 
-	private boolean isValidName() {
+	public boolean isValidName(String fname, String lname) {
 		if(fname.length() >= 2 && lname.length() >= 2) {
 			return true;
 		}
 		return false;
 	}
 	
-	private boolean isString() {
-		if(fname.matches(".*\\d+.*") || lname.matches(".*\\d+.*")) {
+	public boolean isString(String text) {
+		if(text.matches(".*\\d+.*")) {
 			return false;
 		}
 		return true;
