@@ -76,4 +76,10 @@ public class ChatController extends Controller{
 		chat2.setText("BOB: " + s + "\n");
 	}
 
+	public boolean isValidCommand(String uText) {
+		if (uText.contains("help" ) || uText.contains("exit" ) || uText.contains("what subjects do I have?" ) || uText.contains("hello" ) ) {
+			return true;
+		}
+		return false;
+	}
 }

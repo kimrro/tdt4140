@@ -8,8 +8,11 @@ import com.tdt4140.bob.JavaFX.Controllers.*;
 public class ChatControllerTest extends junit.framework.TestCase{
 	ChatController CC= new ChatController();
 	@Test
-	public void testChatClicked() {
-		assertEquals("",botSay);
+	public void testIsValidCommand() {
+		
+		assertTrue(CC.isValidCommand("help"));
+		assertFalse(CC.isValidCommand("helpp"));
 	}
 
 }
+
