@@ -101,9 +101,6 @@ public class RegisterController extends Controller {
 	}
 	
 	public boolean isString(String text) {
-		if(text.matches(".*\\d+.*")) {
-			return false;
-		}
-		return true;
+		return text.matches("[a-zA-Z]+");
 	}
 }
