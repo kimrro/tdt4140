@@ -42,7 +42,7 @@
                      <font>
                         <Font size="15.0" />
                      </font></Label>
-                  <Button id="button" fx:id="btnLogin" maxHeight="40.0" maxWidth="95.0" minHeight="40.0" minWidth="95.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="40.0" prefWidth="95.0" stylesheets="@style.css" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button id="button" fx:id="btnLogin" maxHeight="40.0" maxWidth="95.0" minHeight="40.0" minWidth="95.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="40.0" prefWidth="95.0" stylesheets="@style.css" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="2" defaultButton="true" />
                   <Text fx:id="actionTarget" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.rowIndex="3" />
                </children>
             </GridPane>

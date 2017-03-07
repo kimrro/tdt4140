@@ -4,76 +4,116 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 public class ChatController extends Controller{
 	
 	@FXML
-	private TextArea chat;
+	private TextArea area;
 	@FXML
-	private TextField text;
+	private TextField input;
 	@FXML
 	private Button button;
-	@FXML
-	private Text chat1;
-	@FXML
-	private Text chat2;
 	
 	public void chatClicked() {
-		String uText = text.getText();
-		chat1.setText("You: " + uText + "\n");
+		String replie = null;
+		String uText = input.getText();
 		
-		String subjects = ("TDT4140 Databases,"+"\n" + " TDT4100 Human M I");
+		String TEXT = uText.toLowerCase();
+		String part[] = TEXT.split(" ");
+		int n = part.length;
 		
-		if(uText.contains("hello")){
-			botSay("Hello there!");
-		}
-		else if (uText.contains("what subjects do i have?")) {
-			int reply_decider = (int) (Math.random()*2+1);
-			if (reply_decider== 1) {
-				botSay("You have the subjects:" + subjects);
-			}
-			else if (reply_decider==2) {
-				botSay("Currently, you are attending these classes:"+ "\n" + subjects);
-			}
-	//terminates the application	
-		else if (uText.contains("exit")) {
-			Runtime.getRuntime().exit(0);
-			}
-		}
+		String subjects = ("\n" + "TDT4140 Databases \n" 
+							+ "TDT4100 Human M I \n" 
+							+ "TDT4100 Objektorientert programmering");
 		
-		else if(uText.contains("how are you?")){
-			int decider = (int) (Math.random()*2+1);
-			if(decider == 1){
-				botSay("I'm doing well, thanks");
-			}
-			else if(decider == 2){
-				botSay("Not too bad");
-			}
-		}
-		
-		else if(uText.contains("help")){
-				botSay("Possible commands are: \n"+ "\n" + "1: what subjects do i have? " + "\n"+ "2: how are you?" + "\n"+ "3: what is the weather like today? \n");
-			}
-	
+		for (int i = 0; i == n - 1; i++) {
 			
-		else{
-			int reply_decider = (int) (Math.random()*3+1);
-			if(reply_decider == 1){
-				botSay("I didn't get that");
+			if ((part[i].contains("hello"))){
+				int reply_decider = (int) (Math.random() * 3 + 1);
+				if (reply_decider == 1) {
+						replie = "Hello there!";
+				}
+				else if (reply_decider == 2) {
+					replie = "How you doin? ^^";
+				}
+				else if (reply_decider == 3) {
+					replie = "Hello mate!";
+				}
 			}
-			else if(reply_decider == 2){
-				botSay("Please rephrase that");
+			
+			else if (TEXT.contains("what subjects do i have") || part[i].contains("subj")) {
+				int reply_decider = (int) (Math.random()* 2 + 1);
+				if (reply_decider== 1) {
+					replie = "You have the subjects: \n" + subjects;
+				}
+				else if (reply_decider==2) {
+					replie = "Currently, you are attending these classes: \n" + subjects;
+				}
+				break;
 			}
-			else if(reply_decider == 3){
-				botSay("Type the 'help' button to show commands");
+			
+			else if ((part[i].contains("how")) && (part[i + 1].contains("are")) && (part[i + 2].contains("you"))){
+				int reply_decider = (int) (Math.random() * 3 + 1);
+				if (reply_decider == 1) {
+					replie = "I'm doing well, thanks";
+				}
+				else if (reply_decider == 2){
+					replie = "Not too bad";
+				}
+				else if(reply_decider == 3) {
+					replie = "Very well thank you!";
+				}
+				break;
+			}
+			
+			else if ((part[i].contains("help")) || part[i].contains("commands")) {
+					replie = "Possible commands are: \n \n" + "1: What subjects do i have? \n"+ "2: How are you? \n" + "3: What is the weather like today? \n" + "4: Clear the chat field \n";
+			}
+			
+			else if ((part[i].contains("h")) && part[i].contains("e") && part[i].contains("l") && part[i].contains("p")) {
+				replie = "Did you mean 'help'?";
+			}
+			
+			else if ((part[i].contains("c")) && part[i].contains("o") && part[i].contains("m") && part[i].contains("n") && part[i].contains("d")) {
+				replie = "Did you mean 'commands'?";
+			}
+				
+			else if ((part[i].contains("clear"))) {
+				//Runtime.getRuntime().exit(0);
+				//area.clear();
+				replie = "Cleared!";
+				area.setText("");
+				break;
+			}
+		
+			else {
+				int reply_decider = (int) (Math.random() * 4 + 1);
+				if(reply_decider == 1){
+					replie = "I didn't get that, try 'help' to show commands";
+				}
+				else if(reply_decider == 2){
+					replie = "Please rephrase that or type 'commands' to show commands";
+				}
+				else if(reply_decider == 3){
+					replie = "Type 'help' to show commands";
+				}
+				else if (reply_decider == 4) {
+					replie = "'help' will show you some usefull comands =D";
+				}
 			}
 		}
-		text.setText("");
+		
+		if (part[0] == "clear") {
+			input.setText("");
+			area.setText("");
+		} else {
+			input.setText("");
+			chatArea(uText, replie);
+		}
 	}
 	
-	public void botSay(String s){
-		chat2.setText("BOB: " + s + "\n");
+	public void chatArea(String user ,String bot) {
+		area.appendText("You: " + user + "\n" + "BOB: " + bot + "\n" + "\n");
 	}
 
 	public boolean isValidCommand(String uText) {
@@ -82,4 +122,5 @@ public class ChatController extends Controller{
 		}
 		return false;
 	}
+	
 }

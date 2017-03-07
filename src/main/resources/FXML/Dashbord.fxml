@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
    <center>
@@ -24,18 +23,12 @@
             <RowConstraints maxHeight="271.6894226074219" minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField id="text" fx:id="text" GridPane.rowIndex="1" />
-            <TextArea id="chat" fx:id="chat" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" />
-            <Button id="button" fx:id="button" mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
-            <Text fx:id="chat1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets left="5.0" />
-               </GridPane.margin></Text>
-            <Text fx:id="chat2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets left="5.0" top="30.0" />
-               </GridPane.margin>
-            </Text>
+            <TextField id="input" fx:id="input" GridPane.rowIndex="1" />
+            <TextArea id="area" fx:id="area" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY">
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets></TextArea>
+            <Button id="button" fx:id="button" defaultButton="true" mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>
@@ -49,4 +42,7 @@
          </image>
       </ImageView>
    </top>
+   <opaqueInsets>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </opaqueInsets>
 </BorderPane>
