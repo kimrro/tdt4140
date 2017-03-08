@@ -36,4 +36,15 @@ public class DatabaseHandler {
 		return con.prepareStatement(query);
 	}
 
+
 }
+
+
+//08. Potetstappe og kjøttboller med brunsaus
+//09. Kylling teriyakimed erter
+//10. Pytt i panne
+//11. 
+//12. 
+//13. 
+//14. 
+//15. 
