@@ -1,5 +1,7 @@
 package com.tdt4140.bob.JavaFX.Controllers;
 
+import com.tdt4140.bob.JavaFX.Controllers.Login.User;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -26,7 +28,7 @@ public class ChatController extends Controller{
 		String subjects = ("TDT4140 Databases,"+"\n" + " TDT4100 Human M I");
 		
 		if(uText.contains("hello")){
-			botSay("Hello there!");
+			botSay("\nHello there, " + User.getUsername() + "!\nPrivilege: " + User.getPrivilege());
 		}
 		else if (uText.contains("what subjects do i have?")) {
 			int reply_decider = (int) (Math.random()*2+1);
