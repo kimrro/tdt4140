@@ -1,5 +1,15 @@
 package com.tdt4140.bob.JavaFX.Controllers;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ArrayList;
+
+import org.apache.commons.lang3.text.WordUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -14,19 +24,17 @@ public class ChatController extends Controller{
 	@FXML
 	private Button button;
 	
-	public void chatClicked() {
+	public void chatClicked() throws IOException {
 		String replie = "ERROR";
 		String uText = input.getText();
 		
 		String TEXT = uText.toLowerCase();
 		String part[] = TEXT.split(" ");
-//		int n = part.length - 1; //For-løkke
+		int n = part.length;
 		
 		String subjects = ("\n" + "TDT4140 Databases \n" 
 							+ "TDT4100 Human M I \n" 
 							+ "TDT5000 Objektorientert programmering");
-		
-//		String subjects = (Hente fra database);
 		
 		String lecturer = ("Hente fra database!!");
 		
@@ -40,6 +48,28 @@ public class ChatController extends Controller{
 			}
 			else if (reply_decider == 3) {
 				replie = "Hello mate!";
+			}
+		}
+		
+		else if (part[0].equals("what") && part[1].contains("is")) {
+			ArrayList<String> list = new ArrayList<String>();
+			
+			String subject = "";
+			for (int i = 2; i < n; i++) {
+				list.add(part[i]);
+			}
+			
+			for (String s : list) {
+			    subject += s + " ";
+			}
+			
+			String input = WordUtils.capitalizeFully(subject);
+			System.out.println("Ble skrevet inn: " + input);
+			
+			if(wikipedia(input).equals("0")) {
+				replie = "Please rephrase! I couldnt find what you where looking for :(";
+			} else {
+				replie = "I found this on wikipedia: " + input + "\n" + wikipedia(input);
 			}
 		}
 		
@@ -101,7 +131,7 @@ public class ChatController extends Controller{
 		}
 		
 		else if ((part[0].contains("help")) || part[0].contains("commands")) {
-				replie = "Possible commands are: \n \n" + "1: How are you? \n"+ "2: What subjects do i have? \n" + "3: 'lecturer' + 'SUBJECTCODE' \n" + "4: Clear the chat field \n";
+				replie = "Possible commands are: \n \n" + "1: How are you? \n"+ "2: What subjects do i have? \n" + "3: 'lecturer' + 'SUBJECTCODE' \n" + "4: Clear the chat field \n" + "5: Ask me something with: 'what is' + '..' \n";
 		}
 		
 		else if ((part[0].contains("h")) && part[0].contains("e") && part[0].contains("l") && part[0].contains("p") && part[0] != "help") {
@@ -114,6 +144,10 @@ public class ChatController extends Controller{
 		
 		else if ((part[0].contains("c")) && part[0].contains("l") && part[0].contains("e") && part[0].contains("a") && part[0].contains("r") && part[0] != "clear") {
 			replie = "Did you mean 'clear'?";
+		}
+		
+		else if (((part[0].contains("w")) && part[0].contains("h") && part[0].contains("a") && part[0] != "what") || (part[0].contains("what") && !(part[1].equals("is"))) || (part[2] == "")) {
+			replie = "Did you mean to ask me a question?";
 		}
 	
 		else {
@@ -152,6 +186,59 @@ public class ChatController extends Controller{
 			return true;
 		}
 		return false;
+	}
+	
+	public String wikipedia(String object) throws IOException{
+//		String subject = "Ed Sheeran";
+//		object = "world war";
+		System.out.println(object);
+		URL url = new URL("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exsentences=1&exintro=&explaintext=&exsectionformat=plain&titles=" + object.replace(" ", "%20"));
+		String text = "";
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream()))) {
+		    String line = null;
+		    while (null != (line = br.readLine())) {
+		        line = line.trim();
+		        if (true) {
+		            text += line;
+		        }
+		    }
+			
+		} 
+//		catch (IOException e) {
+//			e.printStackTrace();
+//			return ("I couldnt find what you where looking for :( Please rephrase");
+//		}
+		String extract = null;
+		String check = null;
+
+		try {
+			System.out.println("text = " + text);
+			JSONObject json = new JSONObject(text);
+			JSONObject query = json.getJSONObject("query");
+			JSONObject pages = query.getJSONObject("pages");
+			for(String key: pages.keySet()) {
+			    System.out.println("key = " + key);
+			    check = key;
+			    JSONObject page = pages.getJSONObject(key);
+			    extract = page.getString("extract");
+			    System.out.println("extract = " + extract);
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return("0");
+		}
+		
+		System.out.println("Check: " + check);
+		
+		if (text.contains("missing")) {
+			return("0");
+		} else if (extract.contains("redirect") || check.equals("-1") ) {
+			return("0");
+		} else { 
+			return (extract);
+		}
+		
 	}
 	
 }
