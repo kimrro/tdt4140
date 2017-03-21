@@ -43,7 +43,12 @@ public class Bob extends Application {
 	public void makeDash() {
 		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
 	}
-
+	public void makeAdmin() {
+		setScene(loadGeneric("Admin.fxml", "Admin"));
+	}
+	public void makeSettings() {
+		setScene(loadGeneric("Settings.fxml", "Settings"));
+	}
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
 		parent.getStylesheets().getClass().getResource("/style.css");
