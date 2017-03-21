@@ -16,65 +16,43 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
+import java.sql.SQLException;
+import java.util.Arrays;
+
+import com.tdt4140.bob.Application.ViewMaker;
+import com.tdt4140.bob.Application.Admin.AdminHandler;
+
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+
+
 
 public class AdminController extends Controller {
-		private Bob bob;
-		private DatabaseHandler dbh;
-		//@FXML 
-	//	private TableView<SearchResults> SR = new TableView();
-		
-		@FXML private TableView SearchResults;
-		
-		@FXML private Button toggleSettings;
-		
-		@FXML private Checkbox c1,c2,c3;
-		
 	
+		private AdminHandler ah;
 
-	   // private ObservableList<ObservableList> data;
-	    private TableView tableview;
+		@FXML
+		private Pane subjectView;
+		
+		@FXML
+		private Label txtError;
 
-	 
-	    public void initialize(URL,Location,ResourceBundle resources){
-	   
-	      	ResultSet rs = null;
+		@Override
+		public void onLoad() {
+			System.out.println("Test");
+			ah = new AdminHandler();
+			ResultSet rs = null;
+			try {
+				rs = ah.getSubjects(app.getDatabaseHandler());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			subjectView.getChildren().add(ViewMaker.makeTable(rs, Arrays.asList("Code", "Coursename")));
+			
+			if(subjectView.getChildren().isEmpty()) {
+				txtError.setVisible(true);
+			}
+		}
 
-	            for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
-	                final int j = i;                
-	                TableColumn col = new TableColumn(rs.getMetaData().getColumnName(i+1));
-	                col.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
-	                    public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
-	                        return new SimpleStringProperty(param.getValue().get(j).toString());                        
-	                    }                    
-	                });
-
-	                tableview.getColumns().addAll(col); 
-	                System.out.println("Column ["+i+"] ");
-	            }
-
-	         
-	            while(rs.next()){
-	                ObservableList<String> row = FXCollections.observableArrayList();
-	                for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
-	                    row.add(rs.getString(i));
-	                }
-	                System.out.println("Row [1] added "+row );
-	                data.add(row);
-
-	            }
-
-	            tableview.setItems(data);
-	        try {
-	        	
-	        }
-	          catch(SQLException e){
-	              e.printStackTrace();
-	              System.out.println("Error on Building Data");             
-	          }}
-	
-    
-	          private void toggleSettings() {
-	        	  app.makeSettings();
-	          }
-	}	
-
+	}
