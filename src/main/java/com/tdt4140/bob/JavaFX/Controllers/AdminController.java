@@ -1,6 +1,6 @@
 package com.tdt4140.bob.JavaFX.Controllers;
 
-import java.awt.Checkbox;
+ import java.awt.Checkbox;
 import java.sql.ResultSet;
 
 import com.tdt4140.bob.Application.DatabaseHandler;
@@ -20,8 +20,8 @@ import javafx.scene.control.TextField;
 public class AdminController extends Controller {
 		private Bob bob;
 		private DatabaseHandler dbh;
-		@FXML 
-		private TableView<SearchResults> SR = new TableView();
+		//@FXML 
+	//	private TableView<SearchResults> SR = new TableView();
 		
 		@FXML private TableView SearchResults;
 		
@@ -31,7 +31,7 @@ public class AdminController extends Controller {
 		
 	
 
-	    private ObservableList<ObservableList> data;
+	   // private ObservableList<ObservableList> data;
 	    private TableView tableview;
 
 	 
@@ -77,5 +77,4 @@ public class AdminController extends Controller {
 	        	  app.makeSettings();
 	          }
 	}	
-
 

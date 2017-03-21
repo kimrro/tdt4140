@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -48,9 +44,9 @@
                         </Pane>
                         <Pane fx:id="table" layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0">
                            <children>
-                              <TableView layoutY="-99.0" prefHeight="355.0" prefWidth="593.0">
+                              <TableView fx:id="table" layoutY="-99.0" prefHeight="355.0" prefWidth="593.0">
                                 <columns>
-                                  <TableColumn fx:id="keyword" prefWidth="125.0" text="Keyword" />
+                                  <TableColumn fx:id="keyword1" prefWidth="125.0" text="Keyword" />
                                   <TableColumn fx:id="page" prefWidth="134.0" text="Page(s)" />
                                     <TableColumn fx:id="curricilum" prefWidth="206.0" text="Curricilum" />
                                     <TableColumn fx:id="searchFrequency" prefWidth="126.0" text="Search Frequency" />
@@ -62,51 +58,68 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="TDT4100">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Tab id="tdt4140" fx:id="tdt41401" text="TDT4100">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane prefHeight="244.0" prefWidth="600.0">
-                           <children>
-                              <TreeTableView layoutX="-95.0" layoutY="98.0" prefHeight="265.0" prefWidth="575.0">
-                                 <columns>
-                                    <TreeTableColumn prefWidth="75.0" text="Keyword" />
-                                    <TreeTableColumn prefWidth="75.0" text="Location" />
-                                    <TreeTableColumn prefWidth="268.99998474121094" text="Curricilum" />
-                                    <TreeTableColumn prefWidth="138.15640258789062" text="Search frequency" />
-                                 </columns>
-                              </TreeTableView>
-                           </children>
-                        </Pane>
                         <Pane prefHeight="218.0" prefWidth="600.0">
                            <children>
-                              <Label layoutX="41.0" layoutY="13.0" text="Your course status:">
+                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
                                  <font>
                                     <Font size="19.0" />
                                  </font>
                               </Label>
-                              <CheckBox layoutX="231.0" layoutY="16.0" mnemonicParsing="false" text="Lecturer" />
-                              <CheckBox layoutX="441.0" layoutY="14.0" mnemonicParsing="false" text="Other" />
-                              <CheckBox layoutX="335.0" layoutY="15.0" mnemonicParsing="false" text="Und.ass" />
-                              <Label layoutX="38.0" layoutY="68.0" text="Most asked question:">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <TextField layoutX="244.0" layoutY="63.0" prefHeight="35.0" prefWidth="141.0" text="What is RAM?">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Button layoutX="393.0" layoutY="64.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="77.0" text="Refresh" />
+                              <CheckBox fx:id="c11" layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
+                              <CheckBox fx:id="c31" layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
+                              <CheckBox fx:id="c21" layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
                            </children>
                         </Pane>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="TDT4110">
+                        <Pane fx:id="table1" layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0">
+                           <children>
+                              <TableView layoutY="-99.0" prefHeight="355.0" prefWidth="593.0">
+                                 <columns>
+                                    <TableColumn fx:id="keyword2" prefWidth="125.0" text="Keyword" />
+                                    <TableColumn fx:id="page1" prefWidth="134.0" text="Page(s)" />
+                                    <TableColumn fx:id="curricilum1" prefWidth="206.0" text="Curricilum" />
+                                    <TableColumn fx:id="searchFrequency1" prefWidth="126.0" text="Search Frequency" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab id="tdt4140" fx:id="tdt414011" text="TDT4110">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="218.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox fx:id="c111" layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
+                              <CheckBox fx:id="c311" layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
+                              <CheckBox fx:id="c211" layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="table11" layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0">
+                           <children>
+                              <TableView layoutY="-99.0" prefHeight="355.0" prefWidth="593.0">
+                                 <columns>
+                                    <TableColumn fx:id="keyword3" prefWidth="125.0" text="Keyword" />
+                                    <TableColumn fx:id="page11" prefWidth="134.0" text="Page(s)" />
+                                    <TableColumn fx:id="curricilum11" prefWidth="206.0" text="Curricilum" />
+                                    <TableColumn fx:id="searchFrequency11" prefWidth="126.0" text="Search Frequency" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
         </tabs>
