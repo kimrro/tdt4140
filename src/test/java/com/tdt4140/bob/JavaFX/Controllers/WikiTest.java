@@ -32,6 +32,20 @@ public class WikiTest extends junit.framework.TestCase{
 		assertTrue(CC.isValidWiki("random-access memory"));
 		assertTrue(CC.isValidWiki("Random-access memory"));
 	}
+	
+	@Test
+	public void testOutput1() throws IOException {
+		assertEquals(CC.wikipedia("world war"), "A world war "
+				+ "is a war involving many of the countries of "
+				+ "the world or many of the most powerful and populous ones.");
+	}
+	
+	@Test
+	public void testOutput2() throws IOException {
+		assertEquals(CC.wikipedia("football"), "Football is a family of team sports"
+				+ " that involve, to varying degrees, kicking a ball with the foot to"
+				+ " score a goal.");
+	}
 
 }
 

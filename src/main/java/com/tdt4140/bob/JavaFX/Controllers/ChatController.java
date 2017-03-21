@@ -77,7 +77,6 @@ public class ChatController extends Controller{
 			}
 		}
 		
-//		else if (part[0].contains("I") && part[1].contains("am") || (part[0].contains("i") && part[0].contains("m"))) {
 		else if (TEXT.contains("i am") || (part[0].contains("i") && part[0].contains("m"))) {
 			int reply_decider = (int) (Math.random() * 2 + 1);
 			if (reply_decider == 1) {
@@ -118,10 +117,10 @@ public class ChatController extends Controller{
 				replie = "I'm doing well thanks! And you?";
 			}
 			else if (reply_decider == 2){
-				replie = "Not too bad";
+				replie = "Not too bad, and for you?";
 			}
 			else if(reply_decider == 3) {
-				replie = "Very well thank you!";
+				replie = "Very well thank you! How is it going for you?";
 			}
 		}
 		
@@ -258,18 +257,6 @@ public class ChatController extends Controller{
 		if (!(wikipedia(input1).equals("0")) || !(wikipedia(input2).equals("0"))) {
 			return true;
 		} return false;
-	}
-	
-//	public boolean isValidOutput(String object) throws IOException {
-//		String input1 = object;
-//		String input2 = WordUtils.capitalizeFully(object);
-//		
-//		if ((wikipedia(input1).equals("0")) || (wikipedia(input2).equals("0"))) {
-//			return false;
-//		} else {
-//			return false;
-//		}
-//	}
-	
+	}	
 	
 }
