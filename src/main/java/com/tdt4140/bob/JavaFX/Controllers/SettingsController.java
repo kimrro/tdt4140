@@ -1,55 +1,42 @@
 package com.tdt4140.bob.JavaFX.Controllers;
 
-import java.net.URL;
 import java.sql.ResultSet;
-import java.util.ResourceBundle;
+import java.sql.SQLException;
+import java.util.Arrays;
 
-import com.tdt4140.bob.Application.DatabaseHandler;
-import com.tdt4140.bob.Application.ViewSubjects;
-import com.tdt4140.bob.JavaFX.Bob;
+import com.tdt4140.bob.Application.ViewMaker;
+import com.tdt4140.bob.Application.Subjects.SubjectsHandler;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
-public class SettingsController extends Controller implements Initializable {
+public class SettingsController extends Controller {
 
-	private ViewSubjects vs;
-	private DatabaseHandler dbh;
-	private Bob bob;
+	private SubjectsHandler sh;
+
+	@FXML
+	private Pane subjectView;
 	
 	@FXML
-	private TableView subjectView;
-	
-	@FXML
-	private TableColumn<ObservableList, String> code, coursename;
+	private Label txtError;
 
-	public void showSubjects() {
-		this.dbh = bob.getDatabaseHandler();
-
-		TableView<ObservableList> tableView = null;
-		tableView.setEditable(false);
-		ObservableList<ObservableList> data = FXCollections.observableArrayList();
-		
-		code = new TableColumn<ObservableList, String>();
+	@Override
+	public void onLoad() {
+		System.out.println("Test");
+		sh = new SubjectsHandler();
+		ResultSet rs = null;
 		try {
-			ResultSet rs = vs.getSubjects(this.dbh);
-			while (rs.next()) {
-				code.setCellValueFactory(new PropertyValueFactory("hardkoda"));
-			}
-			
-			tableView.getColumns().add(code);
-		} catch (Exception e) {
-
+			rs = sh.getSubjects(app.getDatabaseHandler());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		subjectView.getChildren().add(ViewMaker.makeTable(rs, Arrays.asList("Code", "Coursename")));
+		
+		if(subjectView.getChildren().isEmpty()) {
+			txtError.setVisible(true);
 		}
 	}
 
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		showSubjects();
-	}
 }
