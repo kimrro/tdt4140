@@ -64,15 +64,18 @@ public class AdminController extends Controller {
 	            }
 
 	            tableview.setItems(data);
-	          }catch(SQLException e){
+	        try {
+	        	
+	        }
+	          catch(SQLException e){
 	              e.printStackTrace();
 	              System.out.println("Error on Building Data");             
-	          }
+	          }}
 	
     
 	          private void toggleSettings() {
 	        	  app.makeSettings();
 	          }
 	}	
-}
+
 
