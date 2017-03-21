@@ -36,9 +36,9 @@ public class ChatController extends Controller{
 							+ "TDT4100 Human M I \n" 
 							+ "TDT5000 Objektorientert programmering");
 		
-		String lecturer = ("Hente fra database!!");
+		String lecturer = ("Hente fra database!");
 		
-		if ((part[0].contains("hello")) || (part[0].contains("hi"))){
+		if ((TEXT.contains("hello")) || (TEXT.contains("hi"))){
 			int reply_decider = (int) (Math.random() * 3 + 1);
 			if (reply_decider == 1) {
 					replie = "Hello there!";
@@ -51,7 +51,7 @@ public class ChatController extends Controller{
 			}
 		}
 		
-		else if (part[0].equals("what") && part[1].contains("is")) {
+		else if ((part[0].equals("what") || part[0].equals("who") || part[0].equals("where")) && part[1].contains("is")) {
 			ArrayList<String> list = new ArrayList<String>();
 			
 			String subject = "";
@@ -63,17 +63,22 @@ public class ChatController extends Controller{
 			    subject += s + " ";
 			}
 			
-			String input = WordUtils.capitalizeFully(subject);
-			System.out.println("Ble skrevet inn: " + input);
+			String input1 = subject;
+			String input2 = WordUtils.capitalizeFully(subject);
 			
-			if(wikipedia(input).equals("0")) {
-				replie = "Please rephrase! I couldnt find what you where looking for :(";
+			if(wikipedia(input1).equals("0")) {
+				if (wikipedia(input2).equals("0")){
+					replie = "Please rephrase! I couldnt find what you where looking for :(";
+				} else {
+					replie = "I found this on wikipedia: " + input2 + "\n" + wikipedia(input2);
+				}
 			} else {
-				replie = "I found this on wikipedia: " + input + "\n" + wikipedia(input);
+				replie = "I found this on wikipedia: " + input2 + "\n" + wikipedia(input1);
 			}
 		}
 		
-		else if (part[0].contains("I") && part[1].contains("am") || (part[0].contains("i") && part[0].contains("m"))) {
+//		else if (part[0].contains("I") && part[1].contains("am") || (part[0].contains("i") && part[0].contains("m"))) {
+		else if (TEXT.contains("i am") || (part[0].contains("i") && part[0].contains("m"))) {
 			int reply_decider = (int) (Math.random() * 2 + 1);
 			if (reply_decider == 1) {
 					replie = "Good for you!!";
@@ -131,24 +136,33 @@ public class ChatController extends Controller{
 		}
 		
 		else if ((part[0].contains("help")) || part[0].contains("commands")) {
-				replie = "Possible commands are: \n \n" + "1: How are you? \n"+ "2: What subjects do i have? \n" + "3: 'lecturer' + 'SUBJECTCODE' \n" + "4: Clear the chat field \n" + "5: Ask me something with: 'what is' + '..' \n";
+				replie = "Possible commands are: \n \n" 
+						+ "1: How are you? \n"
+						+ "2: What subjects do i have (subjects)? \n" 
+						+ "3: 'lecturer' + 'SUBJECTCODE' \n" 
+						+ "4: Clear the chat field (clear) \n" 
+						+ "5: Ask me something";
 		}
 		
-		else if ((part[0].contains("h")) && part[0].contains("e") && part[0].contains("l") && part[0].contains("p") && part[0] != "help") {
+		else if (part[0].contains("h") && part[0].contains("e") && part[0].contains("l") && part[0].contains("p") && part[0] != "help") {
 			replie = "Did you mean 'help'?";
 		}
 		
-		else if ((part[0].contains("c")) && part[0].contains("o") && part[0].contains("m") && part[0].contains("n") && part[0] != "commands") {
+		else if (part[0].contains("c") && part[0].contains("o") && part[0].contains("m") && part[0].contains("n") && part[0] != "commands") {
 			replie = "Did you mean 'commands'?";
 		}
 		
-		else if ((part[0].contains("c")) && part[0].contains("l") && part[0].contains("e") && part[0].contains("a") && part[0].contains("r") && part[0] != "clear") {
+		else if (part[0].contains("c") && part[0].contains("l") && part[0].contains("e") && part[0].contains("a") && part[0].contains("r") && part[0] != "clear") {
 			replie = "Did you mean 'clear'?";
 		}
 		
-		else if (((part[0].contains("w")) && part[0].contains("h") && part[0].contains("a") && part[0] != "what") || (part[0].contains("what") && !(part[1].equals("is"))) || (part[2] == "")) {
+		else if (part[0].contains("w") && part[0].contains("h") && part[0].contains("a") && part[0] != "what") {
 			replie = "Did you mean to ask me a question?";
 		}
+		
+//		else if (part[0].contains("what") && !(part[1].equals("is")) && (part[2] == "")) {
+//			replie = "Did you mean to ask me a question?";
+//		}
 	
 		else {
 			int reply_decider = (int) (Math.random() * 4 + 1);
@@ -181,17 +195,11 @@ public class ChatController extends Controller{
 		area.appendText("You: " + user + "\n" + "BOB: " + bot + "\n" + "\n");
 	}
 
-	public boolean isValidCommand(String uText) {
-		if (uText.contains("help") || uText.contains("exit" ) || uText.contains("what subjects do I have?" ) || uText.contains("hello" ) ) {
-			return true;
-		}
-		return false;
-	}
-	
 	public String wikipedia(String object) throws IOException{
 //		String subject = "Ed Sheeran";
 //		object = "world war";
-		System.out.println(object);
+//		ojbect = "RAM";
+		System.out.println("Ble skerevet inn: " + object);
 		URL url = new URL("https://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exsentences=1&exintro=&explaintext=&exsectionformat=plain&titles=" + object.replace(" ", "%20"));
 		String text = "";
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream()))) {
@@ -201,13 +209,9 @@ public class ChatController extends Controller{
 		        if (true) {
 		            text += line;
 		        }
-		    }
-			
+		    }		
 		} 
-//		catch (IOException e) {
-//			e.printStackTrace();
-//			return ("I couldnt find what you where looking for :( Please rephrase");
-//		}
+		
 		String extract = null;
 		String check = null;
 
@@ -217,19 +221,18 @@ public class ChatController extends Controller{
 			JSONObject query = json.getJSONObject("query");
 			JSONObject pages = query.getJSONObject("pages");
 			for(String key: pages.keySet()) {
-			    System.out.println("key = " + key);
+//			    System.out.println("key = " + key);
 			    check = key;
 			    JSONObject page = pages.getJSONObject(key);
 			    extract = page.getString("extract");
-			    System.out.println("extract = " + extract);
+//			    System.out.println("extract = " + extract);
 			}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return("0");
 		}
 		
-		System.out.println("Check: " + check);
+//		System.out.println("Check: " + check);
 		
 		if (text.contains("missing")) {
 			return("0");
@@ -240,5 +243,33 @@ public class ChatController extends Controller{
 		}
 		
 	}
+	
+	public boolean isValidCommand(String uText) {
+		if (uText.contains("help") || uText.contains("exit" ) || uText.contains("what subjects do I have?" ) || uText.contains("hello" ) ) {
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isValidWiki(String object) throws IOException {
+		String input1 = object;
+		String input2 = WordUtils.capitalizeFully(object);
+		
+		if (!(wikipedia(input1).equals("0")) || !(wikipedia(input2).equals("0"))) {
+			return true;
+		} return false;
+	}
+	
+//	public boolean isValidOutput(String object) throws IOException {
+//		String input1 = object;
+//		String input2 = WordUtils.capitalizeFully(object);
+//		
+//		if ((wikipedia(input1).equals("0")) || (wikipedia(input2).equals("0"))) {
+//			return false;
+//		} else {
+//			return false;
+//		}
+//	}
+	
 	
 }
