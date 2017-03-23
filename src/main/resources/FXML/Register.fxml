@@ -1,53 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.Login.RegisterController">
+<AnchorPane maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.Login.RegisterController">
    <children>
-      <Pane maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0">
-         <children>
-            <Label layoutX="69.0" layoutY="14.0" text="Registration">
+      <Pane maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0" />
+      <BorderPane maxHeight="400.0" maxWidth="350.0" minHeight="400.0" minWidth="350.0" prefHeight="400.0" prefWidth="350.0">
+         <center>
+            <GridPane maxHeight="250.0" maxWidth="250.0" minHeight="250.0" minWidth="250.0" prefHeight="250.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="28.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="61.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="88.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Last name:" GridPane.rowIndex="4" />
+                  <PasswordField fx:id="passPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Username" />
+                  <TextField fx:id="txtUsername" GridPane.columnIndex="1" />
+                  <Label text="Password:" GridPane.rowIndex="1" />
+                  <Label text="Confirm password:" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="passCPassword" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="First name:" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtFname" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtLname" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button id="button" fx:id="btnRegister" maxHeight="40.0" maxWidth="95.0" minHeight="40.0" minWidth="95.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="40.0" prefWidth="95.0" stylesheets="@style.css" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button id="button" fx:id="btnLogin" maxHeight="40.0" maxWidth="95.0" minHeight="40.0" minWidth="95.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="40.0" prefWidth="95.0" stylesheets="@style.css" text="Go back" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+               </children>
+            </GridPane>
+         </center>
+         <top>
+            <Label text="Registration" BorderPane.alignment="CENTER">
                <font>
                   <Font size="40.0" />
                </font>
+               <BorderPane.margin>
+                  <Insets top="30.0" />
+               </BorderPane.margin>
             </Label>
-            <Label layoutX="16.0" layoutY="92.0" text="Username">
-               <font>
-                  <Font size="20.0" />
-               </font>
+         </top>
+         <bottom>
+            <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="250.0" textAlignment="CENTER" textFill="RED" wrapText="true" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
             </Label>
-            <Label layoutX="16.0" layoutY="122.0" text="Password:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="18.0" layoutY="152.0" text="Confirm password:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="18.0" layoutY="182.0" text="First name:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="18.0" layoutY="212.0" text="Last name:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtUsername" layoutX="187.0" layoutY="93.0" />
-            <PasswordField fx:id="passPassword" layoutX="187.0" layoutY="123.0" />
-            <PasswordField fx:id="passCPassword" layoutX="187.0" layoutY="153.0" />
-            <TextField fx:id="txtFname" layoutX="187.0" layoutY="183.0" />
-            <TextField fx:id="txtLname" layoutX="187.0" layoutY="213.0" />
-            <Button fx:id="btnRegister" layoutX="101.0" layoutY="277.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="25.0" prefWidth="149.0" text="Register" />
-            <Label fx:id="labelError" alignment="CENTER" contentDisplay="CENTER" layoutY="338.0" prefHeight="17.0" prefWidth="350.0" textAlignment="CENTER" textFill="RED" />
-         </children>
-      </Pane>
+         </bottom>
+      </BorderPane>
    </children>
 </AnchorPane>

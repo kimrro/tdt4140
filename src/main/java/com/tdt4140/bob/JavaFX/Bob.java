@@ -28,15 +28,14 @@ public class Bob extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
 		//makeLogin();
-		makeRegister();
+		makeDash();
 	}
 
 	public void makeLogin() {
 		setScene(loadGeneric("/Login.fxml", "Login"));
-		
 	}
 	
-	private void makeRegister() {
+	public void makeRegister() {
 		setScene(loadGeneric("/Register.fxml", "Register"));
 	}
 	
