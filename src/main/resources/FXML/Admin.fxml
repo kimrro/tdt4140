@@ -12,16 +12,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="700.0" maxWidth="600.0" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.AdminController">>
+<AnchorPane maxHeight="700.0" maxWidth="600.0" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.AdminController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@bob.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="settings" fitHeight="95.0" fitWidth="71.0" layoutX="529.0" onMouseClicked="#toggleSettings" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="settings" fitHeight="95.0" fitWidth="71.0" layoutX="529.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../GUI%20chat/src/chat/wheel.png" />
+            <Image url="@../../../../../../../Documents/NTNU/4.%20semester/Programvareutvikling/GUI%20chat/bin/chat/wheel.png" />
          </image>
       </ImageView>
       <TabPane layoutY="201.0" prefHeight="499.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -30,7 +30,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane prefHeight="218.0" prefWidth="600.0">
+                        <Pane prefHeight="79.0" prefWidth="600.0">
                            <children>
                               <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
                                  <font>
@@ -42,18 +42,7 @@
                               <CheckBox fx:id="c2" layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
                            </children>
                         </Pane>
-                        <Pane fx:id="table" layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0">
-                           <children>
-                              <TableView fx:id="table" layoutY="-99.0" prefHeight="355.0" prefWidth="593.0">
-                                <columns>
-                                  <TableColumn fx:id="keyword1" prefWidth="125.0" text="Keyword" />
-                                  <TableColumn fx:id="page" prefWidth="134.0" text="Page(s)" />
-                                    <TableColumn fx:id="curricilum" prefWidth="206.0" text="Curricilum" />
-                                    <TableColumn fx:id="searchFrequency" prefWidth="126.0" text="Search Frequency" />
-                                </columns>
-                              </TableView>
-                           </children>
-                        </Pane>
+                        <Pane id="subjectView" fx:id="subjectView" layoutX="3.0" layoutY="97.0" prefHeight="357.0" prefWidth="600.0" />
                      </children>
                   </AnchorPane>
             </content>

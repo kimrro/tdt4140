@@ -27,12 +27,12 @@ public class Bob extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		//makeLogin();
-		makeRegister();
+		makeLogin();
+		//makeRegister();
 	}
 
 	public void makeLogin() {
-		setScene(loadGeneric("/Login.fxml", "Login"));
+		setScene(loadGeneric("Login.fxml", "Login"));
 		
 	}
 	
@@ -41,13 +41,13 @@ public class Bob extends Application {
 	}
 	
 	public void makeDash() {
-		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
+		setScene(loadGeneric("/Dashbord.fxml", "Dashbord"));
 	}
 	public void makeAdmin() {
-		setScene(loadGeneric("Admin.fxml", "Admin"));
+		setScene(loadGeneric("/Admin.fxml", "Admin"));
 	}
 	public void makeSettings() {
-		setScene(loadGeneric("Settings.fxml", "Settings"));
+		setScene(loadGeneric("/Settings.fxml", "Settings"));
 	}
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
@@ -67,6 +67,7 @@ public class Bob extends Application {
 		
 		currentController = fxmlLoader.getController();
 		currentController.setApp(this);
+		currentController.onLoad();
 		
 		primaryStage.setTitle(title);
 		return parent;

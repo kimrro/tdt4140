@@ -14,7 +14,7 @@ import java.util.List;
 public class ViewMaker {
 
     public static TableView makeTable(ResultSet rs, List<String> labels) {
-        TableView<ObservableList> table = new TableView<>();
+        TableView<ObservableList> table = new TableView<ObservableList>();
         table.setEditable(false);
         ObservableList<ObservableList> data = FXCollections.observableArrayList();
         try {

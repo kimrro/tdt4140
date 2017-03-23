@@ -48,7 +48,7 @@ public class AdminController extends Controller {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			subjectView.getChildren().add(ViewMaker.makeTable(rs, Arrays.asList("Code", "Coursename")));
+			subjectView.getChildren().add(ViewMaker.makeTable(rs, Arrays.asList("Keyword", "Page(s)","Search Frequency")));
 			
 			if(subjectView.getChildren().isEmpty()) {
 				txtError.setVisible(true);
