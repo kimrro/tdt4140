@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.Login.LoginHandler;
+import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 public class LoginController extends Controller {
 	
@@ -56,6 +57,7 @@ public class LoginController extends Controller {
 					actionTarget.setFill(Color.GREEN);
 					actionTarget.setText("Welcome!");
 					try {
+						createSession(username, rs.getInt("privilege"));
 		                app.makeDash(); } 
 					catch (Exception e) {
 		                System.out.println(e.getMessage()); }
@@ -74,6 +76,10 @@ public class LoginController extends Controller {
 		catch (Exception e) {
             System.out.println(e.getMessage());
 		}
+	}
+	
+	public void createSession(String username, int privilege) {
+		User user = new User(username, privilege);
 	}
 		
 }

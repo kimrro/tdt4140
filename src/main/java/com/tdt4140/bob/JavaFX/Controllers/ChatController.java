@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.apache.commons.lang3.text.WordUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
