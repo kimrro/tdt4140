@@ -1,21 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.SettingsController">
-   <children>
-      <Pane fx:id="subjectView" prefHeight="400.0" prefWidth="0.0">
-         <children>
-            <Label fx:id="txtError" layoutX="62.0" layoutY="14.0" text="You have no subjects added." textFill="RED" visible="false">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+	xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.tdt4140.bob.JavaFX.Controllers.SettingsController">
+	<children>
+		<Pane fx:id="subjectView" prefHeight="400.0" prefWidth="0.0">
+			<children>
+				<Label fx:id="txtError" layoutX="62.0" layoutY="14.0"
+					text="You have no subjects added." textFill="RED" visible="false">
+					<font>
+						<Font size="14.0" />
+					</font>
+				</Label>
+			</children>
+		</Pane>
+		<Label layoutX="29.0" layoutY="14.0" text="Logged in as: ">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label layoutX="29.0" layoutY="61.0" text="Old password:">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label layoutX="29.0" layoutY="106.0" text="New password:">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Label layoutX="29.0" layoutY="151.0" text="Confirm new password:">
+			<font>
+				<Font size="14.0" />
+			</font>
+		</Label>
+		<Button layoutX="29.0" layoutY="200.0" mnemonicParsing="false"
+			onAction="#updatePassword" text="Submit" />
+		<PasswordField fx:id="passOldPass" layoutX="27.0"
+			layoutY="81.0" />
+		<PasswordField fx:id="passNewPass" layoutX="27.0"
+			layoutY="126.0" />
+		<PasswordField fx:id="passCNewPass" layoutX="27.0"
+			layoutY="171.0" />
+	</children>
 </AnchorPane>
