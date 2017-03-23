@@ -9,9 +9,6 @@ public abstract class Controller {
 		this.app = app;
 	}
 
-	public void onLoad() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onLoad() {}
 	
 }

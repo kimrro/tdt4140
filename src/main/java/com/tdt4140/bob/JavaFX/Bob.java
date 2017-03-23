@@ -27,7 +27,7 @@ public class Bob extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		makeLogin();
+		makeAdmin();
 	}
 
 	public void makeLogin() {
@@ -41,6 +41,10 @@ public class Bob extends Application {
 	
 	public void makeDash() {
 		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
+	}
+	
+	public void makeAdmin() {
+		setScene(loadGeneric("Admin.fxml", "Admin"));
 	}
 
 	private void setScene(Parent parent) {
@@ -61,6 +65,7 @@ public class Bob extends Application {
 		
 		currentController = fxmlLoader.getController();
 		currentController.setApp(this);
+		currentController.onLoad();
 		
 		primaryStage.setTitle(title);
 		return parent;

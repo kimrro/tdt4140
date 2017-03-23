@@ -1,52 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
-   <center>
-      <GridPane maxHeight="500.0" maxWidth="500.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="567.180908203125" minHeight="10.0" prefHeight="437.7071533203125" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="271.6894226074219" minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="271.6894226074219" minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextField id="text" fx:id="text" GridPane.rowIndex="1" />
-            <TextArea id="chat" fx:id="chat" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" />
-            <Button id="button" fx:id="button" mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
-            <Text fx:id="chat1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets left="5.0" />
-               </GridPane.margin></Text>
-            <Text fx:id="chat2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
-               <GridPane.margin>
-                  <Insets left="5.0" top="30.0" />
-               </GridPane.margin>
-            </Text>
-         </children>
-      </GridPane>
-   </center>
-   <top>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets top="20.0" />
-         </BorderPane.margin>
+<AnchorPane maxHeight="700.0" maxWidth="600.0" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.AdminController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@bob.png" />
          </image>
       </ImageView>
-   </top>
-</BorderPane>
+      <TabPane layoutY="201.0" prefHeight="499.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab id="tdt4140" text="TDT4140">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="79.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
+                              <CheckBox  layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
+                              <CheckBox  layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
+                           </children>
+                        </Pane>
+                        <Pane id="subjectView" fx:id="subjectView" layoutX="3.0" layoutY="97.0" prefHeight="357.0" prefWidth="600.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab id="tdt4140" text="TDT4100">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="218.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
+                              <CheckBox layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
+                              <CheckBox layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab id="tdt4140" text="TDT4110">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="218.0" prefWidth="600.0">
+                           <children>
+                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <CheckBox layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
+                              <CheckBox layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
+                              <CheckBox layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="subjectView" layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0">
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
