@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,47 +11,55 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0"
-	xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.tdt4140.bob.JavaFX.Controllers.SettingsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.SettingsController">
 	<children>
-		<Pane fx:id="subjectView" prefHeight="400.0" prefWidth="0.0">
-			<children>
-				<Label fx:id="txtError" layoutX="62.0" layoutY="14.0"
-					text="You have no subjects added." textFill="RED" visible="false">
-					<font>
-						<Font size="14.0" />
-					</font>
-				</Label>
-			</children>
-		</Pane>
-		<Label layoutX="29.0" layoutY="14.0" text="Logged in as: ">
-			<font>
-				<Font size="14.0" />
-			</font>
-		</Label>
-		<Label layoutX="29.0" layoutY="61.0" text="Old password:">
-			<font>
-				<Font size="14.0" />
-			</font>
-		</Label>
-		<Label layoutX="29.0" layoutY="106.0" text="New password:">
-			<font>
-				<Font size="14.0" />
-			</font>
-		</Label>
-		<Label layoutX="29.0" layoutY="151.0" text="Confirm new password:">
-			<font>
-				<Font size="14.0" />
-			</font>
-		</Label>
-		<Button layoutX="29.0" layoutY="200.0" mnemonicParsing="false"
-			onAction="#updatePassword" text="Submit" />
-		<PasswordField fx:id="passOldPass" layoutX="27.0"
-			layoutY="81.0" />
-		<PasswordField fx:id="passNewPass" layoutX="27.0"
-			layoutY="126.0" />
-		<PasswordField fx:id="passCNewPass" layoutX="27.0"
-			layoutY="171.0" />
+      <GridPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+      		<Pane fx:id="subjectView" prefHeight="227.0" prefWidth="211.0">
+      			<children>
+      				<Label fx:id="txtError" layoutX="62.0" layoutY="14.0" text="You have no subjects added." textFill="RED" visible="false">
+      					<font>
+      						<Font size="14.0" />
+      					</font>
+      				</Label>
+      			</children>
+      		</Pane>
+            <Pane GridPane.columnIndex="1">
+               <children>
+            		<PasswordField fx:id="passNewPass" layoutY="112.0" />
+            		<PasswordField fx:id="passCNewPass" layoutY="157.0" />
+            		<Button layoutX="2.0" layoutY="186.0" mnemonicParsing="false" onAction="#changePassword" text="Submit" />
+            		<Label fx:id="txtUser" layoutX="2.0" text="Logged in as: ">
+            			<font>
+            				<Font size="14.0" />
+            			</font>
+            		</Label>
+            		<PasswordField fx:id="passOldPass" layoutY="67.0" />
+            		<Label layoutX="2.0" layoutY="47.0" text="Old password:">
+            			<font>
+            				<Font size="14.0" />
+            			</font>
+            		</Label>
+            		<Label layoutX="2.0" layoutY="92.0" text="New password:">
+            			<font>
+            				<Font size="14.0" />
+            			</font>
+            		</Label>
+            		<Label layoutX="2.0" layoutY="137.0" text="Confirm new password:">
+            			<font>
+            				<Font size="14.0" />
+            			</font>
+            		</Label>
+               </children>
+            </Pane>
+         </children>
+      </GridPane>
 	</children>
 </AnchorPane>

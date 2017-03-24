@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import com.tdt4140.bob.Application.ViewMaker;
 import com.tdt4140.bob.Application.Subjects.SettingsHandler;
+import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -20,19 +21,15 @@ public class SettingsController extends Controller {
 	private Pane subjectView;
 
 	@FXML
-	private Label txtError;
+	private Label txtError, txtUser;
 
 	@FXML
 	private PasswordField passOldPass, passNewPass, passCNewPass;
 
 	public void changePassword() throws SQLException {
-		if (isEqualOldPassword()) {
-			if (isEqualNewPassword()) {
-				
-			}
-		} else {
-			
-		}
+		passOldPass.setText("");
+		passNewPass.setText("");
+		passCNewPass.setText("");
 	}
 
 	public boolean isEqualOldPassword() throws SQLException {
@@ -52,7 +49,7 @@ public class SettingsController extends Controller {
 
 	@Override
 	public void onLoad() {
-		System.out.println("Test");
+		txtUser.setText(txtUser.getText() + User.getUsername());
 		sh = new SettingsHandler();
 		ResultSet rs = null;
 		try {
