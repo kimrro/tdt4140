@@ -9,6 +9,7 @@ import com.tdt4140.bob.Application.Subjects.SettingsHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.Pane;
@@ -25,6 +26,9 @@ public class SettingsController extends Controller {
 
 	@FXML
 	private PasswordField passOldPass, passNewPass, passCNewPass;
+	
+	@FXML
+	private Button btnSubmit, btnBack;
 
 	public void changePassword() throws SQLException {
 		passOldPass.setText("");
@@ -45,6 +49,10 @@ public class SettingsController extends Controller {
 
 	public boolean isEqualNewPassword() {
 		return (passNewPass.getText().equals(passCNewPass.getText()));
+	}
+	
+	public void goBack() {
+		app.makeDash();
 	}
 
 	@Override

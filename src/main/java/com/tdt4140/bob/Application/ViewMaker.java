@@ -1,14 +1,14 @@
 package com.tdt4140.bob.Application;
 
+import java.sql.ResultSet;
+import java.util.List;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-
-import java.sql.ResultSet;
-import java.util.List;
 
 
 public class ViewMaker {
