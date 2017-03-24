@@ -26,13 +26,14 @@ public class ChatController extends Controller {
 	@FXML
 	private TextField input, text;
 	@FXML
-	private Button button;
+	private Button button, btnAdmin, btnLogout;
 	@FXML
 	private TextArea chat1;
 	@FXML
 	private TextArea chat2;
 	@FXML
 	private ImageView btnSettings;
+	
 
 public void chatClicked() throws IOException {
 		String replie = "ERROR";
@@ -264,6 +265,10 @@ public void chatClicked() throws IOException {
 
 	public void showSettings() {
 		app.makeSettings();
+	}
+	
+	public void showAdmin() {
+		app.makeAdmin();
 	}
 	
 	public void logOut() {

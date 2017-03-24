@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
@@ -55,6 +56,11 @@
             <Image url="@wheel.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="btnLogout" layoutX="7.0" layoutY="7.0" mnemonicParsing="false" onAction="#logOut" text="Log out" />
+      <Pane layoutX="7.0" layoutY="7.0">
+         <children>
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logOut" text="Log out" />
+            <Button fx:id="btnAdmin" layoutY="29.0" mnemonicParsing="false" onAction="#showAdmin" prefHeight="25.0" prefWidth="57.0" text="Admin" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
