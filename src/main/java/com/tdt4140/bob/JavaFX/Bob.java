@@ -32,7 +32,6 @@ public class Bob extends Application {
 
 	public void makeLogin() {
 		setScene(loadGeneric("/Login.fxml", "Login"));
-		
 	}
 	
 	public void makeRegister() {
@@ -45,6 +44,10 @@ public class Bob extends Application {
 	
 	public void makeAdmin() {
 		setScene(loadGeneric("Admin.fxml", "Admin"));
+
+	public void makeSettings() {
+		setScene(loadGeneric("/Settings.fxml", "Settings"));
+
 	}
 
 	private void setScene(Parent parent) {
