@@ -1,29 +1,15 @@
 package com.tdt4140.bob.JavaFX.Controllers;
 
 
-import java.awt.Checkbox;
 import java.sql.ResultSet;
-
-import com.tdt4140.bob.Application.DatabaseHandler;
-import com.tdt4140.bob.JavaFX.Bob;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-
 import java.sql.SQLException;
 import java.util.Arrays;
 
 import com.tdt4140.bob.Application.ViewMaker;
 import com.tdt4140.bob.Application.Admin.AdminHandler;
 
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
@@ -38,7 +24,14 @@ public class AdminController extends Controller {
 		
 		@FXML
 		private Label txtError;
+		
+		@FXML
+		private Button btnBack;
 
+		public void goBack() {
+			app.makeDash();
+		}
+		
 		@Override
 		public void onLoad() {
 			System.out.println("Test");
