@@ -15,17 +15,25 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
-public class ChatController extends Controller{
-	
+public class ChatController extends Controller {
+
 	@FXML
 	private TextArea area;
 	@FXML
 	private TextField input;
 	@FXML
 	private Button button;
-	
-	public void chatClicked() throws IOException {
+	@FXML
+	private Text chat1;
+	@FXML
+	private Text chat2;
+	@FXML
+	private ImageView btnSettings;
+
+public void chatClicked() throws IOException {
 		String replie = "ERROR";
 		String uText = input.getText();
 		
@@ -189,7 +197,7 @@ public class ChatController extends Controller{
 				chatArea(uText, replie);
 		}
 		
-	}
+}
 	
 	public void chatArea(String user ,String bot) {
 		area.appendText("You: " + user + "\n" + "BOB: " + bot + "\n" + "\n");
@@ -245,12 +253,18 @@ public class ChatController extends Controller{
 	}
 	
 	public boolean isValidCommand(String uText) {
-		if (uText.contains("help") || uText.contains("exit" ) || uText.contains("what subjects do I have?" ) || uText.contains("hello" ) ) {
+		if (uText.contains("help") || uText.contains("exit") || uText.contains("what subjects do I have?")
+				|| uText.contains("hello")) {
 			return true;
 		}
 		return false;
 	}
 	
+
+	public void showSettings() {
+		app.makeSettings();
+	}
+
 	public boolean isValidWiki(String object) throws IOException {
 		String input1 = object;
 		String input2 = WordUtils.capitalizeFully(object);

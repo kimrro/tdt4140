@@ -41,6 +41,10 @@ public class Bob extends Application {
 	public void makeDash() {
 		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
 	}
+	
+	public void makeSettings() {
+		setScene(loadGeneric("/Settings.fxml", "Settings"));
+	}
 
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
@@ -60,6 +64,7 @@ public class Bob extends Application {
 		
 		currentController = fxmlLoader.getController();
 		currentController.setApp(this);
+		currentController.onLoad();
 		
 		primaryStage.setTitle(title);
 		return parent;
