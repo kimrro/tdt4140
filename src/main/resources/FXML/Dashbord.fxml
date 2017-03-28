@@ -18,17 +18,6 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
    <children>
-      <ImageView fx:id="btnSettings" fitHeight="90.0" fitWidth="660.0" layoutX="500.0" onMouseClicked="#showSettings" opacity="0.6" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@wheel.jpg" />
-         </image>
-      </ImageView>
-      <Pane layoutX="7.0" layoutY="7.0">
-         <children>
-            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logOut" text="Log out" />
-            <Button fx:id="btnAdmin" layoutY="29.0" mnemonicParsing="false" onAction="#showAdmin" prefHeight="25.0" prefWidth="57.0" text="Admin" />
-         </children>
-      </Pane>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0">
          <center>
             <GridPane maxHeight="500.0" maxWidth="500.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
@@ -65,6 +54,17 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </opaqueInsets>
       </BorderPane>
+      <Pane layoutX="7.0" layoutY="7.0">
+         <children>
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logOut" text="Log out" />
+            <Button fx:id="btnAdmin" layoutY="29.0" mnemonicParsing="false" onAction="#showAdmin" prefHeight="25.0" prefWidth="57.0" text="Admin" />
+         </children>
+      </Pane>
+      <ImageView fx:id="btnSettings" fitHeight="90.0" fitWidth="660.0" layoutX="500.0" onMouseClicked="#showSettings" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@wheel.jpg" />
+         </image>
+      </ImageView>
       <ComboBox fx:id="choiceSubject" layoutX="50.0" layoutY="125.0" onAction="#subjectPick" prefWidth="150.0" promptText="Choose subject" />
       <Text fx:id="labelText" layoutX="150.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected subject:" />
       <Label fx:id="chosenSubject" layoutX="260.0" layoutY="627.0" />
