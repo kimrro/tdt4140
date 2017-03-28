@@ -16,4 +16,9 @@ public class User {
 	public static int getPrivilege() {
 		return privilege;
 	}
+	
+	public static void resetUser() {
+		username = "";
+		privilege = 0;
+	}
 }

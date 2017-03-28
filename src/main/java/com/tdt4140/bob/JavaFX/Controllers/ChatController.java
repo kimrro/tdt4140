@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.apache.commons.lang3.text.WordUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 import javafx.fxml.FXML;
@@ -21,17 +22,18 @@ import javafx.scene.text.Text;
 public class ChatController extends Controller {
 
 	@FXML
-	private TextArea area;
+	private TextArea area, chat;
 	@FXML
-	private TextField input;
+	private TextField input, text;
 	@FXML
-	private Button button;
+	private Button button, btnAdmin, btnLogout;
 	@FXML
-	private Text chat1;
+	private TextArea chat1;
 	@FXML
-	private Text chat2;
+	private TextArea chat2;
 	@FXML
 	private ImageView btnSettings;
+	
 
 public void chatClicked() throws IOException {
 		String replie = "ERROR";
@@ -263,6 +265,15 @@ public void chatClicked() throws IOException {
 
 	public void showSettings() {
 		app.makeSettings();
+	}
+	
+	public void showAdmin() {
+		app.makeAdmin();
+	}
+	
+	public void logOut() {
+		User.resetUser();
+		app.makeLogin();
 	}
 
 	public boolean isValidWiki(String object) throws IOException {

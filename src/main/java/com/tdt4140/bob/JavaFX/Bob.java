@@ -42,8 +42,13 @@ public class Bob extends Application {
 		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
 	}
 	
+	public void makeAdmin() {
+		setScene(loadGeneric("Admin.fxml", "Admin"));
+	}
+
 	public void makeSettings() {
 		setScene(loadGeneric("/Settings.fxml", "Settings"));
+
 	}
 
 	private void setScene(Parent parent) {
