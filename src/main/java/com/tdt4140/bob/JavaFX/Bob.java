@@ -27,7 +27,7 @@ public class Bob extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		makeLogin();
+		makeAdmin();
 	}
 
 	public void makeLogin() {

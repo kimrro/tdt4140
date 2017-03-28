@@ -20,7 +20,7 @@
       </ImageView>
       <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="514.0" layoutY="8.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Documents/NTNU/4.%20semester/Programvareutvikling/GUI%20chat/bin/chat/wheel.png" />
+            <Image url="@wheel.png" />
          </image>
       </ImageView>
       <TabPane layoutY="201.0" prefHeight="499.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -30,8 +30,10 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Pane prefHeight="79.0" prefWidth="600.0">
+                       	 <Label layoutX="38.0" layoutY="22.0" text="Every keyword listed. Sort by clicking on 'search frequency'.">
+                           <!--
                            <children>
-                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
+                              
                                  <font>
                                     <Font size="19.0" />
                                  </font>
@@ -40,8 +42,9 @@
                               <CheckBox layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
                               <CheckBox layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
                            </children>
+                           -->
                         </Pane>
-                        <Pane id="subjectView" fx:id="subjectView" layoutX="3.0" layoutY="97.0" prefHeight="357.0" prefWidth="600.0" />
+                        <Pane id="subjectView" fx:id="subjectView" layoutX="171.0" layoutY="97.0" prefHeight="291.0" prefWidth="432.0" />
                      </children>
                   </AnchorPane>
             </content>

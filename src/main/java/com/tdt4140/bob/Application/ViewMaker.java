@@ -23,6 +23,9 @@ public class ViewMaker {
                 final int j = i; // used in string property down below
                 TableColumn<ObservableList, String> col = new TableColumn<>(labels.get(i)); //sets column label
                 col.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().get(j).toString()));
+                tableView.setMinSize(203, 175);
+                tableView.setMaxSize(203, 175);
+                
                 tableView.getColumns().add(col);
             }
             while (rs.next()) {
