@@ -19,7 +19,7 @@ public class SettingsController extends Controller {
 	private SettingsHandler sh;
 
 	@FXML
-	private Pane subjectView;
+	private Pane yourSubjectsView, allSubjectsView;
 
 	@FXML
 	private Label txtError, txtUser;
@@ -28,7 +28,7 @@ public class SettingsController extends Controller {
 	private PasswordField passOldPass, passNewPass, passCNewPass;
 	
 	@FXML
-	private Button btnSubmit, btnBack;
+	private Button btnSubmit;
 
 	public void changePassword() throws SQLException {
 		passOldPass.setText("");
@@ -51,10 +51,22 @@ public class SettingsController extends Controller {
 		return (passNewPass.getText().equals(passCNewPass.getText()));
 	}
 	
-	public void goBack() {
+	public void goDashboard() {
 		app.makeDash();
 	}
-
+	
+	public void goSettings() {
+		app.makeSettings();
+	}
+	
+	public void addSubjects(){
+		
+	}
+	
+	public void deleteSubjects() {
+		
+	}
+	
 	@Override
 	public void onLoad() {
 		txtUser.setText(txtUser.getText() + User.getUsername());
@@ -65,9 +77,9 @@ public class SettingsController extends Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		subjectView.getChildren().add(ViewMaker.makeTable(rs, Arrays.asList("Code", "Coursename")));
+		yourSubjectsView.getChildren().add(ViewMaker.makeTable(rs, Arrays.asList("Code", "Coursename")));
 
-		if (subjectView.getChildren().isEmpty()) {
+		if (yourSubjectsView.getChildren().isEmpty()) {
 			txtError.setVisible(true);
 		}
 	}
