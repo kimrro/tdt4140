@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import com.tdt4140.bob.Application.DatabaseHandler;
 
 public class AdminHandler {
-	public ResultSet getSubjects(DatabaseHandler dbh) throws SQLException {
-		String query = "SELECT keyword,page,frequency FROM curriculum, subject WHERE curriculum.code = subject.code";
+	public ResultSet getSubjects(DatabaseHandler dbh, String code) throws SQLException {
+		String query = "SELECT keyword,frequency FROM search, subject WHERE search.code = subject.code AND search.code = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
-		//prepStatement.setString(1, "test");
+		prepStatement.setString(1, code);
 		return prepStatement.executeQuery();
 	}
 }
