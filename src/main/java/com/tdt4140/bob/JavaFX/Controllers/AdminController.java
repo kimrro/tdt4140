@@ -11,6 +11,7 @@ import com.tdt4140.bob.Application.Subjects.SettingsHandler;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -23,15 +24,25 @@ public class AdminController extends Controller {
 
 	@FXML
 	private Label txtError;
+	
+	@FXML
+	private TextField txtCurr;
 
 	@FXML
-	private Button btnBack;
+	private Button btnBack,btnAdd;
+	
+	
 
 	private SettingsHandler sh;
 	private AdminHandler ah;
 
 	public void goBack() {
 		app.makeDash();
+	}
+	
+	public void addCurriculum(){
+		//app.makeDash();
+		
 	}
 
 	@Override
