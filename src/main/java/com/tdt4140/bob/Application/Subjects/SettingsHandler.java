@@ -22,7 +22,7 @@ public class SettingsHandler {
 		return prepStatement.executeQuery();
 	}
 	
-	public void updatePassword(DatabaseHandler dbh, String password) throws SQLException {
+	public static void updatePassword(DatabaseHandler dbh, String password) throws SQLException {
 		String query = "UPDATE user SET password = ? WHERE username = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
 		prepStatement.setString(1, password);

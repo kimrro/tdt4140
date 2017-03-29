@@ -37,7 +37,7 @@ public class ChatController extends Controller {
 	@FXML
 	private TextField input, text;
 	@FXML
-	private Button button, btnAdmin, btnLogout, commands;
+	private Button button, btnAdmin, btnLogout, commands, questions;
 	@FXML
 	private TextArea chat1;
 	@FXML
@@ -55,15 +55,18 @@ public class ChatController extends Controller {
 	private ArrayList<String> subjects = new ArrayList<String>();
 	private String pick;
 	private ResultSet rs = null;
+	private ResultSet rs1 = null;
+	private String username;
 	
 	public void onLoad() {
+		username = User.getUsername();
 		pick = "";
 	//	choiceSubject.setPromptText("Choose subject");
 		dbh = app.getDatabaseHandler();
 		
 		ResultSet data = null;
 		try {
-			data = ChatHandler.getSubjects(dbh, User.getUsername());
+			data = ChatHandler.getSubjects(dbh, username);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -95,6 +98,17 @@ public class ChatController extends Controller {
 								+ "4: Ask me something \n\n");
 	}
 	
+	public void showLastQuestions() throws SQLException{
+		int i = 1;
+		ResultSet output = ChatHandler.getQuestion(dbh, username);
+		ArrayList<String> questions = new ArrayList<String>();
+		while (output.next()) {
+			questions.add(i + ": " + output.getString("question"));
+			i++;
+		}
+		area.appendText("BOB: Your last questions: \n" + questions + "\n\n"); 
+	}
+	
 	public void chatClicked() throws IOException, SQLException {
 		String replie = "ERROR";
 		String uText = input.getText();
@@ -119,42 +133,67 @@ public class ChatController extends Controller {
 			
 			else if ((part[0].equals("what") || part[0].equals("who") || part[0].equals("where")) && part[1].contains("is")) {
 				ArrayList<String> list = new ArrayList<String>();
-				
 				String subject = "";
 				for (int i = 2; i < n; i++) {
 					list.add(part[i]);
 				}
-				
 				for (String s : list) {
 				    subject += s + " ";
 				}
-				
 				String input1 = subject;
 				String input2 = WordUtils.capitalizeFully(subject);
 				String code = null;
+				String page = null;
 				
-				if(wikipedia(input1).equals("0")) {
-					if (wikipedia(input2).equals("0")){
-						replie = "Please rephrase! I couldnt find what you where looking for :(";
+				rs = ChatHandler.getSubjectCode(dbh, pick);
+				if (rs.next()) {
+					code = rs.getString("code");
+				}
+				
+				rs1 = ChatHandler.getCurriculum(dbh, subject, code);
+//				if (rs1.next()) {
+//					page = rs1.getString("pages");
+//				}
+//				if(wikipedia(input1).equals("0") && (!(rs1.next()))) {
+//					if (wikipedia(input2).equals("0")){
+//						replie = "Please rephrase! I couldnt find what you where looking for :(";
+//					} else {
+//						ChatHandler.writeKeywords(dbh, subject, code);
+//						ChatHandler.writeQuestion(dbh, TEXT, username);
+//						
+//						replie = "I found this on wikipedia: " + input2 + "\n" + wikipedia(input2);	
+//					}
+//				} else {
+//					ChatHandler.writeKeywords(dbh, subject, code);
+//					ChatHandler.writeQuestion(dbh, TEXT, username);	
+//					if (rs1.next()) {
+//						replie = "You can read about " + input2 + " in the curriculum on the pages: " + page 
+//								+ "\nI also found this on wikipedia: " + "\n" + wikipedia(input2);
+//					} else {
+//						replie = "I found this on wikipedia: " + input2 + "\n" + wikipedia(input2);
+//					}
+//				}
+				
+				if (rs1.next()) {
+					page = rs1.getString("pages");
+					ChatHandler.writeKeywords(dbh, subject, code);
+					ChatHandler.writeQuestion(dbh, TEXT, username);	
+					if(wikipedia(input1).equals("0")) {
+						replie = "You can read about " + input2 + " in the curriculum on the pages: " + page;
 					} else {
-						replie = "I found this on wikipedia: " + input2 + "\n" + wikipedia(input2);
-						rs = ChatHandler.getSubjectCode(dbh, pick);
-						if (rs.next()) {
-							code = rs.getString("code");
-						}
-						
-						ChatHandler.writeKeywords(dbh, subject, code);
-						
+						replie = "You can read about " + input2 + " in the curriculum on the pages: " + page 
+								+ "\nI also found this on wikipedia: " + "\n" + wikipedia(input1);
 					}
 				} else {
-					replie = "I found this on wikipedia: " + input2 + "\n" + wikipedia(input1);
-					rs = ChatHandler.getSubjectCode(dbh, pick);
-					if (rs.next()) {
-						code = rs.getString("code");
+					if(wikipedia(input1).equals("0")) {
+						replie = "Please rephrase! I couldnt find what you where looking for :(";
+					} else {
+						ChatHandler.writeKeywords(dbh, subject, code);
+						ChatHandler.writeQuestion(dbh, TEXT, username);	
+						replie = "I found this on wikipedia: " + input2 + "\n" + wikipedia(input1);
 					}
-					
-					ChatHandler.writeKeywords(dbh, subject, code);
 				}
+				
 			}
 			
 			else if (TEXT.equals("/subjects")){
@@ -329,7 +368,6 @@ public class ChatController extends Controller {
 		return false;
 	}
 	
-
 	public void showSettings() {
 		app.makeSettings();
 	}

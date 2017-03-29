@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
@@ -68,6 +69,11 @@
       <ComboBox fx:id="choiceSubject" layoutX="50.0" layoutY="125.0" onAction="#subjectPick" prefWidth="150.0" promptText="Choose subject" />
       <Text fx:id="labelText" layoutX="150.0" layoutY="640.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected subject:" />
       <Label fx:id="chosenSubject" layoutX="260.0" layoutY="627.0" />
-      <Button fx:id="commands" layoutX="462.0" layoutY="125.0" mnemonicParsing="false" onAction="#showCommands" text="Commands" />
+      <Button fx:id="commands" layoutX="135.0" layoutY="660.0" mnemonicParsing="false" onAction="#showCommands" text="Commands" />
+      <Button fx:id="questions" layoutX="50.0" layoutY="660.0" mnemonicParsing="false" onAction="#showLastQuestions" prefHeight="27.0" stylesheets="@style.css" text="Last questions">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

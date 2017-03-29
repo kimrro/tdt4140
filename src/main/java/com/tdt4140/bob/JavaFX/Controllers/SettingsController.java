@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 
+import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.ViewMaker;
 import com.tdt4140.bob.Application.Subjects.SettingsHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Login.User;
@@ -13,6 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 
 public class SettingsController extends Controller {
 
@@ -23,14 +27,37 @@ public class SettingsController extends Controller {
 
 	@FXML
 	private Label txtError, txtUser;
+	
+	@FXML
+	private Text feedback;
 
 	@FXML
 	private PasswordField passOldPass, passNewPass, passCNewPass;
 	
 	@FXML
 	private Button btnSubmit, btnBack;
+	
+	private DatabaseHandler dbh;
 
 	public void changePassword() throws SQLException {
+		String Pass = passNewPass.getText();
+		String Pass2 = passCNewPass.getText(); 
+		if (isEqualOldPassword()) {
+			if (Pass.equals(Pass2) && Pass.length() > 2 && Pass.length() < 17) {
+				SettingsHandler.updatePassword(dbh, Pass);
+				feedback.setFill(Color.GREEN);
+				feedback.setText("Updated!");
+			} else if (Pass.length() < 2 || Pass.length() > 16) {
+				feedback.setFill(Paint.valueOf("#ff3636"));
+				feedback.setText("The new passwords does not meet the requirements!");
+			} else if (!(Pass.equals(Pass2))) {
+				feedback.setFill(Paint.valueOf("#ff3636"));
+				feedback.setText("The new passwords doesn´t match!");
+			}
+		} else {
+			feedback.setFill(Paint.valueOf("#ff3636"));
+			feedback.setText("The old password is wrong!");
+		}
 		passOldPass.setText("");
 		passNewPass.setText("");
 		passCNewPass.setText("");

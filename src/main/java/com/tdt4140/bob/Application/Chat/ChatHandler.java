@@ -8,8 +8,6 @@ import com.tdt4140.bob.Application.DatabaseHandler;
 
 public class ChatHandler {
 	
-
-	
 	public static ResultSet getSubjects(DatabaseHandler dbh, String username) throws SQLException {
 		String query = "SELECT coursename FROM user, user_subject, subject WHERE user_subject.username = user.username AND user_subject.code = subject.code AND user.username = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
@@ -31,16 +29,8 @@ public class ChatHandler {
 		return prepStatement.executeQuery();
 	}
 	
-//	public static ResultSet getFreq(DatabaseHandler dbh, String keyword) throws SQLException {
-//		String query = "SELECT frequency FROM search WHERE keyword = ?";
-//		PreparedStatement prepStatement = dbh.prepareQuery(query);
-//		prepStatement.setString(1, keyword);
-//		return prepStatement.executeQuery();
-//	}
-	
 	public static int writeKeywords(DatabaseHandler dbh, String keyword, String code) throws SQLException {
 		int count = 0;
-		int freq = 0;
 		final String queryCheck = "SELECT count(*) FROM search WHERE keyword = ? AND code = ?";
 		final PreparedStatement prepStatement = dbh.prepareQuery(queryCheck);
 		prepStatement.setString(1, keyword);
@@ -58,11 +48,6 @@ public class ChatHandler {
 			prepStatement1.setString(3, code);
 			return prepStatement1.executeUpdate();
 		} else {
-//			ResultSet rs = getFreq(dbh, keyword);
-//			if (rs.next()) {
-//				freq = rs.getInt("frequency");
-//			}
-			
 			String query = "UPDATE search SET frequency = frequency + 1 WHERE keyword = ? AND code = ?";
 			
 			PreparedStatement prepStatement1 = dbh.prepareQuery(query);
@@ -70,10 +55,47 @@ public class ChatHandler {
 			prepStatement1.setString(2, code);
 			return prepStatement1.executeUpdate();
 		}
-		
-		
 	}
 	
+	public static int writeQuestion(DatabaseHandler dbh, String question, String username) throws SQLException {
+		String query = "INSERT INTO question (question, username) VALUES(?, ?)";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		prepStatement.setString(1, question);
+		prepStatement.setString(2, username);
+		return prepStatement.executeUpdate();
+	}
+	
+	public static ResultSet getQuestion(DatabaseHandler dbh, String username) throws SQLException {
+		int count = 0;
+		final String queryCheck = "SELECT count(*) FROM question WHERE username = ?";
+		final PreparedStatement prepStatement = dbh.prepareQuery(queryCheck);
+		prepStatement.setString(1, username);
+		final ResultSet resultSet = prepStatement.executeQuery();
+		if(resultSet.next()) {
+		    count = resultSet.getInt(1);
+		}
+		
+		if (count < 5) {
+			String query = "SELECT question FROM question WHERE username = ?";
+			PreparedStatement prepStatement1 = dbh.prepareQuery(query);
+			prepStatement1.setString(1, username);
+			return prepStatement1.executeQuery();
+		} else {
+			int nr = count - 5;
+			String query = "SELECT question FROM question WHERE username = ? AND idquestion > " + nr;
+			PreparedStatement prepStatement1 = dbh.prepareQuery(query);
+			prepStatement1.setString(1, username);
+			return prepStatement1.executeQuery();
+		}
+	}
+	
+	public static ResultSet getCurriculum(DatabaseHandler dbh, String keyword, String code) throws SQLException {
+		String query = "SELECT pages FROM curriculum WHERE curriculum.code = ? AND curriculum.keyword = ?";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		prepStatement.setString(1, code);
+		prepStatement.setString(2, keyword);
+		return prepStatement.executeQuery();
+	}
 	
 
 }
