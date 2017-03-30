@@ -10,13 +10,45 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
     -fx-font-family: "Arial-Black";
     -fx-text-fill: linear-gradient(white, #d0d0d0);
-    -fx-font-size: 12px;
-    -fx-padding: 10 20 10 20;
+    -fx-font-size: 10px;
+    -fx-padding: 5 20 5 20;
 }
 
-#button1:hover {
-	/* -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color; */
-	-fx-background-color: white;
-    -fx-text-fill: black;
-    -fx-border-color: black;
+#button:hover {
+	-fx-background-color: 
+        white,
+        linear-gradient(#313a42 0%, #1f2429 20%, #101316 100%),
+        linear-gradient(#181d21, #07080a),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-text-fill: #808080;
+    -fx-background-radius: 5,4,3,5;
 }
+
+
+#optionButton {
+    -fx-background-color: 
+        linear-gradient(#cc810a, #c16f00),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 0 10 0 10;
+    -fx-font-size: 10px;
+}
+
+#optionButton:hover {
+    -fx-background-color: 
+        linear-gradient(#7a4d06, #965701),
+        linear-gradient(from 0% 0% to 15% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5;
+    -fx-background-insets: 0,1,2,3,0;
+    -fx-text-fill: #808080;
+    -fx-font-weight: bold;
+    -fx-padding: 0 10 0 10;
+}
+
+.combo-box {
+	-fx-text-fill: white;
+}
+

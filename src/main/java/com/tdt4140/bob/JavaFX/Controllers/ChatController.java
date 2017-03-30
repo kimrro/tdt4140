@@ -12,19 +12,15 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.sun.prism.paint.Color;
 import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.Chat.ChatHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -47,8 +43,6 @@ public class ChatController extends Controller {
 	@FXML
 	private ComboBox<String> choiceSubject = new ComboBox<>();
 	@FXML
-	private Label chosenSubject;
-	@FXML
 	private Text labelText;
 	
 	private DatabaseHandler dbh;
@@ -61,7 +55,6 @@ public class ChatController extends Controller {
 	public void onLoad() {
 		username = User.getUsername();
 		pick = "";
-	//	choiceSubject.setPromptText("Choose subject");
 		dbh = app.getDatabaseHandler();
 		
 		ResultSet data = null;
@@ -87,7 +80,6 @@ public class ChatController extends Controller {
 	
 	public void subjectPick() {
 		pick = choiceSubject.getValue();
-		chosenSubject.setText(pick);
 	}
 
 	public void showCommands() {

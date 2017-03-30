@@ -31,7 +31,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button id="button" fx:id="btnRegister" minHeight="40.0" minWidth="95.0" mnemonicParsing="false" onAction="#goToRegister" stylesheets="@style.css" text="New User" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button id="button" fx:id="btnRegister" minHeight="27.0" minWidth="95.0" mnemonicParsing="false" onAction="#goToRegister" stylesheets="@style.css" text="New User" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin></Button>
                   <TextField fx:id="txtUsername" GridPane.columnIndex="1" />
                   <Label text="Username:">
                      <font>
@@ -42,7 +45,7 @@
                      <font>
                         <Font size="15.0" />
                      </font></Label>
-                  <Button id="button" fx:id="btnLogin" maxHeight="40.0" maxWidth="95.0" minHeight="40.0" minWidth="95.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="40.0" prefWidth="95.0" stylesheets="@style.css" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="2" defaultButton="true" />
+                  <Button id="button" fx:id="btnLogin" defaultButton="true" maxHeight="27.0" maxWidth="95.0" minHeight="27.0" minWidth="95.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="27.0" prefWidth="95.0" stylesheets="@style.css" text="Log in" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Text fx:id="actionTarget" strokeType="OUTSIDE" strokeWidth="0.0" text="" GridPane.rowIndex="3" />
                </children>
             </GridPane>
