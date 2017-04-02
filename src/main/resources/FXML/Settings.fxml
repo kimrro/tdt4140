@@ -11,16 +11,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.SettingsController">
 	<children>
       <GridPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="329.0" minWidth="10.0" prefWidth="250.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="194.0" minWidth="0.0" prefWidth="33.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="338.0" minWidth="10.0" prefWidth="317.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="186.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
@@ -28,17 +29,8 @@
           <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-      		<Pane fx:id="yourSubjectsView" prefHeight="144.0" prefWidth="715.0" GridPane.rowIndex="2">
-      			<children>
-      				<Label fx:id="txtError" layoutX="62.0" layoutY="14.0" text="You have no subjects added." textFill="RED" visible="false">
-      					<font>
-      						<Font size="14.0" />
-      					</font>
-      				</Label>
-      			</children>
-      		</Pane>
-      		<Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#changePassword" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      		<Label fx:id="txtUser" text="Logged in as: " GridPane.columnIndex="1">
+      		<Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#changePassword" text="Submit " GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      		<Label fx:id="txtUser" text="Logged in as: " GridPane.columnIndex="2">
       			<font>
       				<Font size="14.0" />
       			</font>
@@ -46,7 +38,7 @@
                   <Insets bottom="110.0" />
                </GridPane.margin>
       		</Label>
-      		<Label text="Old password:" GridPane.columnIndex="1">
+      		<Label text="Old password:" GridPane.columnIndex="2">
       			<font>
       				<Font size="14.0" />
       			</font>
@@ -54,12 +46,12 @@
                   <Insets bottom="55.0" />
                </GridPane.margin>
       		</Label>
-      		<PasswordField fx:id="passOldPass" prefHeight="25.0" prefWidth="242.0" GridPane.columnIndex="1">
+      		<PasswordField fx:id="passOldPass" prefHeight="25.0" prefWidth="242.0" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="10.0" right="50.0" />
                </GridPane.margin>
             </PasswordField>
-      		<Label text="New password:" GridPane.columnIndex="1">
+      		<Label text="New password:" GridPane.columnIndex="2">
       			<font>
       				<Font size="14.0" />
       			</font>
@@ -67,11 +59,11 @@
                   <Insets bottom="-35.0" />
                </GridPane.margin>
       		</Label>
-      		<PasswordField fx:id="passNewPass" GridPane.columnIndex="1">
+      		<PasswordField fx:id="passNewPass" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="-85.0" right="50.0" />
                </GridPane.margin></PasswordField>
-      		<Label text="Confirm new password:" GridPane.columnIndex="1">
+      		<Label text="Confirm new password:" GridPane.columnIndex="2">
       			<font>
       				<Font size="14.0" />
       			</font>
@@ -79,17 +71,16 @@
                   <Insets bottom="-127.0" />
                </GridPane.margin>
       		</Label>
-      		<PasswordField fx:id="passCNewPass" GridPane.columnIndex="1">
+      		<PasswordField fx:id="passCNewPass" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets bottom="-177.0" right="50.0" />
                </GridPane.margin></PasswordField>
-            <Pane fx:id="allSubjectsView" prefHeight="200.0" prefWidth="200.0" />
-            <Button mnemonicParsing="false" onAction="#addSubjects" text="Add" GridPane.rowIndex="1">
+            <Button fx:id="btnAdd" disable="true" mnemonicParsing="false" onAction="#addSubjects" text="Add" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#deleteSubjects" text="Delete" GridPane.rowIndex="1">
+            <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#deleteSubjects" text="Delete" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="170.0" />
                </GridPane.margin>
@@ -104,6 +95,14 @@
                   <Insets bottom="60.0" left="72.0" />
                </GridPane.margin>
             </Label>
+            <Button mnemonicParsing="false" onAction="#getSelectedItem" text="Check" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="95.0" />
+               </GridPane.margin>
+            </Button>
+            <AnchorPane fx:id="allSubjectsView" prefHeight="200.0" prefWidth="200.0" />
+            <AnchorPane fx:id="yourSubjectsView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+            <Text fx:id="feedback" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <MenuBar prefHeight="25.0" prefWidth="600.0">
