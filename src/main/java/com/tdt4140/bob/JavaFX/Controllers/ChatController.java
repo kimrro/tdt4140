@@ -353,8 +353,7 @@ public class ChatController extends Controller {
 	}
 	
 	public boolean isValidCommand(String uText) {
-		if (uText.contains("help") || uText.contains("exit") || uText.contains("what subjects do I have?")
-				|| uText.contains("hello")) {
+		if (uText.equals("/lecturer") || uText.equals("/clear") || uText.equals("/help") || uText.equals("/subjects")) {
 			return true;
 		}
 		return false;

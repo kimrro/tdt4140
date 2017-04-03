@@ -6,12 +6,12 @@ import org.junit.Test;
 import com.tdt4140.bob.JavaFX.Controllers.*;
 
 public class ChatControllerTest extends junit.framework.TestCase{
-	ChatController CC= new ChatController();
+	ChatController CC = new ChatController();
 	@Test
 	public void test() {
 		
-		assertTrue(CC.isValidCommand("what subjects do I have?"));
-		assertTrue(CC.isValidCommand("help"));
+		assertTrue(CC.isValidCommand("/lecturer"));
+		assertTrue(CC.isValidCommand("/clear"));
 		assertFalse(CC.isValidCommand("hellpp"));
 		assertFalse(CC.isValidCommand("what classes am I in?"));
 	}

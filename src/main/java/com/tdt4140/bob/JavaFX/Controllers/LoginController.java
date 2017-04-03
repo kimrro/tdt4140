@@ -34,21 +34,16 @@ public class LoginController extends Controller {
 	String pwd;
 	String password;
 	
+	//Function activated by button clicked
+	//Retrieves the passord for the user from database and checks if it matches 
+	//the written password from user
+	
 	public void onLogin() throws SQLException {
 		dbh = app.getDatabaseHandler();
 		lh = new LoginHandler();
 		
 		username = txtUsername.getText();
 		pwd = passPassword.getText();
-		
-//		try {
-//			lh.getUserCredentials(dbh, name).next();
-//		} catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//            actionTarget.setFill(Paint.valueOf("REDBRICK"));
-//            actionTarget.setText("404_FeilOppdaget_Ring_Lars: 45245345");
-//            
-//        } 
 			
 		ResultSet rs = lh.getUserCredentials(dbh, username);
 		if(rs.next()) {
