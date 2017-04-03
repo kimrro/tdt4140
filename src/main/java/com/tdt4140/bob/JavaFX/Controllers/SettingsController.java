@@ -11,15 +11,19 @@ import com.tdt4140.bob.Application.Subjects.SettingsHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 import javafx.beans.binding.Bindings;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 
 public class SettingsController extends Controller {
 
@@ -30,7 +34,7 @@ public class SettingsController extends Controller {
 
 	@FXML
 	private Label txtError, txtUser;
-	
+
 	@FXML
 	private Text feedback;
 
@@ -39,7 +43,8 @@ public class SettingsController extends Controller {
 
 	@FXML
 	private Button btnSubmit, btnAdd, btnDelete;
-
+	
+	@SuppressWarnings("rawtypes")
 	private TableView tv, tv2;
 
 	public void changePassword() throws SQLException {
@@ -90,28 +95,64 @@ public class SettingsController extends Controller {
 		app.makeSettings();
 	}
 
-	public void addSubjects() {
-
+	public void addSubjects() throws SQLException {
+		ArrayList<String> selectedItems = getAllItems();
+		System.out.println(selectedItems);
+		for (int i = 0; i < selectedItems.size(); i++) {
+			SettingsHandler.addSubjects(app.getDatabaseHandler(), selectedItems.get(i));
+		}
+		updateTableViews();
 	}
 
-	public void deleteSubjects() {
-
+	public void deleteSubjects() throws SQLException {
+		ArrayList<String> selectedItems = getYourItems();
+		System.out.println(selectedItems);
+		for (int i = 0; i < selectedItems.size(); i++) {
+			SettingsHandler.deleteSubjects(app.getDatabaseHandler(), selectedItems.get(i));
+		}
+		updateTableViews();
+	}
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void clearSelections(TableView tv, TableView tv2) {
+		tv.setRowFactory(new Callback<TableView, TableRow>() {
+			public TableRow call(TableView tv) {
+				final TableRow row = new TableRow<>();
+				row.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent e) {
+						final int index = row.getIndex();
+						if(index >= 0 && index < tv.getItems().size() && tv.getSelectionModel().isSelected(index)) {
+							tv.getSelectionModel().clearSelection();
+							e.consume();
+						}
+						tv2.getSelectionModel().clearSelection();
+					}
+				});
+				return row;
+			}
+		});
 	}
 
-	public void getSelectedItem() {
+	public ArrayList<String> getYourItems() {
 		ArrayList<String> items = new ArrayList<String>();
 		for (int i = 0; i < this.tv.getSelectionModel().getSelectedItems().size(); i++) {
 			items.add(this.tv.getSelectionModel().getSelectedItems().get(i).toString().split(",")[0].substring(1));
 		}
 
-		for (int i = 0; i < items.size(); i++) {
-			System.out.println(items.get(i));
-		}
+		return items;
 	}
+	
+	public ArrayList<String> getAllItems() {
+		ArrayList<String> items = new ArrayList<String>();
+		for (int i = 0; i < this.tv2.getSelectionModel().getSelectedItems().size(); i++) {
+			items.add(this.tv2.getSelectionModel().getSelectedItems().get(i).toString().split(",")[0].substring(1));
+		}
 
-	@Override
-	public void onLoad() {
-		txtUser.setText(txtUser.getText() + User.getUsername());
+		return items;
+	}
+	
+	public void updateTableViews() {
 		sh = new SettingsHandler();
 		ResultSet rs = null;
 		ResultSet rs2 = null;
@@ -125,15 +166,22 @@ public class SettingsController extends Controller {
 		tv2 = ViewMaker.makeTable(rs2, Arrays.asList("Code", "Coursename"));
 		yourSubjectsView.getChildren().add(tv);
 		allSubjectsView.getChildren().add(tv2);
-
+		
 		if (yourSubjectsView.getChildren().isEmpty()) {
 			txtError.setVisible(true);
 		}
-
-		btnAdd.disableProperty().bind(Bindings.isEmpty(tv.getSelectionModel().getSelectedItems()));
-		btnAdd.disableProperty().bind(Bindings.isNotEmpty(tv.getSelectionModel().getSelectedItems()).not());
-		btnDelete.disableProperty().bind(Bindings.isEmpty(tv2.getSelectionModel().getSelectedItems()));
-		btnDelete.disableProperty().bind(Bindings.isNotEmpty(tv2.getSelectionModel().getSelectedItems()).not());
+		
+		btnDelete.disableProperty().bind(Bindings.isEmpty(tv.getSelectionModel().getSelectedItems()));
+		btnAdd.disableProperty().bind(Bindings.isEmpty(tv2.getSelectionModel().getSelectedItems()));
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public void onLoad() {
+		txtUser.setText(txtUser.getText() + User.getUsername());
+		updateTableViews();
+
+		clearSelections(tv, tv2);
+		clearSelections(tv2, tv);
+	}
 }

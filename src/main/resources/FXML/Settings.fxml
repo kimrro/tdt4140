@@ -80,7 +80,7 @@
                   <Insets left="30.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#deleteSubjects" text="Delete" GridPane.rowIndex="1">
+            <Button fx:id="btnDelete" disable="true" mnemonicParsing="false" onAction="#deleteSubjects" text="Remove" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="170.0" />
                </GridPane.margin>
@@ -95,11 +95,6 @@
                   <Insets bottom="60.0" left="72.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#getSelectedItem" text="Check" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="95.0" />
-               </GridPane.margin>
-            </Button>
             <AnchorPane fx:id="allSubjectsView" prefHeight="200.0" prefWidth="200.0" />
             <AnchorPane fx:id="yourSubjectsView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
             <Text fx:id="feedback" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
