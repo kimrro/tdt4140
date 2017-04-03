@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -34,6 +35,9 @@ public class SettingsController extends Controller {
 
 	@FXML
 	private Label txtError, txtUser;
+	
+	@FXML
+	private Text feedback;
 
 	@FXML
 	private Text feedback;
@@ -61,7 +65,7 @@ public class SettingsController extends Controller {
 				feedback.setText("The new passwords does not meet the requirements!");
 			} else if (!(Pass.equals(Pass2))) {
 				feedback.setFill(Paint.valueOf("#ff3636"));
-				feedback.setText("The new passwords doesn´t match!");
+				feedback.setText("The new passwords doesnÂ´t match!");
 			}
 		} else {
 			feedback.setFill(Paint.valueOf("#ff3636"));

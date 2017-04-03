@@ -34,21 +34,21 @@ public class LoginController extends Controller {
 	String pwd;
 	String password;
 	
+	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * Retrieves the password for the user from database and checks if it matches the written password from input
+     *
+     * @author 			jorgburg
+     */
+	
 	public void onLogin() throws SQLException {
 		dbh = app.getDatabaseHandler();
 		lh = new LoginHandler();
 		
 		username = txtUsername.getText();
 		pwd = passPassword.getText();
-		
-//		try {
-//			lh.getUserCredentials(dbh, name).next();
-//		} catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//            actionTarget.setFill(Paint.valueOf("REDBRICK"));
-//            actionTarget.setText("404_FeilOppdaget_Ring_Lars: 45245345");
-//            
-//        } 
 			
 		ResultSet rs = lh.getUserCredentials(dbh, username);
 		if(rs.next()) {
@@ -70,6 +70,13 @@ public class LoginController extends Controller {
 		
 	}
 	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * Sends the user to register page 
+     *
+     * @author 			jorgburg
+     */
 	public void goToRegister() {
 		try {
             app.makeRegister(); } 
@@ -78,6 +85,13 @@ public class LoginController extends Controller {
 		}
 	}
 	
+	/** 
+     * Function activated after user is logged in
+     * <p>
+     * Saves the privelege of the user, which tells if the user is either admin or student
+     *
+     * @author 			jorgburg
+     */
 	public void createSession(String username, int privilege) {
 		User user = new User(username, privilege);
 	}
