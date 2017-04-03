@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="700.0" maxWidth="600.0" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.AdminController">
    <children>
@@ -20,77 +15,10 @@
       </ImageView>
       <ImageView fitHeight="79.0" fitWidth="79.0" layoutX="514.0" layoutY="8.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Documents/NTNU/4.%20semester/Programvareutvikling/GUI%20chat/bin/chat/wheel.png" />
+            <Image url="@wheel.png" />
          </image>
       </ImageView>
-      <TabPane layoutY="201.0" prefHeight="499.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab id="tdt4140" text="TDT4140">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Pane prefHeight="79.0" prefWidth="600.0">
-                           <children>
-                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <CheckBox layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
-                              <CheckBox layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
-                              <CheckBox layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
-                           </children>
-                        </Pane>
-                        <Pane id="subjectView" fx:id="subjectView" layoutX="3.0" layoutY="97.0" prefHeight="357.0" prefWidth="600.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab id="tdt4140" text="TDT4100">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Pane prefHeight="218.0" prefWidth="600.0">
-                           <children>
-                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <CheckBox layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
-                              <CheckBox layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
-                              <CheckBox layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab id="tdt4140" text="TDT4110">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Pane prefHeight="218.0" prefWidth="600.0">
-                           <children>
-                              <Label layoutX="38.0" layoutY="22.0" text="Your course status:">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <CheckBox layoutX="231.0" layoutY="25.0" mnemonicParsing="false" text="Lecturer" />
-                              <CheckBox layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="Other" />
-                              <CheckBox layoutX="335.0" layoutY="25.0" mnemonicParsing="false" text="Und.ass" />
-                           </children>
-                        </Pane>
-                        <Pane layoutX="3.0" layoutY="201.0" prefHeight="253.0" prefWidth="600.0">
-                        </Pane>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
+      <TabPane fx:id="tabPane" layoutY="201.0" prefHeight="499.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" />
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
    </children>
 </AnchorPane>
