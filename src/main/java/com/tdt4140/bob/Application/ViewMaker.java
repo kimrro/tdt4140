@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
@@ -47,6 +48,7 @@ public class ViewMaker {
         AnchorPane.setBottomAnchor(tableView, 0.0);
         AnchorPane.setLeftAnchor(tableView, 0.0);
         AnchorPane.setRightAnchor(tableView, 0.0);
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         return tableView;
     }
     
