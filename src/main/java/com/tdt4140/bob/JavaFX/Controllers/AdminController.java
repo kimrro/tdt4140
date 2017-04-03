@@ -26,7 +26,7 @@ public class AdminController extends Controller {
 	private Label txtError;
 	
 	@FXML
-	private TextField txtCurr;
+	private TextField txtCurriculum,txtPage;
 
 	@FXML
 	private Button btnBack,btnAdd;
@@ -41,8 +41,17 @@ public class AdminController extends Controller {
 	}
 	
 	public void addCurriculum(){
-		//app.makeDash();
 		
+		txtCurriculum.setEditable(false);
+		if (txtCurriculum.hasProperties()) {
+			txtCurriculum.setEditable(true);
+			
+		}
+		
+				
+		//app.makeDash();
+		// if successful-> send confirmation
+	
 	}
 
 	@Override

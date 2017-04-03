@@ -22,8 +22,10 @@
       </ImageView>
       <TabPane fx:id="tabPane" layoutY="278.0" prefHeight="422.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" />
       <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
-      <Button fx:id="btnAdd" layoutX="378.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#addCurriculum" text="Add" />
-      <TextField layoutX="213.0" layoutY="202.0" />
+      <TextField fx:id="txtCurriculum" layoutX="213.0" layoutY="202.0" />
       <Label layoutX="111.0" layoutY="207.0" text="New Curriculum:" />
+      <Button fx:id="btnAdd" layoutX="273.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#addCurriculum" text="Add" />
+      <TextField fx:id="txtPage" layoutX="213.0" layoutY="231.0" prefHeight="26.0" prefWidth="163.0" />
+      <Label layoutX="161.0" layoutY="236.0" text="Page(s):" />
    </children>
 </AnchorPane>
