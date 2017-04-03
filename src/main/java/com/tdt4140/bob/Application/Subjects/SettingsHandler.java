@@ -17,8 +17,9 @@ public class SettingsHandler {
 	}
 	
 	public ResultSet getAllSubjects(DatabaseHandler dbh) throws SQLException {
-		String query = "SELECT code, coursename FROM subject WHERE NOT EXISTS (SELECT code FROM user_subject WHERE subject.code = user_subject.code)";
+		String query = "SELECT code, coursename FROM subject WHERE NOT EXISTS (SELECT code FROM user_subject WHERE subject.code = user_subject.code AND username = ?)";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		prepStatement.setString(1, User.getUsername());
 		return prepStatement.executeQuery();
 	}
 	

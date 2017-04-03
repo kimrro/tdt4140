@@ -35,9 +35,6 @@ public class SettingsController extends Controller {
 
 	@FXML
 	private Label txtError, txtUser;
-	
-	@FXML
-	private Text feedback;
 
 	@FXML
 	private Text feedback;

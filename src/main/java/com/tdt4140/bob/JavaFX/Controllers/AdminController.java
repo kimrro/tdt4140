@@ -41,7 +41,7 @@ public class AdminController extends Controller {
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		try {
-			rs = sh.getSubjects(app.getDatabaseHandler());
+			rs = sh.getUserSubjects(app.getDatabaseHandler());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
