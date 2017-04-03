@@ -34,9 +34,14 @@ public class LoginController extends Controller {
 	String pwd;
 	String password;
 	
-	//Function activated by button clicked
-	//Retrieves the passord for the user from database and checks if it matches 
-	//the written password from user
+	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * Retrieves the password for the user from database and checks if it matches the written password from input
+     *
+     * @author 			jorgburg
+     */
 	
 	public void onLogin() throws SQLException {
 		dbh = app.getDatabaseHandler();
@@ -65,6 +70,13 @@ public class LoginController extends Controller {
 		
 	}
 	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * Sends the user to register page 
+     *
+     * @author 			jorgburg
+     */
 	public void goToRegister() {
 		try {
             app.makeRegister(); } 
@@ -73,6 +85,13 @@ public class LoginController extends Controller {
 		}
 	}
 	
+	/** 
+     * Function activated after user is logged in
+     * <p>
+     * Saves the privelege of the user, which tells if the user is either admin or student
+     *
+     * @author 			jorgburg
+     */
 	public void createSession(String username, int privilege) {
 		User user = new User(username, privilege);
 	}

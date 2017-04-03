@@ -52,6 +52,14 @@ public class ChatController extends Controller {
 	private ResultSet rs1 = null;
 	private String username;
 	
+	
+	/** 
+     * Function activated when launching the class ChatController
+     * <p>
+     * Retrieves the subjects that the user attends and adds them to the list
+     *
+     * @author 			jorgburg
+     */
 	public void onLoad() {
 		username = User.getUsername();
 		pick = "";
@@ -78,10 +86,24 @@ public class ChatController extends Controller {
 		
 	}
 	
+	/** 
+     * Function activated by chaning drop down list
+     * <p>
+     * Change the subject which you communicate with 
+     *
+     * @author 			jorgburg
+     */
 	public void subjectPick() {
 		pick = choiceSubject.getValue();
 	}
 
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * The bot writes back the possible commands in the chat
+     *
+     * @author 			jorgburg
+     */	
 	public void showCommands() {
 		area.appendText("BOB: Possible commands are: \n" 
 								+ "1: /subjects \n" 
@@ -90,6 +112,13 @@ public class ChatController extends Controller {
 								+ "4: Ask me something \n\n");
 	}
 	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * The bot writes back the users last questions in the chat 
+     *
+     * @author 			jorgburg
+     */
 	public void showLastQuestions() throws SQLException{
 		int i = 1;
 		ResultSet output = ChatHandler.getQuestion(dbh, username);
@@ -101,6 +130,14 @@ public class ChatController extends Controller {
 		area.appendText("BOB: Your last questions: \n" + questions + "\n\n"); 
 	}
 	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * The bot gathers the information from the user and analyzes the input/command. 
+     * Based on the input, the bot writes back an answer.
+     *
+     * @author 			jorgburg
+     */
 	public void chatClicked() throws IOException, SQLException {
 		String replie = "ERROR";
 		String uText = input.getText();
@@ -299,10 +336,26 @@ public class ChatController extends Controller {
 			
 	}
 	
+	/** 
+     * Function activated by function chatClicked()
+     * <p>
+     * This function adds text to the chat area based on the strings that it gets from the function chatClicked()
+     *
+     * @author 			jorgburg
+     */
 	public void chatArea(String user ,String bot) {
 		area.appendText("You: " + user + "\n" + "BOB: " + bot + "\n" + "\n");
 	}
 
+	/** 
+     * Function activated by function chatClicked()
+     * <p>
+     * This function gathers information from wikipedia on a given topic.
+     * 
+     * @param object	The object that the user searched for	
+     * @return			Returns the first sentence from the wikipedia article of the given object
+     * @author 			jorgburg
+     */
 	public String wikipedia(String object) throws IOException{
 //		String subject = "Ed Sheeran";
 //		object = "world war";
@@ -352,6 +405,15 @@ public class ChatController extends Controller {
 		
 	}
 	
+	/** 
+     * Function used for test code by function chatClicked()
+     * <p>
+     * Checks if the given command (uText) is valid
+     * 
+     * @param uText		Written user input
+     * @return			Returns true if the command is correct
+     * @author 			jorgburg
+     */
 	public boolean isValidCommand(String uText) {
 		if (uText.equals("/lecturer") || uText.equals("/clear") || uText.equals("/help") || uText.equals("/subjects")) {
 			return true;
@@ -359,19 +421,48 @@ public class ChatController extends Controller {
 		return false;
 	}
 	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * This function sends the user to the settings page
+     * 
+     * @author 			jorgburg
+     */
 	public void showSettings() {
 		app.makeSettings();
 	}
 	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * This function sends the user to the admin page
+     * 
+     * @author 			jorgburg
+     */
 	public void showAdmin() {
 		app.makeAdmin();
 	}
 	
+	/** 
+     * Function activated by button clicked
+     * <p>
+     * This function sends the user to the log in page and the user is now logged out.
+     * 
+     * @author 			jorgburg
+     */
 	public void logOut() {
 		User.resetUser();
 		app.makeLogin();
 	}
 
+	/** 
+     * Function used for test code for wikipedia()
+     * <p>
+     * This function checks if there is any information to gather from wikipedia on the given topic(object).     * 
+     * @param object	Object that is searched for in wikipedia
+     * @return			True if the wikipedia page exist, else false
+     * @author 			jorgburg
+     */
 	public boolean isValidWiki(String object) throws IOException {
 		String input1 = object;
 		String input2 = WordUtils.capitalizeFully(object);
@@ -380,6 +471,5 @@ public class ChatController extends Controller {
 			return true;
 		} return false;
 	}
-	
 	
 }

@@ -8,6 +8,16 @@ import com.tdt4140.bob.Application.DatabaseHandler;
 
 public class ChatHandler {
 	
+	/** 
+     * Retrieves data from database
+     * <p>
+     * Function used to gather the subjects that a given user is assigned to.
+     *
+     * @param dbh		Get connection to the database with Databasehandler 
+     * @param username	Given username used in query
+     * @return			Returns the resultset from database
+     * @author 			jorgburg
+     */
 	public static ResultSet getSubjects(DatabaseHandler dbh, String username) throws SQLException {
 		String query = "SELECT coursename FROM user, user_subject, subject WHERE user_subject.username = user.username AND user_subject.code = subject.code AND user.username = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
@@ -15,6 +25,16 @@ public class ChatHandler {
 		return prepStatement.executeQuery();
 	}
 	
+	/** 
+     * Retrieves data from database
+     * <p>
+     * Function used to gather the names of lecturers that lectures in a given course
+     *
+     * @param dbh		Get connection to the database with Databasehandler 
+     * @param coursename	Given coursename used in query
+     * @return			Returns the resultset from database
+     * @author 			jorgburg
+     */
 	public static ResultSet getLecturer(DatabaseHandler dbh, String coursename) throws SQLException {
 		String query = "SELECT fornavn, etternavn FROM subject, subject_lecturer, lecturer WHERE subject_lecturer.idlecturer = lecturer.idlecturer AND subject_lecturer.code = subject.code AND subject.coursename = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
@@ -22,6 +42,16 @@ public class ChatHandler {
 		return prepStatement.executeQuery();
 	}
 	
+	/** 
+     * Retrieves data from database
+     * <p>
+     * Function used to gather the subjectcode of a given course.
+     *
+     * @param dbh		Get connection to the database with Databasehandler 
+     * @param username	Given coursename used in query
+     * @return			Returns the resultset from database
+     * @author 			jorgburg
+     */
 	public static ResultSet getSubjectCode(DatabaseHandler dbh, String coursename) throws SQLException {
 		String query = "SELECT code FROM subject WHERE coursename = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
@@ -29,6 +59,17 @@ public class ChatHandler {
 		return prepStatement.executeQuery();
 	}
 	
+	/** 
+     * Writes data to database
+     * <p>
+     * Function used to write keywords from userinput assigned to a specific course.
+     *
+     * @param dbh		Get connection to the database with Databasehandler 
+     * @param keyword	Given keyword from userinput
+     * @param code		Code for the specific course
+     * @return			Returns the executed qyery
+     * @author 			jorgburg
+     */
 	public static int writeKeywords(DatabaseHandler dbh, String keyword, String code) throws SQLException {
 		int count = 0;
 		final String queryCheck = "SELECT count(*) FROM search WHERE keyword = ? AND code = ?";
@@ -57,6 +98,17 @@ public class ChatHandler {
 		}
 	}
 	
+	/** 
+     * Writes data to database
+     * <p>
+     * Function used to write questions that a specific user has asked the bot.
+     *
+     * @param dbh		Get connection to the database with Databasehandler 
+     * @question		Given question user has asked
+     * @param username	Given username used in query
+     * @return			Returns the executed query
+     * @author 			jorgburg
+     */
 	public static int writeQuestion(DatabaseHandler dbh, String question, String username) throws SQLException {
 		String query = "INSERT INTO question (question, username) VALUES(?, ?)";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
@@ -65,6 +117,16 @@ public class ChatHandler {
 		return prepStatement.executeUpdate();
 	}
 	
+	/** 
+     * Retrieves data from database
+     * <p>
+     * Function used to gather the last questions to the logged in user.
+     *
+     * @param dbh		Get connection to the database with Databasehandler 
+     * @param username	Given username used in query
+     * @return			Returns the resultset from database
+     * @author 			jorgburg
+     */
 	public static ResultSet getQuestion(DatabaseHandler dbh, String username) throws SQLException {
 		int count = 0;
 		final String queryCheck = "SELECT count(*) FROM question WHERE username = ?";
@@ -89,6 +151,17 @@ public class ChatHandler {
 		}
 	}
 	
+	/** 
+     * Retrieves data from database
+     * <p>
+     * Function used to return pages from the curriculum on a given topic.
+     *
+     * @param dbh		Get connection to the database with Databasehandler 
+     * @param keyword	Given keyword that defines the topic			
+     * @param username	Given code to define the course
+     * @return			Returns the resultset from database
+     * @author 			jorgburg
+     */
 	public static ResultSet getCurriculum(DatabaseHandler dbh, String keyword, String code) throws SQLException {
 		String query = "SELECT pages FROM curriculum WHERE curriculum.code = ? AND curriculum.keyword = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
