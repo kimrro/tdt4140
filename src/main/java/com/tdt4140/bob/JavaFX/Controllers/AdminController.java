@@ -39,22 +39,23 @@ public class AdminController extends Controller {
 	
 	
 
-	private SettingsHandler sh;
-	private AdminHandler ah;
+	private SettingsHandler sh = new SettingsHandler();
+	private AdminHandler ah = new AdminHandler();
 	private DatabaseHandler dbh;
-	private CurriculumHandler ch;
+	private CurriculumHandler ch = new CurriculumHandler();
 
 	public void goBack() {
 		app.makeDash();
 	}
 	
-	
 	public void addCurriculum() throws SQLException{
+		String page = txtPage.getText();
+		String keyword = txtCurriculum.getText();
+		String code = tabPane.getSelectionModel().getSelectedItem().getText();
 		if (inputControlIsValid()) {
-			//Insert into database
-			ch.addKeyword(dbh, txtCurriculum.getText(),txtPage.getText(),tabPane.getSelectionModel().getSelectedItem().getText());
+			ch.addKeyword(app.getDatabaseHandler(), page, keyword, code);
 			System.out.println("hei");
-			System.out.println(tabPane.getSelectionModel().getSelectedItem().getText());
+			System.out.println(code);
 			feedback.setFill(Color.GREEN);
 			feedback.setText("You just added a keyword.");
 			}
@@ -80,8 +81,6 @@ public class AdminController extends Controller {
 	@Override
 	public void onLoad() {
 		
-		sh = new SettingsHandler();
-		ah = new AdminHandler();
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		
