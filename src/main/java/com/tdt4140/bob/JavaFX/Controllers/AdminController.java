@@ -14,6 +14,7 @@ import com.tdt4140.bob.Application.Subjects.SettingsHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.text.Text;
@@ -35,7 +36,9 @@ public class AdminController extends Controller {
 	private TextField txtCurriculum,txtPage;
 
 	@FXML
-	private Button btnBack,btnAdd;
+	private Button btnAdd;
+	@FXML
+	private ImageView btnBack;
 	
 	
 
