@@ -26,7 +26,7 @@ public class AdminController extends Controller {
 	private Text feedback;
 	
 	@FXML
-	private TabPane tabPane = new TabPane();
+	private TabPane tabPane1,tabPane2 = new TabPane();
 
 	@FXML
 	private Label txtError;
@@ -51,13 +51,15 @@ public class AdminController extends Controller {
 	public void addCurriculum() throws SQLException{
 		String page = txtPage.getText();
 		String keyword = txtCurriculum.getText();
-		String code = tabPane.getSelectionModel().getSelectedItem().getText();
+		String code = tabPane2.getSelectionModel().getSelectedItem().getText();
 		if (inputControlIsValid()) {
 			ch.addKeyword(app.getDatabaseHandler(), page, keyword, code);
 			System.out.println("hei");
 			System.out.println(code);
 			feedback.setFill(Color.GREEN);
 			feedback.setText("You just added a keyword.");
+			txtPage.clear();
+			txtCurriculum.clear();
 			}
 		}
 	
@@ -83,6 +85,7 @@ public class AdminController extends Controller {
 		
 		ResultSet rs = null;
 		ResultSet rs2 = null;
+		ResultSet rs3 = null;
 		
 		try {
 			rs = sh.getSubjects(app.getDatabaseHandler());
@@ -95,7 +98,7 @@ public class AdminController extends Controller {
 			while (rs.next()) {
 				Tab tab = new Tab();
 				tab.setText(rs.getString("code"));
-				tabPane.getTabs().add(tab);
+				tabPane1.getTabs().add(tab);
 
 				code.add(rs.getString("code"));
 			}
@@ -106,7 +109,45 @@ public class AdminController extends Controller {
 				rs2 = ah.getSubjects(app.getDatabaseHandler(), code.get(0));
 				AnchorPane pane = new AnchorPane();
 				pane.getChildren().add(ViewMaker.makeTable(rs2, Arrays.asList("Keyword", "Frequency")));
-				tabPane.getTabs().get(tabIndex).setContent(pane);
+				tabPane1.getTabs().get(tabIndex).setContent(pane);
+				tabIndex++;
+				code.remove(0);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			rs = sh.getSubjects(app.getDatabaseHandler());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//--------//
+		try {
+			rs = sh.getSubjects(app.getDatabaseHandler());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			ArrayList<String> code = new ArrayList<String>();
+			while (rs.next()) {
+				Tab tab = new Tab();
+				tab.setText(rs.getString("code"));
+				tabPane2.getTabs().add(tab);
+
+				code.add(rs.getString("code"));
+			}
+			
+			int tabIndex = 0;
+			
+			while (!code.isEmpty()) {
+				rs3 = ch.getPageKey(app.getDatabaseHandler(), code.get(0));
+				AnchorPane pane = new AnchorPane();
+				pane.getChildren().add(ViewMaker.makeTable(rs3, Arrays.asList("Topics", "Page(s)")));
+				tabPane2.getTabs().get(tabIndex).setContent(pane);
 				tabIndex++;
 				code.remove(0);
 			}
