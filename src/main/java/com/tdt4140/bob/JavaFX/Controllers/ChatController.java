@@ -410,15 +410,16 @@ public class ChatController extends Controller {
      * <p>
      * Checks if the given command (uText) is valid
      * 
-     * @param uText		Written user input
+     * @param input		Written user input
      * @return			Returns true if the command is correct
      * @author 			jorgburg
      */
-	public boolean isValidCommand(String uText) {
-		if (uText.equals("/lecturer") || uText.equals("/clear") || uText.equals("/help") || uText.equals("/subjects")) {
+	public boolean isValidCommand(String input) {
+		if (input.equals("/lecturer") || input.equals("/clear") || input.equals("/help") || input.equals("/subjects")) {
 			return true;
+		} else {
+			return false;	
 		}
-		return false;
 	}
 	
 	/** 

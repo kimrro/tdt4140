@@ -25,7 +25,7 @@ public class AdminController extends Controller {
 	private Label txtError;
 
 	@FXML
-	private Button btnBack;
+	private Button btnController;
 
 	private SettingsHandler sh;
 	private AdminHandler ah;
