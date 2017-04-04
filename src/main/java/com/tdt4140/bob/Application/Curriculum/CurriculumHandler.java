@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.tdt4140.bob.Application.DatabaseHandler;
+import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 public class CurriculumHandler {
 	
@@ -15,5 +16,12 @@ public class CurriculumHandler {
 		prepStatement.setString(2, keyword);
 		prepStatement.setString(3, page);
 		return prepStatement.executeUpdate();
+	}
+	
+	public ResultSet getPageKey(DatabaseHandler dbh, String code) throws SQLException {
+		String query = "SELECT keyword,pages FROM curriculum WHERE code = ?";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		prepStatement.setString(1, code);
+		return prepStatement.executeQuery();
 	}
 }
