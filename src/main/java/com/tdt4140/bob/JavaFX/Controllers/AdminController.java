@@ -37,19 +37,40 @@ public class AdminController extends Controller {
 
 	@FXML
 	private Button btnAdd;
+	
 	@FXML
 	private ImageView btnBack;
 	
-	
+	/** 
+     * importing all the handlers
+     * @author 			lajohnso
+     */
 
 	private SettingsHandler sh = new SettingsHandler();
 	private AdminHandler ah = new AdminHandler();
 	private DatabaseHandler dbh;
 	private CurriculumHandler ch = new CurriculumHandler();
 
+	/** 
+     * Method activated when "logo"button is clicked.
+     * <p>
+     * Redirects the user to chat page .
+     *
+     * @author 			lajohnso
+     */
+	
 	public void goBack() {
 		app.makeDash();
 	}
+	
+	/** 
+     * Method is activated when "add" button is clicked.
+     * <p>
+     * Commits a new keyword to the database (curriculum) and confirms/declines input with user feedback
+     * using the "inputControlIsValid()" method.
+     *
+     * @author 			lajohnso
+     */
 	
 	public void addCurriculum() throws SQLException{
 		String page = txtPage.getText();
@@ -65,6 +86,14 @@ public class AdminController extends Controller {
 			txtCurriculum.clear();
 			}
 		}
+	
+	/** 
+     * Method is called by "addCurriculum()".
+     * <p>
+     * Tests if the new input is valid.
+     *
+     * @author 			lajohnso
+     */
 	
 	public boolean inputControlIsValid (){
 		if (txtCurriculum.getLength()==0) {
@@ -83,13 +112,21 @@ public class AdminController extends Controller {
 		return true;
 }	
 
+	/** 
+     * Method activated on page/stage load.
+     * <p>
+     * Generates the two tableViews and imports data from database. 
+     *
+     * @author 			lajohnso & kimrro
+     */
 	@Override
 	public void onLoad() {
 		
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
-		//tableView1 generator
+		
+		//tableView1 (search frequency) generator
 		try {
 			rs = sh.getUserSubjects(app.getDatabaseHandler());
 		} catch (SQLException e) {
@@ -121,7 +158,7 @@ public class AdminController extends Controller {
 			e.printStackTrace();
 		}
 		
-		//tableView2 generator
+		//tableView2(curriculum) generator
 		
 		try {
 			rs = sh.getUserSubjects(app.getDatabaseHandler());

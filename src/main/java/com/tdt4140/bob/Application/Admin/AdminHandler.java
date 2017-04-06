@@ -6,6 +6,14 @@ import java.sql.SQLException;
 
 import com.tdt4140.bob.Application.DatabaseHandler;
 
+/** 
+ * Method runs when called upon by different controllers.
+ * <p>
+ * Retrieves keywords and search frequency from the database. 
+ *
+ * @author 			lajohnso
+ */
+
 public class AdminHandler {
 	public ResultSet getSubjects(DatabaseHandler dbh, String code) throws SQLException {
 		String query = "SELECT keyword,frequency FROM search, subject WHERE search.code = subject.code AND search.code = ?";
