@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.ViewMaker;
-import com.tdt4140.bob.Application.Subjects.SettingsHandler;
+import com.tdt4140.bob.Application.Settings.SettingsHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 import javafx.beans.binding.Bindings;

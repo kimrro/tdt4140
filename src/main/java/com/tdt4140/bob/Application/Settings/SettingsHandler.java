@@ -1,4 +1,4 @@
-package com.tdt4140.bob.Application.Subjects;
+package com.tdt4140.bob.Application.Settings;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

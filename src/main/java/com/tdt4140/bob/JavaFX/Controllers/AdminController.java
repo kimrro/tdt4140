@@ -9,7 +9,7 @@ import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.ViewMaker;
 import com.tdt4140.bob.Application.Admin.AdminHandler;
 import com.tdt4140.bob.Application.Curriculum.CurriculumHandler;
-import com.tdt4140.bob.Application.Subjects.SettingsHandler;
+import com.tdt4140.bob.Application.Settings.SettingsHandler;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
