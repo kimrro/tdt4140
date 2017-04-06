@@ -122,14 +122,7 @@ public class AdminController extends Controller {
 		}
 		
 		try {
-			rs = sh.getSubjects(app.getDatabaseHandler());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		//--------//
-		try {
-			rs = sh.getSubjects(app.getDatabaseHandler());
+			rs = sh.getUserSubjects(app.getDatabaseHandler());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
