@@ -30,22 +30,32 @@ public class AdminController extends Controller {
 	private SettingsHandler sh;
 	private AdminHandler ah;
 
+	/**
+	 * A function to return to dashboard/chat application.
+	 * @author KimRobin
+	 */
 	public void goBack() {
 		app.makeDash();
 	}
 
+	/**
+	 * A function that runs automatically when the view is opened.
+	 * @author KimRobin
+	 */
 	@Override
 	public void onLoad() {
 		sh = new SettingsHandler();
 		ah = new AdminHandler();
 		ResultSet rs = null;
 		ResultSet rs2 = null;
+		//Gets all subjects a user has
 		try {
 			rs = sh.getUserSubjects(app.getDatabaseHandler());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		//Makes tabs for all subjects a user has
 		try {
 			ArrayList<String> code = new ArrayList<String>();
 			while (rs.next()) {
@@ -58,6 +68,7 @@ public class AdminController extends Controller {
 			
 			int tabIndex = 0;
 			
+			//Adds content (TableView) to each tab generated. A TableView for lecturers to see most asked questions.
 			while (!code.isEmpty()) {
 				rs2 = ah.getSubjects(app.getDatabaseHandler(), code.get(0));
 				AnchorPane pane = new AnchorPane();
