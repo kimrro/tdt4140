@@ -63,24 +63,35 @@ public class AdminController extends Controller {
 			feedback.setText("You just added a keyword.");
 			txtPage.clear();
 			txtCurriculum.clear();
+			tabPane1.getChildrenUnmodifiable().clear();
+			tabPane2.getChildrenUnmodifiable().clear();
+			onLoad();
 			}
 		}
 	
-	public boolean inputControlIsValid (){
+	public boolean inputControlIsValid () throws SQLException{
+		String test = txtCurriculum.getText();
+		ResultSet rs = ah.getKeyword(app.getDatabaseHandler(), test);
+		String check = null;
+		if (rs.next()) {
+			check = rs.getString("keyword");
+		}
+		
 		if (txtCurriculum.getLength()==0) {
 			feedback.setFill(Color.RED);
 			feedback.setText("You need to write a keyword.");
 			return false;
-			}
-		else {
-			if (txtPage.getLength()==0) {
-				feedback.setFill(Color.RED);
-				feedback.setText("You need to enter page(s).");;
-				return false;
-				
-			}
-			}
-		return true;
+		} else if (txtPage.getLength()==0) {
+			feedback.setFill(Color.RED);
+			feedback.setText("You need to enter page(s).");;
+			return false; 
+		} else if (!(check.isEmpty())){
+			feedback.setFill(Color.RED);
+			feedback.setText("The topic already exists.");;
+			return false;
+		} else {
+			return true;
+		}
 }	
 
 	@Override
@@ -136,7 +147,6 @@ public class AdminController extends Controller {
 
 				code.add(rs.getString("code"));
 			}
-			
 			int tabIndex = 0;
 			
 			while (!code.isEmpty()) {
