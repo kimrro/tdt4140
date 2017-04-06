@@ -89,7 +89,7 @@ public class AdminController extends Controller {
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		ResultSet rs3 = null;
-		
+		//tableView1 generator
 		try {
 			rs = sh.getUserSubjects(app.getDatabaseHandler());
 		} catch (SQLException e) {
@@ -120,6 +120,8 @@ public class AdminController extends Controller {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		//tableView2 generator
 		
 		try {
 			rs = sh.getUserSubjects(app.getDatabaseHandler());
