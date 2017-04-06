@@ -47,6 +47,10 @@ public class AdminController extends Controller {
 	private DatabaseHandler dbh;
 	private CurriculumHandler ch = new CurriculumHandler();
 
+	/**
+	 * A function to return to dashboard/chat application.
+	 * @author KimRobin
+	 */
 	public void goBack() {
 		app.makeDash();
 	}
@@ -83,6 +87,10 @@ public class AdminController extends Controller {
 		return true;
 }	
 
+	/**
+	 * A function that runs automatically when the view is opened.
+	 * @author KimRobin
+	 */
 	@Override
 	public void onLoad() {
 		
@@ -96,6 +104,7 @@ public class AdminController extends Controller {
 			e.printStackTrace();
 		}
 
+		//Makes tabs for all subjects a user has
 		try {
 			ArrayList<String> code = new ArrayList<String>();
 			while (rs.next()) {
@@ -108,6 +117,7 @@ public class AdminController extends Controller {
 			
 			int tabIndex = 0;
 			
+			//Adds content (TableView) to each tab generated. A TableView for lecturers to see most asked questions.
 			while (!code.isEmpty()) {
 				rs2 = ah.getSubjects(app.getDatabaseHandler(), code.get(0));
 				AnchorPane pane = new AnchorPane();

@@ -34,10 +34,16 @@ public class RegisterController extends Controller {
 	
 	String username, fname, lname, password, cpassword;
 
+	/**
+	 * A function to validate values. If registration is successful (meaning all values are valid), the registered user will be redirected to the login-page.<p>
+	 * Used when a user wants to register a user to get access to Bob.
+	 * @author KimRobin
+	 */
 	public void registerUser() throws SQLException {
 		dbh = app.getDatabaseHandler();
 		lh = new LoginHandler();
 		
+		//Gets all values entered and assigns them to a variable.
 		username = txtUsername.getText();
 		fname = txtFname.getText();
 		lname = txtLname.getText();
@@ -46,6 +52,7 @@ public class RegisterController extends Controller {
 		
 		labelError.setTextFill(Color.RED);
 		
+		//Validates all values entered by user.
 		if (lh.getUserCredentials(dbh, username).next()) {
 			labelError.setText("Username is already taken!");
 		} else if (!isValidUsername()) {
@@ -65,18 +72,17 @@ public class RegisterController extends Controller {
 				labelError.setTextFill(Color.GREEN);
 				labelError.setText("Successfully registered!");
 				app.makeLogin();
-				
-//				txtUsername.setText("");
-//				passPassword.setText("");
-//				passCPassword.setText("");
-//				txtFname.setText("");
-//				txtLname.setText("");
 			} catch (SQLException e) {
 				labelError.setText("Registration failed: SQLState(" + e.getSQLState() + ")");
 			}
 		}
 	}
 
+	/**
+	 * A function to see if user has entered a valid username.
+	 * @return Returns a boolean value.
+	 * @author KimRobin
+	 */
 	private boolean isValidUsername() {
 		if (username.length() >= 3 && username.length() <= 16) {
 			return true;
@@ -84,13 +90,23 @@ public class RegisterController extends Controller {
 		return false;
 	}
 	
+	/**
+	 * A function to see if a user has entered a valid password.
+	 * @return Returns a boolean value.
+	 * @author KimRobin
+	 */
 	private boolean isValidPassword() {
 		if(password.length() >= 6 && password.length() <= 16) {
 			return true;
 		}
 		return false;
 	}
-
+	
+	/**
+	 * A function to see if a user has entered matching password.
+	 * @return Returns a boolean value.
+	 * @author KimRobin
+	 */
 	private boolean isMatchingPassword() {
 		if(password.equals(cpassword)) {
 			return true;
@@ -98,6 +114,11 @@ public class RegisterController extends Controller {
 		return false;
 	}
 
+	/**
+	 * A function to see if a user has entered a valid name.
+	 * @return Returns a boolean value.
+	 * @author KimRobin
+	 */
 	private boolean isValidName() {
 		if(fname.length() >= 2 && lname.length() >= 2) {
 			return true;
@@ -105,18 +126,15 @@ public class RegisterController extends Controller {
 		return false;
 	}
 	
+	/**
+	 * A function to see if the value is a string.
+	 * @return Returns a boolean value.
+	 * @author KimRobin
+	 */
 	private boolean isString() {
 		if(fname.matches(".*\\d+.*") || lname.matches(".*\\d+.*")) {
 			return false;
 		}
 		return true;
-	}
-	
-	public void goToLogin() {
-		try {
-            app.makeLogin(); } 
-		catch (Exception e) {
-            System.out.println(e.getMessage());
-		}
 	}
 }
