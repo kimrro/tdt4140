@@ -48,6 +48,10 @@ public class SettingsController extends Controller {
 	@SuppressWarnings("rawtypes")
 	private TableView tv, tv2;
 
+	/**
+	 * A function used to change a user's password in settings.
+	 * @author			jorgburg
+	 */
 	public void changePassword() throws SQLException {
 		String Pass = passNewPass.getText();
 		String Pass2 = passCNewPass.getText();
@@ -62,7 +66,7 @@ public class SettingsController extends Controller {
 				feedback.setText("The new passwords does not meet the requirements!");
 			} else if (!(Pass.equals(Pass2))) {
 				feedback.setFill(Paint.valueOf("#ff3636"));
-				feedback.setText("The new passwords doesnÂ´t match!");
+				feedback.setText("The new passwords doesn´t match!");
 			}
 		} else {
 			feedback.setFill(Paint.valueOf("#ff3636"));
