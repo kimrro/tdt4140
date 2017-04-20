@@ -17,7 +17,7 @@
             <Image url="@bob.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnBack" fitHeight="50.0" fitWidth="50.0" layoutX="545.0" layoutY="5.0" onMouseClicked="#goBack" opacity="0.44" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnBack" fitHeight="60.0" fitWidth="59.0" layoutX="534.0" layoutY="5.0" onMouseClicked="#goBack" opacity="0.44" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@bobIcon.png" />
          </image>
@@ -27,10 +27,6 @@
          <font>
             <Font size="12.0" />
          </font></TextField>
-      <Label layoutX="155.0" layoutY="179.0" text="Topic:">
-         <font>
-            <Font size="14.0" />
-         </font></Label>
       <Button id="button" fx:id="btnAdd" layoutX="397.0" layoutY="200.0" maxHeight="27.0" mnemonicParsing="false" onMouseClicked="#addCurriculum" prefHeight="27.0" stylesheets="@style.css" text="Add" />
       <TextField fx:id="txtPage" layoutX="213.0" layoutY="204.0" prefHeight="26.0" prefWidth="167.0">
          <font>
@@ -42,5 +38,20 @@
          </font></Label>
       <Text fx:id="feedback" layoutX="400.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <TabPane fx:id="tabPane2" layoutX="299.0" layoutY="295.0" prefHeight="405.0" prefWidth="299.0" tabClosingPolicy="UNAVAILABLE" />
+      <Label layoutX="217.0" layoutY="236.0" prefHeight="18.0" prefWidth="167.0" text="(Legger til nøkkelord i aktiv tab)">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="277.0" prefHeight="18.0" prefWidth="102.0" text="Søkefrekvens">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="405.0" layoutY="277.0" prefHeight="18.0" prefWidth="102.0" text="Pensumoversikt">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
