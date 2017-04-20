@@ -66,7 +66,6 @@ public class ChatController extends Controller {
 	private ResultSet rs1 = null;
 	private String username;
 	private Text reply;
-	private TextFlow flowReply;
 	private Text extract;
 	private String userQuery;
 
