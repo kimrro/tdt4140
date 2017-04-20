@@ -184,8 +184,18 @@ public class ChatController extends Controller {
 				for (String s : list) {
 					subject += s + " ";
 				}
-				String input1 = subject.substring(0, subject.length() - 1);
-				String input2 = WordUtils.capitalizeFully(subject);
+
+				String input1 = "";
+				String input2 = "";
+				
+				//Determine if a question-mark is used to finish the sentence.
+				//Ignore question-mark if used when searching on the Wiki
+				if (subject.substring(0, subject.length() - 1).contains("?")) {
+					input1 = subject.substring(0, subject.length() - 2);
+				} else {
+					input1 = subject.substring(0, subject.length() - 1);
+				}
+				input2 = WordUtils.capitalizeFully(subject);
 				String code = null;
 				String page = null;
 
@@ -347,7 +357,8 @@ public class ChatController extends Controller {
 			if (hasReferTo(this.extract.getText())) {
 				area.getChildren().addAll(chatUser, chatBob, showWikipedia(this.userQuery));
 				System.out.println("Refer");
-			} else {this.reply = new Text("\n\nYou: " + chatUser.getText() + "\nBOB: " + chatBob);
+			} else {
+				this.reply = new Text("\n\nYou: " + chatUser.getText() + "\nBOB: " + chatBob);
 				area.getChildren().addAll(chatUser, chatBob);
 			}
 		} else {
