@@ -16,9 +16,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.layout.Pane;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -44,6 +44,9 @@ public class SettingsController extends Controller {
 
 	@FXML
 	private Button btnSubmit, btnAdd, btnDelete;
+	
+	@FXML
+	private ImageView btnBack;
 	
 	@SuppressWarnings("rawtypes")
 	private TableView tv, tv2;
@@ -110,14 +113,6 @@ public class SettingsController extends Controller {
 	 */
 	public void goDashboard() {
 		app.makeDash();
-	}
-
-	/**
-	 * A function to go to settings.
-	 * @author KimRobin
-	 */
-	public void goSettings() {
-		app.makeSettings();
 	}
 
 	/**
@@ -204,6 +199,7 @@ public class SettingsController extends Controller {
 	 * A function to update all TableView to ensure they are synchronized with the database.
 	 * @author KimRobin
 	 */
+	@SuppressWarnings("unchecked")
 	public void updateTableViews() {
 		sh = new SettingsHandler();
 		ResultSet rs = null;
@@ -231,7 +227,6 @@ public class SettingsController extends Controller {
 	 * A function to automatically run when the view is opened.
 	 * @author KimRobin
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void onLoad() {
 		txtUser.setText(txtUser.getText() + User.getUsername());
