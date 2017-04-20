@@ -22,61 +22,93 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
-   <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0">
-         <center>
-            <GridPane maxHeight="500.0" maxWidth="500.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="567.180908203125" minHeight="10.0" prefHeight="437.7071533203125" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="271.6894226074219" minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="271.6894226074219" minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <TextField id="input" fx:id="input" GridPane.rowIndex="1" />
-                  <TextFlow id="area" fx:id="area" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: GREY" wrapText="true">
-                     <opaqueInsets>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </opaqueInsets>
-                  </TextFlow>
-                  <Button id="button" fx:id="button" defaultButton="true" mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css" text="Send" GridPane.rowIndex="2" />
-               </children>
-            </GridPane>
-         </center>
-         <top>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets top="20.0" />
-               </BorderPane.margin>
-               <image>
-                  <Image url="@bob.png" />
-               </image>
-            </ImageView>
-         </top>
-         <opaqueInsets>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </opaqueInsets>
-      </BorderPane>
-      <Pane layoutX="7.0" layoutY="7.0">
-         <children>
-            <Button id="button" fx:id="btnLogout" mnemonicParsing="false" onAction="#logOut" stylesheets="@style.css" text="Log out" />
-            <Button id="optionButton" fx:id="btnAdmin" layoutY="30.0" minHeight="23.0" mnemonicParsing="false" onAction="#showAdmin" prefHeight="23.0" prefWidth="60.0" stylesheets="@style.css" text="Admin" />
-         </children>
-      </Pane>
-      <ImageView fx:id="btnSettings" fitHeight="53.0" fitWidth="60.0" layoutX="521.0" layoutY="26.0" onMouseClicked="#showSettings" opacity="0.6" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@tannhjul.png" />
-         </image>
-      </ImageView>
-      <ComboBox id="optionButton" fx:id="choiceSubject" layoutX="50.0" layoutY="125.0" onAction="#subjectPick" prefHeight="25.0" prefWidth="175.0" promptText="Choose subject" stylesheets="@style.css" />
-      <Button id="optionButton" fx:id="commands" layoutX="142.0" layoutY="655.0" mnemonicParsing="false" onAction="#showCommands" prefHeight="23.0" stylesheets="@style.css" text="Commands" />
-      <Button id="optionButton" fx:id="questions" layoutX="50.0" layoutY="655.0" mnemonicParsing="false" onAction="#showLastQuestions" prefHeight="23.0" stylesheets="@style.css" text="Last questions">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="com.tdt4140.bob.JavaFX.Controllers.ChatController">
+	<children>
+		<BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
+			minHeight="700.0" minWidth="600.0" prefHeight="700.0" prefWidth="600.0">
+			<center>
+				<GridPane maxHeight="500.0" maxWidth="500.0" minHeight="300.0"
+					minWidth="300.0" prefHeight="300.0" prefWidth="300.0"
+					BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
+							prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="567.180908203125"
+							minHeight="10.0" prefHeight="437.7071533203125" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="271.6894226074219"
+							minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="271.6894226074219"
+							minHeight="10.0" prefHeight="62.2928466796875" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TextField id="input" fx:id="input" GridPane.rowIndex="1" />
+						<Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black">
+							<children>
+								<ScrollPane fx:id="scroll" prefHeight="416.0"
+									prefWidth="500.0">
+									<content>
+										<TextFlow id="area" fx:id="area" prefHeight="416.0"
+											prefWidth="500.0" style="-fx-background-color: white">
+											<padding>
+												<Insets left="5.0" top="2.0" />
+											</padding>
+										</TextFlow>
+									</content>
+								</ScrollPane>
+							</children>
+						</Pane>
+						<Button id="button" fx:id="button" defaultButton="true"
+							mnemonicParsing="false" onAction="#chatClicked" stylesheets="@style.css"
+							text="Send" GridPane.rowIndex="2" />
+					</children>
+				</GridPane>
+			</center>
+			<top>
+				<ImageView fitHeight="150.0" fitWidth="200.0"
+					pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+					<BorderPane.margin>
+						<Insets top="20.0" />
+					</BorderPane.margin>
+					<image>
+						<Image url="@bob.png" />
+					</image>
+				</ImageView>
+			</top>
+			<opaqueInsets>
+				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+			</opaqueInsets>
+		</BorderPane>
+		<Pane layoutX="7.0" layoutY="7.0">
+			<children>
+				<Button id="button" fx:id="btnLogout" mnemonicParsing="false"
+					onAction="#logOut" stylesheets="@style.css" text="Log out" />
+				<Button id="optionButton" fx:id="btnAdmin" layoutY="30.0"
+					minHeight="23.0" mnemonicParsing="false" onAction="#showAdmin"
+					prefHeight="23.0" prefWidth="60.0" stylesheets="@style.css" text="Admin" />
+			</children>
+		</Pane>
+		<ImageView fx:id="btnSettings" fitHeight="90.0" fitWidth="660.0"
+			layoutX="500.0" onMouseClicked="#showSettings" opacity="0.6"
+			pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@wheel.png" />
+			</image>
+		</ImageView>
+		<ComboBox id="optionButton" fx:id="choiceSubject" layoutX="50.0"
+			layoutY="125.0" onAction="#subjectPick" prefHeight="25.0" prefWidth="175.0"
+			promptText="Choose subject" stylesheets="@style.css" />
+		<Button id="optionButton" fx:id="commands" layoutX="142.0"
+			layoutY="655.0" mnemonicParsing="false" onAction="#showCommands"
+			prefHeight="23.0" stylesheets="@style.css" text="Commands" />
+		<Button id="optionButton" fx:id="questions" layoutX="50.0"
+			layoutY="655.0" mnemonicParsing="false" onAction="#showLastQuestions"
+			prefHeight="23.0" stylesheets="@style.css" text="Last questions">
+			<font>
+				<Font size="10.0" />
+			</font>
+		</Button>
+	</children>
 </AnchorPane>
