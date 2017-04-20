@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.Admin.AdminHandler;
 import com.tdt4140.bob.Application.Curriculum.CurriculumHandler;
-import com.tdt4140.bob.Application.Subjects.SettingsHandler;
+import com.tdt4140.bob.Application.Settings.SettingsHandler;
 import com.tdt4140.bob.JavaFX.Bob;
 import com.tdt4140.bob.JavaFX.Controllers.*;
 import static org.junit.Assert.*;

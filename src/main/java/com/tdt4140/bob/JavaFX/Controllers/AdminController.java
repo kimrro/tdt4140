@@ -9,7 +9,7 @@ import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.ViewMaker;
 import com.tdt4140.bob.Application.Admin.AdminHandler;
 import com.tdt4140.bob.Application.Curriculum.CurriculumHandler;
-import com.tdt4140.bob.Application.Subjects.SettingsHandler;
+import com.tdt4140.bob.Application.Settings.SettingsHandler;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,6 +51,7 @@ public class AdminController extends Controller {
 	private DatabaseHandler dbh;
 	private CurriculumHandler ch = new CurriculumHandler();
 
+
 	/** 
      * Method activated when "logo"button is clicked.
      * <p>
@@ -58,7 +59,6 @@ public class AdminController extends Controller {
      *
      * @author 			lajohnso
      */
-	
 	public void goBack() {
 		app.makeDash();
 	}
@@ -112,6 +112,7 @@ public class AdminController extends Controller {
 		return true;
 }	
 
+
 	/** 
      * Method activated on page/stage load.
      * <p>
@@ -133,6 +134,7 @@ public class AdminController extends Controller {
 			e.printStackTrace();
 		}
 
+		//Makes tabs for all subjects a user has
 		try {
 			ArrayList<String> code = new ArrayList<String>();
 			while (rs.next()) {
@@ -145,6 +147,7 @@ public class AdminController extends Controller {
 			
 			int tabIndex = 0;
 			
+			//Adds content (TableView) to each tab generated. A TableView for lecturers to see most asked questions.
 			while (!code.isEmpty()) {
 				rs2 = ah.getSubjects(app.getDatabaseHandler(), code.get(0));
 				AnchorPane pane = new AnchorPane();

@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import com.tdt4140.bob.Application.DatabaseHandler;
 import com.tdt4140.bob.Application.ViewMaker;
-import com.tdt4140.bob.Application.Subjects.SettingsHandler;
+import com.tdt4140.bob.Application.Settings.SettingsHandler;
 import com.tdt4140.bob.JavaFX.Controllers.Login.User;
 
 import javafx.beans.binding.Bindings;
@@ -16,9 +16,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.layout.Pane;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -45,9 +45,16 @@ public class SettingsController extends Controller {
 	@FXML
 	private Button btnSubmit, btnAdd, btnDelete;
 	
+	@FXML
+	private ImageView btnBack;
+	
 	@SuppressWarnings("rawtypes")
 	private TableView tv, tv2;
 
+	/**
+	 * A function used to change a user's password in settings.
+	 * @author			jorgburg
+	 */
 	public void changePassword() throws SQLException {
 		String Pass = passNewPass.getText();
 		String Pass2 = passCNewPass.getText();
@@ -62,7 +69,7 @@ public class SettingsController extends Controller {
 				feedback.setText("The new passwords does not meet the requirements!");
 			} else if (!(Pass.equals(Pass2))) {
 				feedback.setFill(Paint.valueOf("#ff3636"));
-				feedback.setText("The new passwords doesnÂ´t match!");
+				feedback.setText("The new passwords doesn´t match!");
 			}
 		} else {
 			feedback.setFill(Paint.valueOf("#ff3636"));
@@ -73,10 +80,16 @@ public class SettingsController extends Controller {
 		passCNewPass.setText("");
 	}
 
+	/**
+	 * A function to see if a user has entered old password correctly.<p>
+	 * Used to confirm that a user has entered old password when wanting to change password.
+	 * @return Returns a boolean value.
+	 * @author KimRobin
+	 */
 	public boolean isEqualOldPassword() throws SQLException {
 		sh = new SettingsHandler();
 		String oldPassword = null;
-		ResultSet rs = sh.getOldPassword(app.getDatabaseHandler());
+		ResultSet rs = sh.getCurrentPassword(app.getDatabaseHandler());
 		if (rs.next()) {
 			oldPassword = rs.getString(1);
 		}
@@ -84,18 +97,28 @@ public class SettingsController extends Controller {
 		return (passOldPass.getText().equals(oldPassword));
 	}
 
+	/**
+	 * A function used to see if the new password is typed correctly twice.
+	 * Used as a confirmation to ensure no spelling mistakes were made when changing password.
+	 * @return Returns a boolean value.
+	 * @author KimRobin
+	 */
 	public boolean isEqualNewPassword() {
 		return (passNewPass.getText().equals(passCNewPass.getText()));
 	}
 
+	/**
+	 * A function to return to dashboard/chat application.
+	 * @author KimRobin
+	 */
 	public void goDashboard() {
 		app.makeDash();
 	}
 
-	public void goSettings() {
-		app.makeSettings();
-	}
-
+	/**
+	 * A function used to add subjects to user for all subjects/items selected.
+	 * @author KimRobin
+	 */
 	public void addSubjects() throws SQLException {
 		ArrayList<String> selectedItems = getAllItems();
 		System.out.println(selectedItems);
@@ -105,15 +128,25 @@ public class SettingsController extends Controller {
 		updateTableViews();
 	}
 
+	/**
+	 * A function used to remove subjects from user for all subjects/items selected.
+	 * @author KimRobin
+	 */
 	public void deleteSubjects() throws SQLException {
 		ArrayList<String> selectedItems = getYourItems();
 		System.out.println(selectedItems);
 		for (int i = 0; i < selectedItems.size(); i++) {
-			SettingsHandler.deleteSubjects(app.getDatabaseHandler(), selectedItems.get(i));
+			SettingsHandler.removeSubjects(app.getDatabaseHandler(), selectedItems.get(i));
 		}
 		updateTableViews();
 	}
 	
+	/**
+	 * A function to clear all selections from second TableView when first TableView is clicked.
+	 * @param tv First TableView.
+	 * @param tv2 Second TableView.
+	 * @author KimRobin
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void clearSelections(TableView tv, TableView tv2) {
 		tv.setRowFactory(new Callback<TableView, TableRow>() {
@@ -135,6 +168,11 @@ public class SettingsController extends Controller {
 		});
 	}
 
+	/**
+	 * A function to get all subjects/items selected from "Your subjects" TableView.
+	 * @return Returns an array of strings with all subjects/items selected
+	 * @author KimRobin
+	 */
 	public ArrayList<String> getYourItems() {
 		ArrayList<String> items = new ArrayList<String>();
 		for (int i = 0; i < this.tv.getSelectionModel().getSelectedItems().size(); i++) {
@@ -143,7 +181,11 @@ public class SettingsController extends Controller {
 
 		return items;
 	}
-	
+	/**
+	 * A function to get all subjects/items selected from "Your subjects" TableView.
+	 * @return Returns an array of strings with all subjects/items selected
+	 * @author KimRobin
+	 */
 	public ArrayList<String> getAllItems() {
 		ArrayList<String> items = new ArrayList<String>();
 		for (int i = 0; i < this.tv2.getSelectionModel().getSelectedItems().size(); i++) {
@@ -153,6 +195,11 @@ public class SettingsController extends Controller {
 		return items;
 	}
 	
+	/**
+	 * A function to update all TableView to ensure they are synchronized with the database.
+	 * @author KimRobin
+	 */
+	@SuppressWarnings("unchecked")
 	public void updateTableViews() {
 		sh = new SettingsHandler();
 		ResultSet rs = null;
@@ -176,7 +223,10 @@ public class SettingsController extends Controller {
 		btnAdd.disableProperty().bind(Bindings.isEmpty(tv2.getSelectionModel().getSelectedItems()));
 	}
 
-	@SuppressWarnings("unchecked")
+	/**
+	 * A function to automatically run when the view is opened.
+	 * @author KimRobin
+	 */
 	@Override
 	public void onLoad() {
 		txtUser.setText(txtUser.getText() + User.getUsername());

@@ -9,6 +9,14 @@ public class DatabaseHandler {
 
 	private Connection con = null;
 	
+	/**
+	 * A constructor used when establishing a connection to the database.
+	 * @param dbclass Database driver
+	 * @param url Database's URL + port
+	 * @param username Database's username
+	 * @param password Database's password
+	 * @author KimRobin
+	 */
 	public DatabaseHandler(String dbclass, String url, String username, String password) {
 		System.out.println("Connecting to database...");
 		try {
@@ -24,6 +32,10 @@ public class DatabaseHandler {
 		}
 	}
 	
+	/**
+	 * A function to close connection.
+	 * @author KimRobin
+	 */
 	public void close() {
 		try {
 			con.close();
@@ -32,6 +44,13 @@ public class DatabaseHandler {
 		}
 	}
 
+	/**
+	 * A function to prepare a statement.<p>
+	 * Used when executing queries to database.
+	 * @param query The query a user wants to prepare.
+	 * @return Returns a prepared statement.
+	 * @author KimRobin
+	 */
 	public PreparedStatement prepareQuery(String query) throws SQLException {
 		return con.prepareStatement(query);
 	}

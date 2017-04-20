@@ -24,20 +24,37 @@ public class Bob extends Application {
 		launch(args);
 	}
 
+	/**
+	 * A function to start the set the application's GUI, and open login.
+	 * @param primaryStage The application is set to this stage.
+	 * @author KimRobin
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
 		makeLogin();
 	}
 
+	/**
+	 * A function to set the scene to login.
+	 * @author KimRobin
+	 */
 	public void makeLogin() {
 		setScene(loadGeneric("/Login.fxml", "Login"));
 	}
 	
+	/**
+	 * A function to set the scene to register.
+	 * @author KimRobin
+	 */
 	public void makeRegister() {
 		setScene(loadGeneric("/Register.fxml", "Register"));
 	}
 	
+	/**
+	 * A function to set the scene to dashboard/chat.
+	 * @author KimRobin
+	 */
 	public void makeDash() {
 		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
 	}
@@ -46,11 +63,20 @@ public class Bob extends Application {
 		setScene(loadGeneric("Admin.fxml", "Admin"));
 	}
 
+	/**
+	 * A function to set the scene to settings.
+	 * @author KimRobin
+	 */
 	public void makeSettings() {
 		setScene(loadGeneric("/Settings.fxml", "Settings"));
 
 	}
 
+	/**
+	 * A function used when setting a scene.
+	 * @param parent Parent of scene.
+	 * @author KimRobin
+	 */
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
 		parent.getStylesheets().getClass().getResource("/style.css");
@@ -58,6 +84,12 @@ public class Bob extends Application {
 		
 	}
 
+	/**
+	 * A generic function to load .FXML files when setting a scene.
+	 * @param path The path of the .FXML file
+	 * @param title The title of the scene (seen at the top of the window)
+	 * @return
+	 */
 	private Parent loadGeneric(String path, String title) {
 		FXMLLoader fxmlLoader = new FXMLLoader(Bob.class.getClassLoader().getResource("FXML/" + path));
 		Parent parent = null;
@@ -75,6 +107,11 @@ public class Bob extends Application {
 		return parent;
 	}
 	
+	/**
+	 * A function used to get the DatabaseHandler. Used in external classes to connect to database.
+	 * @return Returns the DatabaseHandler
+	 * @author KimRobin
+	 */
 	public DatabaseHandler getDatabaseHandler() {
 		return this.dbh;
 	}

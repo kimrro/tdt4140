@@ -88,7 +88,7 @@ public class LoginController extends Controller {
 	/** 
      * Function activated after user is logged in
      * <p>
-     * Saves the privelege of the user, which tells if the user is either admin or student
+     * Saves the privilege of the user, which tells if the user is either admin or student
      *
      * @author 			jorgburg
      */
