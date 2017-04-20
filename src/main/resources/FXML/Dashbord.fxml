@@ -47,13 +47,16 @@
 						<TextField id="input" fx:id="input" GridPane.rowIndex="1" />
 						<Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black">
 							<children>
-								<ScrollPane fx:id="scroll">
-									<TextFlow id="area" fx:id="area" prefHeight="416.0"
-										prefWidth="500.0" style="-fx-background-color: white">
-										<padding>
-											<Insets left="5.0" top="2.0" />
-										</padding>
-									</TextFlow>
+								<ScrollPane fx:id="scroll" prefHeight="416.0"
+									prefWidth="500.0">
+									<content>
+										<TextFlow id="area" fx:id="area" prefHeight="416.0"
+											prefWidth="500.0" style="-fx-background-color: white">
+											<padding>
+												<Insets left="5.0" top="2.0" />
+											</padding>
+										</TextFlow>
+									</content>
 								</ScrollPane>
 							</children>
 						</Pane>

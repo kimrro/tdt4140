@@ -35,6 +35,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
@@ -64,7 +65,10 @@ public class ChatController extends Controller {
 	private ResultSet rs = null;
 	private ResultSet rs1 = null;
 	private String username;
-	private TextFlow reply;
+	private Text reply;
+	private TextFlow flowReply;
+	private Text extract;
+	private String userQuery;
 
 	/**
 	 * Function activated when launching the class ChatController
@@ -74,6 +78,7 @@ public class ChatController extends Controller {
 	 * @author jorgburg
 	 */
 	public void onLoad() {
+
 		username = User.getUsername();
 		pick = "";
 		dbh = app.getDatabaseHandler();
@@ -99,7 +104,7 @@ public class ChatController extends Controller {
 	}
 
 	/**
-	 * Function activated by chaning drop down list
+	 * Function activated by changing drop down list
 	 * <p>
 	 * Change the subject which you communicate with
 	 *
@@ -151,7 +156,8 @@ public class ChatController extends Controller {
 	 */
 	public void chatClicked() throws IOException, SQLException {
 		String uText = input.getText();
-		TextFlow reply = toTextFlow("ERROR!");
+		this.userQuery = uText;
+		Text reply = toText("ERROR!");
 
 		String TEXT = uText.toLowerCase();
 		String part[] = TEXT.split(" ");
@@ -161,11 +167,11 @@ public class ChatController extends Controller {
 			if ((TEXT.contains("hello")) || (TEXT.contains("hi"))) {
 				int reply_decider = (int) (Math.random() * 3 + 1);
 				if (reply_decider == 1) {
-					reply = toTextFlow("Hello there!");
+					reply = toText("Hello there!");
 				} else if (reply_decider == 2) {
-					reply = toTextFlow("How you doin? ^^");
+					reply = toText("How you doin? ^^");
 				} else if (reply_decider == 3) {
-					reply = toTextFlow("Hello mate!");
+					reply = toText("Hello mate!");
 				}
 			}
 
@@ -195,30 +201,26 @@ public class ChatController extends Controller {
 					ChatHandler.writeKeywords(dbh, subject, code);
 					ChatHandler.writeQuestion(dbh, TEXT, username);
 					if (wikipedia(input1).equals("0")) {
-						reply = toTextFlow("You can read about '" + input2 + "' in the curriculum on the pages: " + page);
+						reply = toText("You can read about '" + input2 + "' in the curriculum on the pages: " + page);
 					} else if (hasReferTo(wikipedia(input1))) {
-						reply = new TextFlow(
-								new Text("You can read about '" + input2 + "' in the curriculum on the page(s): " + page
-										+ "\nI also found something on Wikipedia,\nbut it may refer to multiple subjects."),
-								showWikipedia(input1));
+						reply = toText("You can read about '" + input2 + "' in the curriculum on the page(s): " + page
+								+ "\nI also found something on Wikipedia,\nbut it may refer to multiple subjects.");
 					} else {
-						reply = toTextFlow("You can read about '" + input2 + "' in the curriculum on the page(s): " + page
+						reply = toText("You can read about '" + input2 + "' in the curriculum on the page(s): " + page
 								+ "\nI also found this on wikipedia: " + "\n" + wikipedia(input1));
 					}
 				} else {
 					if (wikipedia(input1).equals("0")) {
-						reply = toTextFlow("Please rephrase! I couldnt find what you where looking for :(");
+						reply = toText("Please rephrase! I couldnt find what you where looking for :(");
 					} else if (wikipedia(input1).equals("1")) {
-						reply = new TextFlow(new Text("This may refer to multiple subjects."),
-								showWikipedia(input1));
+						reply = toText("This may refer to multiple topics.");
 					} else {
 						ChatHandler.writeKeywords(dbh, subject, code);
 						ChatHandler.writeQuestion(dbh, TEXT, username);
 						if (!hasReferTo(wikipedia(input1))) {
-							reply = toTextFlow("I found this on Wikipedia:" + "\n" + wikipedia(input1) + "\n");
+							reply = toText("I found this on Wikipedia:" + "\n" + wikipedia(input1) + "\n");
 						} else {
-							reply = new TextFlow(new Text("This may refer to multiple subjects."),
-									showWikipedia(input1));
+							reply = toText("This may refer to multiple subjects.");
 						}
 					}
 				}
@@ -228,9 +230,9 @@ public class ChatController extends Controller {
 			else if (TEXT.equals("/subjects")) {
 				int reply_decider = (int) (Math.random() * 2 + 1);
 				if (reply_decider == 1) {
-					reply = toTextFlow("You have the subjects: \n" + subjects);
+					reply = toText("You have the subjects: \n" + subjects);
 				} else if (reply_decider == 2) {
-					reply = toTextFlow("Currently, you are attending these classes: \n" + subjects);
+					reply = toText("Currently, you are attending these classes: \n" + subjects);
 				}
 			}
 
@@ -241,51 +243,51 @@ public class ChatController extends Controller {
 					lecturer.add(output.getString("fornavn") + " " + output.getString("etternavn"));
 				}
 				if (lecturer.isEmpty()) {
-					reply = toTextFlow("I dont think there are registered any lecturers in that course..");
+					reply = toText("I dont think there are registered any lecturers in that course..");
 				} else {
-					reply = toTextFlow("In " + pick + " teaches the lecturer: \n" + lecturer);
+					reply = toText("In " + pick + " teaches the lecturer: \n" + lecturer);
 				}
 			}
 
 			else if ((part[0].equals("/clear"))) {
 				int reply_decider = (int) (Math.random() * 2 + 1);
 				if (reply_decider == 1) {
-					reply = toTextFlow("Cleared!");
+					reply = toText("Cleared!");
 				} else if (reply_decider == 2) {
-					reply = toTextFlow("Bye bye text =)");
+					reply = toText("Bye bye text =)");
 				}
 			}
 
 			else if ((part[0].equals("/help")) || part[0].equals("/commands")) {
-				reply = toTextFlow("Possible commands are: \n \n" + "1: /subjects \n" + "2: /lecturer \n" + "3: /clear \n"
+				reply = toText("Possible commands are: \n \n" + "1: /subjects \n" + "2: /lecturer \n" + "3: /clear \n"
 						+ "4: Ask me something");
 			}
 
 			else if (part[0].contains("h") && part[0].contains("e") && part[0].contains("l") && part[0].contains("p")
 					&& part[0] != "help") {
-				reply = toTextFlow("Did you mean '/help'?");
+				reply = toText("Did you mean '/help'?");
 			}
 
 			else if (part[0].contains("c") && part[0].contains("o") && part[0].contains("m") && part[0].contains("n")
 					&& part[0] != "commands") {
-				reply = toTextFlow("Did you mean '/commands'?");
+				reply = toText("Did you mean '/commands'?");
 			}
 
 			else if (part[0].contains("c") && part[0].contains("l") && part[0].contains("e") && part[0].contains("a")
 					&& part[0].contains("r") && part[0] != "clear") {
-				reply = toTextFlow("Did you mean '/clear'?");
+				reply = toText("Did you mean '/clear'?");
 			}
 
 			else if (part[0].contains("w") && part[0].contains("h") && part[0].contains("a") && part[0] != "what") {
-				reply = toTextFlow("Did you mean to ask me a question?");
+				reply = toText("Did you mean to ask me a question?");
 			}
 
 			else if (TEXT.contains("i am") || (part[0].contains("i") && part[0].contains("m"))) {
 				int reply_decider = (int) (Math.random() * 2 + 1);
 				if (reply_decider == 1) {
-					reply = toTextFlow("Good for you!!");
+					reply = toText("Good for you!!");
 				} else if (reply_decider == 2) {
-					reply = toTextFlow("Nice to hear that!");
+					reply = toText("Nice to hear that!");
 				}
 			}
 
@@ -293,27 +295,27 @@ public class ChatController extends Controller {
 					|| ((part[0].contains("how")) && (part[1].contains("are")) && (part[2].contains("you")))) {
 				int reply_decider = (int) (Math.random() * 3 + 1);
 				if (reply_decider == 1) {
-					reply = toTextFlow("I'm doing well thanks! And you?");
+					reply = toText("I'm doing well thanks! And you?");
 				} else if (reply_decider == 2) {
-					reply = toTextFlow("Not too bad, and for you?");
+					reply = toText("Not too bad, and for you?");
 				} else if (reply_decider == 3) {
-					reply = toTextFlow("Very well thank you! How is it going for you?");
+					reply = toText("Very well thank you! How is it going for you?");
 				}
 			}
 
 			else {
 				int reply_decider = (int) (Math.random() * 4 + 1);
 				if (reply_decider == 1) {
-					reply = toTextFlow("I didn't get that, try '/help' to show commands");
+					reply = toText("I didn't get that, try '/help' to show commands");
 				} else if (reply_decider == 2) {
-					reply = toTextFlow("Please rephrase that or type '/commands' to show commands");
+					reply = toText("Please rephrase that or type '/commands' to show commands");
 				} else if (reply_decider == 3) {
-					reply = toTextFlow("Type '/help' to show commands");
+					reply = toText("Type '/help' to show commands");
 				} else if (reply_decider == 4) {
-					reply = toTextFlow("'/help' will show you some useful comands =D");
+					reply = toText("'/help' will show you some useful comands =D");
 				}
 			}
-			
+
 			this.reply = reply;
 
 			if (TEXT.contains("/clear")) {
@@ -337,10 +339,25 @@ public class ChatController extends Controller {
 	 *
 	 * @author jorgburg
 	 */
-	public void chatArea(String user, TextFlow bot) {
-		this.reply = new TextFlow(new Text("You: " + user + "\nBOB: "), bot, new Text("\n\n"));
-		area.getChildren().add(this.reply);
-		Animation animation = new Timeline(new KeyFrame(Duration.seconds(2), new KeyValue(scroll.vvalueProperty(), 1)));
+	public void chatArea(String user, Text bob) {
+		Text chatUser = new Text("\n\nYou: " + user);
+		chatUser.setFill(Color.web("#c57604"));
+		Text chatBob = new Text("\nBOB: " + bob.getText());
+		chatBob.setFill(Color.web("#123357"));
+		if (this.extract != null) {
+			if (hasReferTo(this.extract.getText())) {
+				area.getChildren().addAll(chatUser, chatBob, showWikipedia(this.userQuery));
+				System.out.println("Refer");
+			} else {this.reply = new Text("\n\nYou: " + chatUser.getText() + "\nBOB: " + chatBob);
+				area.getChildren().addAll(chatUser, chatBob);
+			}
+		} else {
+			area.getChildren().addAll(chatUser, chatBob);
+		}
+
+		this.extract = null;
+		Animation animation = new Timeline(
+				new KeyFrame(Duration.seconds(0.1), new KeyValue(scroll.vvalueProperty(), 1)));
 		animation.play();
 	}
 
@@ -371,7 +388,7 @@ public class ChatController extends Controller {
 			}
 		}
 
-		String extract = null;
+		Text extract = null;
 		String check = null;
 
 		try {
@@ -383,7 +400,9 @@ public class ChatController extends Controller {
 				// System.out.println("key = " + key);
 				check = key;
 				JSONObject page = pages.getJSONObject(key);
-				extract = page.getString("extract");
+				extract = toText(page.getString("extract"));
+				this.extract = extract;
+				this.userQuery = object;
 				// System.out.println("extract = " + extract);
 			}
 		} catch (JSONException e) {
@@ -395,11 +414,11 @@ public class ChatController extends Controller {
 
 		if (text.contains("missing")) {
 			return ("0");
-		} else if (extract.contains("redirect") || check.equals("-1")) {
+		} else if (extract.getText().contains("redirect") || check.equals("-1")) {
 			return ("0");
 		} else {
 			System.out.println(extract);
-			return (extract);
+			return (extract.getText());
 		}
 
 	}
@@ -506,9 +525,9 @@ public class ChatController extends Controller {
 		});
 		return text;
 	}
-	
-	private TextFlow toTextFlow(String text) {
-		return new TextFlow(new Text(text));
+
+	private Text toText(String text) {
+		return new Text(text);
 	}
 
 }
