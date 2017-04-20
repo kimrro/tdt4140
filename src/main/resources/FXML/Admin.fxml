@@ -17,7 +17,7 @@
             <Image url="@bob.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="btnBack" fitHeight="60.0" fitWidth="59.0" layoutX="534.0" layoutY="5.0" onMouseClicked="#goBack" opacity="0.44" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="btnBack" fitHeight="60.0" fitWidth="60.0" layoutX="534.0" layoutY="5.0" onMouseClicked="#goBack" opacity="0.44" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@bobIcon.png" />
          </image>

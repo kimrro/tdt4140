@@ -68,9 +68,9 @@
 				<Button id="optionButton" fx:id="btnAdmin" layoutY="30.0" minHeight="23.0" mnemonicParsing="false" onAction="#showAdmin" prefHeight="23.0" prefWidth="60.0" stylesheets="@style.css" text="Admin" />
 			</children>
 		</Pane>
-		<ImageView fx:id="btnSettings" fitHeight="50.0" fitWidth="50.0" layoutX="550.0" onMouseClicked="#showSettings" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+		<ImageView fx:id="btnSettings" fitHeight="50.0" fitWidth="50.0" layoutX="545.0" layoutY="5.0" onMouseClicked="#showSettings" opacity="0.6" pickOnBounds="true" preserveRatio="true">
 			<image>
-				<Image url="@wheel.png" />
+				<Image url="@tannhjul.png" />
 			</image>
 		</ImageView>
 		<ComboBox id="optionButton" fx:id="choiceSubject" layoutX="50.0" layoutY="125.0" onAction="#subjectPick" prefHeight="25.0" prefWidth="175.0" promptText="Choose subject" stylesheets="@style.css" />

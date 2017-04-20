@@ -99,9 +99,9 @@
             <AnchorPane fx:id="allSubjectsView" prefHeight="200.0" prefWidth="200.0" />
             <AnchorPane fx:id="yourSubjectsView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
             <Text fx:id="feedback" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ImageView fx:id="btnBack" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#goDashboard" opacity="0.44" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+            <ImageView fx:id="btnBack" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goDashboard" opacity="0.44" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                <GridPane.margin>
-                  <Insets left="265.0" top="-340.0" />
+                  <Insets left="255.0" top="-330.0" />
                </GridPane.margin>
                <image>
                   <Image url="@bobIcon.png" />
