@@ -53,5 +53,6 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button fx:id="btnGrant" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goUserAccess" text="Grant user access" />
    </children>
 </AnchorPane>

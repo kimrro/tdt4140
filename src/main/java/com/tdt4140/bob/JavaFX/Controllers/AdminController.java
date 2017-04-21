@@ -36,7 +36,7 @@ public class AdminController extends Controller {
 	private TextField txtCurriculum,txtPage;
 
 	@FXML
-	private Button btnAdd;
+	private Button btnAdd, btnGrant;
 	
 	@FXML
 	private ImageView btnBack;
@@ -61,6 +61,14 @@ public class AdminController extends Controller {
      */
 	public void goBack() {
 		app.makeDash();
+	}
+	
+	/**
+	 * Function to redirect user to "grant user access"-view
+	 * @author KimRobin
+	 */
+	public void goUserAccess() {
+		app.makeUserAccess();
 	}
 	
 	/** 

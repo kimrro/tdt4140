@@ -71,6 +71,15 @@ public class Bob extends Application {
 		setScene(loadGeneric("/Settings.fxml", "Settings"));
 
 	}
+	
+	/**
+	 * A function to set the scene to "grant user access"-view.
+	 * @author KimRobin
+	 */
+	public void makeUserAccess() {
+		setScene(loadGeneric("/UserAccess.fxml", "Grant user access"));
+		
+	}
 
 	/**
 	 * A function used when setting a scene.
