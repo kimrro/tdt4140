@@ -33,10 +33,10 @@
                 <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+                  <TextField fx:id="txtUsername" GridPane.columnIndex="1" />
                   <Label text="Last name:" GridPane.rowIndex="4" />
                   <PasswordField fx:id="passPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Username" />
-                  <TextField fx:id="txtUsername" GridPane.columnIndex="1" />
                   <Label text="Password:" GridPane.rowIndex="1" />
                   <Label text="Confirm password:" GridPane.rowIndex="2" />
                   <PasswordField fx:id="passCPassword" GridPane.columnIndex="1" GridPane.rowIndex="2" />
