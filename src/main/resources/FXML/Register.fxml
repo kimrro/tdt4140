@@ -44,10 +44,7 @@
                   <TextField fx:id="txtFname" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="txtLname" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Button id="button" fx:id="btnRegister" maxHeight="27.0" maxWidth="95.0" minHeight="27.0" minWidth="95.0" mnemonicParsing="false" onAction="#registerUser" prefHeight="27.0" prefWidth="95.0" stylesheets="@style.css" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Button id="button" fx:id="btnLogin" maxHeight="27.0" maxWidth="95.0" minHeight="27.0" minWidth="95.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="27.0" prefWidth="95.0" stylesheets="@style.css" text="Go back" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <GridPane.margin>
-                        <Insets bottom="15.0" />
-                     </GridPane.margin></Button>
+                  <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#goLogin" prefHeight="27.0" prefWidth="95.0" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
          </center>

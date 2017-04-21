@@ -137,4 +137,12 @@ public class RegisterController extends Controller {
 		}
 		return true;
 	}
+	
+	/**
+	 * A function to set the scene to login.
+	 * @author KimRobin
+	 */
+	public void goLogin() {
+		app.makeLogin();
+	}
 }
