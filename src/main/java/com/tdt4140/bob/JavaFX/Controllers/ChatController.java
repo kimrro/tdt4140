@@ -121,7 +121,7 @@ public class ChatController extends Controller {
 	 * @author jorgburg
 	 */
 	public void showCommands() {
-		Text text = new Text("BOB: Possible commands are: \n" + "1: /subjects \n" + "2: /lecturer \n" + "3: /clear \n"
+		Text text = new Text("\nPossible commands are: \n" + "1: /subjects \n" + "2: /lecturer \n" + "3: /clear \n"
 				+ "4: Ask me something \n\n");
 		area.getChildren().add(text);
 	}
@@ -141,7 +141,7 @@ public class ChatController extends Controller {
 			questions.add(i + ": " + output.getString("question"));
 			i++;
 		}
-		Text text = new Text("BOB: Your last questions: \n" + questions + "\n\n");
+		Text text = new Text("\nYour last questions: \n" + questions + "\n\n");
 		area.getChildren().add(text);
 	}
 
