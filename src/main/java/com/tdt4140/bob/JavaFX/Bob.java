@@ -100,7 +100,7 @@ public class Bob extends Application {
 	 */
 	private Parent loadGeneric(String path, String title) {
 		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/" + path));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML" + path));
 		Parent parent = null;
 		try {
 			parent = (Parent)fxmlLoader.load();
