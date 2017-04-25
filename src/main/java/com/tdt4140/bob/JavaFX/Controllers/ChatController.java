@@ -521,7 +521,7 @@ public class ChatController extends Controller {
 	}
 
 	public boolean hasReferTo(String extract) {
-		if (extract.contains("may refer to") || extract.contains("usually refers to")) {
+		if (extract.contains("refer to") || extract.contains("refers to")) {
 			return true;
 		}
 		return false;
