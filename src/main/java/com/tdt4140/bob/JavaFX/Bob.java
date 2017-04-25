@@ -87,7 +87,7 @@ public class Bob extends Application {
 	 */
 	private void setScene(Parent parent) {
 		primaryStage.setScene(new Scene(parent));
-		parent.getStylesheets().getClass().getResource("/resources/style.css");
+		parent.getStylesheets().getClass().getResource("/style.css");
 		primaryStage.show();
 		
 	}
@@ -100,7 +100,7 @@ public class Bob extends Application {
 	 */
 	private Parent loadGeneric(String path, String title) {
 		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/resources/FXML" + path));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML" + path));
 		Parent parent = null;
 		try {
 			parent = (Parent)fxmlLoader.load();
