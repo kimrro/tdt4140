@@ -128,6 +128,10 @@ public class ChatController extends Controller {
 		Text text = new Text("\nPossible commands are: \n" + "1: /subjects \n" + "2: /lecturer \n" + "3: /clear \n"
 				+ "4: Ask me something \n\n");
 		area.getChildren().add(text);
+		
+		Animation animation = new Timeline(
+				new KeyFrame(Duration.seconds(0.1), new KeyValue(scroll.vvalueProperty(), 1)));
+		animation.play();
 	}
 
 	/**
@@ -147,6 +151,10 @@ public class ChatController extends Controller {
 		}
 		Text text = new Text("\nYour last questions: \n" + questions + "\n\n");
 		area.getChildren().add(text);
+		
+		Animation animation = new Timeline(
+				new KeyFrame(Duration.seconds(0.1), new KeyValue(scroll.vvalueProperty(), 1)));
+		animation.play();
 	}
 
 	/**
