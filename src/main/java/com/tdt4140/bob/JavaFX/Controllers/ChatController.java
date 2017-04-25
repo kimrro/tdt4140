@@ -141,7 +141,7 @@ public class ChatController extends Controller {
 		int i = 1;
 		ResultSet output = ChatHandler.getQuestion(dbh, username);
 		ArrayList<String> questions = new ArrayList<String>();
-		while (output.next()) {
+		while (output.next() && i <= 5) {
 			questions.add(i + ": " + output.getString("question"));
 			i++;
 		}
@@ -201,10 +201,12 @@ public class ChatController extends Controller {
 				
 				//Determine if a question-mark is used to finish the sentence.
 				//Ignore question-mark if used when searching on the Wiki
-				if (subject.substring(0, subject.length() - 1).contains("?")) {
-					input1 = subject.substring(0, subject.length() - 2);
+				if (subject.substring(subject.length() - 2, subject.length() - 1).contains(("?"))) {
+					subject = subject.substring(0, subject.length() - 2);
+					input1 = subject;
 				} else {
-					input1 = subject.substring(0, subject.length() - 1);
+					subject = subject.substring(0, subject.length() - 1);
+					input1 = subject;
 				}
 				
 				input2 = WordUtils.capitalizeFully(subject);
