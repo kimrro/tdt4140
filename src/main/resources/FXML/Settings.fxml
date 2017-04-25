@@ -27,7 +27,7 @@
           <RowConstraints maxHeight="249.0" minHeight="0.0" prefHeight="221.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-      		<Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#changePassword" text="Submit " GridPane.columnIndex="2">
+      		<Button fx:id="btnSubmit" mnemonicParsing="false" onAction="#changePassword" text="Update" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets top="250.0" />
                </GridPane.margin></Button>

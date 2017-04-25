@@ -14,7 +14,7 @@ public class LoginHandler {
 	 * @return Returns a ResultSet with user credentials.
 	 * @author KimRobin 
 	 */
-	public ResultSet getUserCredentials(DatabaseHandler dbh, String username) throws SQLException {
+	public static ResultSet getUserCredentials(DatabaseHandler dbh, String username) throws SQLException {
 		String query = "SELECT * FROM user WHERE username = ?";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
 		prepStatement.setString(1, username);

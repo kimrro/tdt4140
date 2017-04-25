@@ -56,11 +56,11 @@ public class Bob extends Application {
 	 * @author KimRobin
 	 */
 	public void makeDash() {
-		setScene(loadGeneric("Dashbord.fxml", "Dashbord"));
+		setScene(loadGeneric("/Dashbord.fxml", "Dashboard"));
 	}
 	
 	public void makeAdmin() {
-		setScene(loadGeneric("Admin.fxml", "Admin"));
+		setScene(loadGeneric("/Admin.fxml", "Admin"));
 	}
 
 	/**
@@ -70,6 +70,14 @@ public class Bob extends Application {
 	public void makeSettings() {
 		setScene(loadGeneric("/Settings.fxml", "Settings"));
 
+	}
+	
+	/**
+	 * A function to set the scene to "user access"-view.
+	 * @author KimRobin
+	 */
+	public void makeUserAccess() {
+		setScene(loadGeneric("/UserAccess.fxml", "User access"));
 	}
 
 	/**
@@ -91,12 +99,13 @@ public class Bob extends Application {
 	 * @return
 	 */
 	private Parent loadGeneric(String path, String title) {
-		FXMLLoader fxmlLoader = new FXMLLoader(Bob.class.getClassLoader().getResource("FXML/" + path));
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/" + path));
 		Parent parent = null;
 		try {
-			parent = fxmlLoader.load();
+			parent = (Parent)fxmlLoader.load();
 		} catch (IOException e) {
-			System.out.println("ERROR: " + e.getMessage());
+			e.printStackTrace();
 		}
 		
 		currentController = fxmlLoader.getController();

@@ -15,7 +15,7 @@ public class SettingsHandler {
 	 * @return Returns ResultSet with all of a user's subjects (subject code and coursename).
 	 * @author KimRobin
 	 */
-	public ResultSet getUserSubjects(DatabaseHandler dbh) throws SQLException {
+	public static ResultSet getUserSubjects(DatabaseHandler dbh) throws SQLException {
 		String query = "SELECT subject.code, coursename FROM user_subject, subject WHERE user_subject.username = ? AND subject.code = user_subject.code";
 		PreparedStatement prepStatement = dbh.prepareQuery(query);
 		prepStatement.setString(1, User.getUsername());

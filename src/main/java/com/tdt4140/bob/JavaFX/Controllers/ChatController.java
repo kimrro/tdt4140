@@ -82,6 +82,10 @@ public class ChatController extends Controller {
 		pick = "";
 		dbh = app.getDatabaseHandler();
 
+		if(User.getPrivilege() > 1) {
+			btnAdmin.setVisible(true);
+		}
+		
 		ResultSet data = null;
 		try {
 			data = ChatHandler.getSubjects(dbh, username);
@@ -188,6 +192,13 @@ public class ChatController extends Controller {
 				String input1 = "";
 				String input2 = "";
 				
+				//Ignore 'a' or 'an' in a sentence to not confuse Bob
+				if (subject.startsWith("an")) {
+					subject = subject.substring(3, subject.length());
+				} else if (subject.startsWith("a")) {
+					subject = subject.substring(2, subject.length());
+				} 
+				
 				//Determine if a question-mark is used to finish the sentence.
 				//Ignore question-mark if used when searching on the Wiki
 				if (subject.substring(0, subject.length() - 1).contains("?")) {
@@ -195,6 +206,7 @@ public class ChatController extends Controller {
 				} else {
 					input1 = subject.substring(0, subject.length() - 1);
 				}
+				
 				input2 = WordUtils.capitalizeFully(subject);
 				String code = null;
 				String page = null;
@@ -216,7 +228,7 @@ public class ChatController extends Controller {
 								+ "\nI also found something on Wikipedia,\nbut it may refer to multiple subjects.");
 					} else {
 						reply = toText("You can read about '" + input2 + "' in the curriculum on the page(s): " + page
-								+ "\nI also found this on wikipedia: " + "\n" + wikipedia(input1));
+								+ "\nI also found this on Wikipedia: " + "\n" + wikipedia(input1));
 					}
 				} else {
 					if (wikipedia(input1).equals("0")) {
@@ -229,7 +241,7 @@ public class ChatController extends Controller {
 						if (!hasReferTo(wikipedia(input1))) {
 							reply = toText("I found this on Wikipedia:" + "\n" + wikipedia(input1) + "\n");
 						} else {
-							reply = toText("This may refer to multiple subjects.");
+							reply = toText("This may refer to multiple topics.");
 						}
 					}
 				}
@@ -507,7 +519,7 @@ public class ChatController extends Controller {
 	}
 
 	public boolean hasReferTo(String extract) {
-		if (extract.contains("may refer to")) {
+		if (extract.contains("may refer to") || extract.contains("usually refers to")) {
 			return true;
 		}
 		return false;

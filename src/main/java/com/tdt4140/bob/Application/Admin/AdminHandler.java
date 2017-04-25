@@ -21,4 +21,36 @@ public class AdminHandler {
 		prepStatement.setString(1, code);
 		return prepStatement.executeQuery();
 	}
+	
+	/**
+	 * A function to get all the admins from the database.
+	 * @param dbh Get the database to connect to.
+	 * @return A ResultSet with all the admins.
+	 * @author KimRobin
+	 */
+	public static ResultSet getAllAdmins(DatabaseHandler dbh) throws SQLException {
+		String query = "SELECT username, fname, lname FROM user WHERE privilege > 1";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		return prepStatement.executeQuery();
+	}
+	
+	public static ResultSet getAllUsers(DatabaseHandler dbh) throws SQLException {
+		String query = "SELECT username FROM user";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		return prepStatement.executeQuery();
+	}
+	
+	public static void grantAccess(DatabaseHandler dbh, String username) throws SQLException {
+		String query = "UPDATE user SET privilege = 2 WHERE username = ?";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		prepStatement.setString(1, username);
+		prepStatement.executeUpdate();
+	}
+	
+	public static void revokeAccess(DatabaseHandler dbh, String username) throws SQLException {
+		String query = "UPDATE user SET privilege = 1 WHERE username = ?";
+		PreparedStatement prepStatement = dbh.prepareQuery(query);
+		prepStatement.setString(1, username);
+		prepStatement.executeUpdate();
+	}
 }
