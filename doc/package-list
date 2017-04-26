@@ -1,0 +1,9 @@
+com.tdt4140.bob.Application
+com.tdt4140.bob.Application.Admin
+com.tdt4140.bob.Application.Chat
+com.tdt4140.bob.Application.Curriculum
+com.tdt4140.bob.Application.Login
+com.tdt4140.bob.Application.Settings
+com.tdt4140.bob.JavaFX
+com.tdt4140.bob.JavaFX.Controllers
+com.tdt4140.bob.JavaFX.Controllers.Login
